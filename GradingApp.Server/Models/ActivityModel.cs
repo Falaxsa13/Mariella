@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GradingApp.Server.Models;
 
-public class MajorModel
+public class ActivityModel
 {
 	[Key]
 	[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -12,17 +12,17 @@ public class MajorModel
 	[Required]
 	public required string Name { get; set; }
 
-	public string? Abbreviation { get; set; }
+	public double? Grade { get; set; }
 
-	public Guid? PeruvianUniversitiesApiMajorGuid { get; set; }
+	public double? Weight { get; set; }
+
+	[ForeignKey(nameof(GradingRubricModel))]
+	public int GradingRubricId { get; set; }
+
+	public required GradingRubricModel GradingRubric { get; set; }
 
 	[Required]
-	public bool IsCustom { get; set; }
-
-	[ForeignKey(nameof(UserModel))]
-	public int AuthorId { get; set; }
-
-	public required UserModel User { get; set; }
+	public bool IsTemplate { get; set; }
 
 	[Required]
 	public DateTime CreatedAt { get; set; }

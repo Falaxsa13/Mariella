@@ -1,11 +1,8 @@
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GradingApp.Server.Models;
 
-/// <summary>
-/// Represents a university in the database.
-/// </summary>
 public class UniversityModel
 {
 	[Key]
@@ -13,10 +10,23 @@ public class UniversityModel
 	public int Id { get; set; }
 
 	[Required]
-	public string Country { get; set; }
+	public required string Name { get; set; }
 
 	[Required]
-	public string Name { get; set; }
+	public required string Country { get; set; }
 
-	public string Abbreviation { get; set; }
+	public string? Abbreviation { get; set; }
+
+	public Guid? PeruvianUniversitiesApiUniversityGuid { get; set; }
+
+	[Required]
+	public bool IsCustom { get; set; }
+
+	[ForeignKey(nameof(UserModel))]
+	public int AuthorId { get; set; }
+
+	public required UserModel User { get; set; }
+
+	[Required]
+	public DateTime CreatedAt { get; set; }
 }

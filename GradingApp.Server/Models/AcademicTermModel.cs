@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GradingApp.Server.Models;
 
-public class MajorModel
+public class AcademicTermModel
 {
 	[Key]
 	[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -12,17 +12,7 @@ public class MajorModel
 	[Required]
 	public required string Name { get; set; }
 
-	public string? Abbreviation { get; set; }
-
-	public Guid? PeruvianUniversitiesApiMajorGuid { get; set; }
-
-	[Required]
-	public bool IsCustom { get; set; }
-
-	[ForeignKey(nameof(UserModel))]
-	public int AuthorId { get; set; }
-
-	public required UserModel User { get; set; }
+	public Guid? PeruvianUniversitiesApiAcademicTermGuid { get; set; }
 
 	[Required]
 	public DateTime CreatedAt { get; set; }
