@@ -1,4 +1,4 @@
-namespace GradingApp.Server.Data;
+namespace GradingApp.Server.Models;
 
 public class CourseModel
 {

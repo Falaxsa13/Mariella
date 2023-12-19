@@ -1,11 +1,11 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+namespace GradingApp.Server.Models;
+
 /// <summary>
 /// Represents a user in the database.
 /// </summary>
-namespace GradingApp.Server.Models;
-
 public class UserModel
 {
 	[Key]

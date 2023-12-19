@@ -1,7 +1,7 @@
-namespace GradingApp.Server.Data;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using GradingApp.Server.Models;
+
+namespace GradingApp.Server.Models;
 
 ///  <summary>
 ///  Represents a major in a university.
