@@ -22,5 +22,11 @@ public class UserModel
 	public required string Email { get; set; }
 
 	[Required]
+	public required string HashedPassword { get; set; }
+
+	[Required]
+	public required string Salt { get; set; }
+
+	[Required]
 	public DateTime CreatedAt { get; set; }
 }
