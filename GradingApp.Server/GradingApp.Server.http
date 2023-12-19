@@ -1,0 +1,6 @@
+@GradingApp.Server_HostAddress = http://localhost:5099
+
+GET {{GradingApp.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
