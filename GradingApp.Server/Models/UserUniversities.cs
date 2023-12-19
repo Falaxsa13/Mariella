@@ -9,6 +9,7 @@ namespace GradingApp.Server.Models;
 public class UserUniversities
 {
 	[Key]
+	[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 	public int Id { get; set; }
 
 	[ForeignKey(nameof(UserModel))]
