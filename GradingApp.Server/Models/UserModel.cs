@@ -22,5 +22,5 @@ public class UserModel
 	public required string Email { get; set; }
 
 	[Required]
-	public DateTime CreationDateTime { get; set; }
+	public DateTime CreatedAt { get; set; }
 }

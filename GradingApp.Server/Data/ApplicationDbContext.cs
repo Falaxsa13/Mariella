@@ -9,15 +9,25 @@ public class ApplicationDbContext : DbContext
 	{
 	}
 
-	public DbSet<UserModel> Users { get; set; }
+	public DbSet<AcademicTermModel> AcademicTerms { get; set; }
+
+	public DbSet<ActivityModel> Activities { get; set; }
+
+	public DbSet<CourseModel> Courses { get; set; }
+
+	public DbSet<GradingRubricModel> GradingRubrics { get; set; }
 
 	public DbSet<MajorModel> Majors { get; set; }
 
-	public DbSet<CourseModel> Courses { get; set; }
+	public DbSet<ProfessorCoursesModel> ProfessorCourses { get; set; }
+
+	public DbSet<ProfessorModel> Professors { get; set; }
 
 	public DbSet<UniversityModel> Universities { get; set; }
 
 	public DbSet<UserMajorsModel> UserMajors { get; set; }
+
+	public DbSet<UserModel> Users { get; set; }
 
 	public DbSet<UserUniversitiesModel> UserUniversities { get; set; }
 }
