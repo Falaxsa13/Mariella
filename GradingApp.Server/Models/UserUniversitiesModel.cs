@@ -6,7 +6,7 @@ namespace GradingApp.Server.Models;
 /// <summary>
 /// Represents the relationship between a user and universities they are associated with.
 /// </summary>
-public class UserUniversities
+public class UserUniversitiesModel
 {
 	[Key]
 	[DatabaseGenerated(DatabaseGeneratedOption.Identity)]

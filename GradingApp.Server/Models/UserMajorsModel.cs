@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GradingApp.Server.Models;
 
-public class UserMajors
+public class UserMajorsModel
 {
 	[Key]
 	[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
