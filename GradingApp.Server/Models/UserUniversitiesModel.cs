@@ -15,10 +15,10 @@ public class UserUniversities
 	[ForeignKey(nameof(UserModel))]
 	public int UserId { get; set; }
 
-	public UserModel User { get; set; }
+	public required UserModel User { get; set; }
 
 	[ForeignKey(nameof(UniversityModel))]
 	public int UniversityId { get; set; }
 
-	public UniversityModel University { get; set; }
+	public required UniversityModel University { get; set; }
 }

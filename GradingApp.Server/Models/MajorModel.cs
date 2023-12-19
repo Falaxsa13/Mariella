@@ -1,11 +1,8 @@
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GradingApp.Server.Models;
 
-///  <summary>
-///  Represents a major in a university.
-/// </summary>
 public class MajorModel
 {
 	[Key]
@@ -13,12 +10,20 @@ public class MajorModel
 	public int Id { get; set; }
 
 	[Required]
-	public string Name { get; set; }
+	public required string Name { get; set; }
 
-	public string Abbreviation { get; set; }
+	public string? Abbreviation { get; set; }
 
-	[ForeignKey(nameof(UniversityModel))]
-	public int UniversityId { get; set; }
+	public Guid? PeruvianUniversitiesApiMajorGuid { get; set; }
 
-	public UniversityModel University { get; set; }
+	[Required]
+	public bool IsCustom { get; set; }
+
+	[ForeignKey(nameof(UserModel))]
+	public int AuthorId { get; set; }
+
+	public required UserModel User { get; set; }
+
+	[Required]
+	public DateTime CreatedAt { get; set; }
 }
