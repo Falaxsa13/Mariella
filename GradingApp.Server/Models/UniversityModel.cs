@@ -8,14 +8,14 @@ namespace GradingApp.Server.Models;
 /// </summary>
 public class UniversityModel
 {
-    [Key]
-    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+	[Key]
+	[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 	public int Id { get; set; }
 
-    [Required]
+	[Required]
 	public string Country { get; set; }
 
-    [Required]
+	[Required]
 	public string Name { get; set; }
 
 	public string Abbreviation { get; set; }

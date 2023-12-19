@@ -8,16 +8,16 @@ namespace GradingApp.Server.Models;
 /// </summary>
 public class MajorModel
 {
-    [Key]
+	[Key]
 	[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 	public int Id { get; set; }
 
-    [Required]
+	[Required]
 	public string Name { get; set; }
 
 	public string Abbreviation { get; set; }
 
-    [ForeignKey(nameof(UniversityModel))]
+	[ForeignKey(nameof(UniversityModel))]
 	public int UniversityId { get; set; }
 
 	public UniversityModel University { get; set; }
