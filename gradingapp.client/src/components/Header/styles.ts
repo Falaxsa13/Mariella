@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { MenuOutlined } from "@ant-design/icons";
 
 export const HeaderSection = styled("header")`
-  padding: 1rem 0.5rem;
+  padding: 2rem 0.5rem;
 
   .ant-row-space-between {
     align-items: center;
@@ -13,6 +13,7 @@ export const HeaderSection = styled("header")`
 
 export const LogoContainer = styled(Link)`
   display: flex;
+  padding-right: 1rem;
 `;
 
 export const NavLink = styled("div")`
@@ -61,7 +62,7 @@ export const CustomNavLinkSmall = styled(NavLink)`
   font-size: 1.2rem;
   color: #18216d;
   transition: color 0.2s ease-in;
-  margin: 0.5rem 2rem;
+  margin: 0.5rem 2.5rem;
 
   @media only screen and (max-width: 768px) {
     margin: 1.25rem 2rem;
@@ -89,7 +90,5 @@ export const Span = styled("span")`
   &:active,
   &:focus {
     color: rgb(255, 130, 92);
-    text-underline-position: under;
-    text-decoration: rgb(255, 130, 92) wavy underline;
   }
 `;

@@ -13,9 +13,11 @@ export const getScroll = (
   let result = 0;
   if (isWindow(target as typeof window)) {
     result = (target as Window)[top ? "pageYOffset" : "pageXOffset"];
-  } else if (target instanceof Document) {
+  } 
+  else if (target instanceof Document) {
     result = target.documentElement[method];
-  } else if (target) {
+  } 
+  else if (target) {
     result = (target as HTMLElement)[method];
   }
   if (

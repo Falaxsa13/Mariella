@@ -1,12 +1,12 @@
 {
-  "title": "Landing page template for developers & startups",
-  "text": "Beautifully designed templates using React.js, ant design and styled-components! Save weeks of time and build your landing page in minutes.",
+  "title": "Una aplicación para todos tus cursos",
+  "text": "Almacena y administra tu progreso acádemico para cada curso. Perfecto para todo tipo de estudiantes universitarios, de instituto, etc.",
   "button": [
     {
-      "title": "Explore"
+      "title": "Comenzar"
     },
     {
-      "title": "Learn more",
+      "title": "Más informacion",
       "color": "#fff"
     }
   ]
