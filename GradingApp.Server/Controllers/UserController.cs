@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using GradingApp.Server.Models.Dtos;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GradingApp.Server.Controllers;
@@ -7,4 +8,7 @@ namespace GradingApp.Server.Controllers;
 [ApiController]
 public class UserController : ControllerBase
 {
+	public IActionResult Register([FromBody] SignupRequestDto signupModel)
+	{
+	}
 }
