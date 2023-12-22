@@ -1,0 +1,32 @@
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mariella.Server", "Mariella.Server\Mariella.Server.csproj", "{18AEA843-C74B-48F9-BD0F-2D25F552C05F}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "mariella.client", "mariella.client\mariella.client.esproj", "{82DB2429-9FE1-4302-A527-B109B0CAD8D3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{18AEA843-C74B-48F9-BD0F-2D25F552C05F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18AEA843-C74B-48F9-BD0F-2D25F552C05F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18AEA843-C74B-48F9-BD0F-2D25F552C05F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18AEA843-C74B-48F9-BD0F-2D25F552C05F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82DB2429-9FE1-4302-A527-B109B0CAD8D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82DB2429-9FE1-4302-A527-B109B0CAD8D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82DB2429-9FE1-4302-A527-B109B0CAD8D3}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{82DB2429-9FE1-4302-A527-B109B0CAD8D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82DB2429-9FE1-4302-A527-B109B0CAD8D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82DB2429-9FE1-4302-A527-B109B0CAD8D3}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {98594635-2A1D-4AF6-9376-64F2C5DCFF98}
+	EndGlobalSection
+EndGlobal
