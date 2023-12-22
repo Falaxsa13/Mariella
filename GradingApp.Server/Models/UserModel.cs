@@ -19,6 +19,9 @@ public class UserModel
 	public required string LastName { get; set; }
 
 	[Required]
+	public required string Username { get; set; }
+
+	[Required]
 	public required string Email { get; set; }
 
 	[Required]
