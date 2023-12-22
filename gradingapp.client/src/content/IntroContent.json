@@ -1,0 +1,13 @@
+{
+  "title": "Una aplicación para todos tus cursos",
+  "text": "Almacena y gestiona tu progreso académico durante el semestre. Ideal para estudiantes universitarios, de instituto y otros perfiles educativos.",
+  "button": [
+    {
+      "title": "Comenzar"
+    },
+    {
+      "title": "Más informacion",
+      "color": "#fff"
+    }
+  ]
+}
