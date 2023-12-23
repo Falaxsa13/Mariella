@@ -4,11 +4,13 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import routes from "./config";
 import { Styles } from "../styles/styles";
+import BackgroundCircle from "../components/BackgroundCircle";
 
 const Router = () => {
   return (
     <Suspense fallback={null}>
       <Styles />
+      <BackgroundCircle icon="circle.svg" />
       <Header />
       <Switch>
         {routes.map((routeItem) => {
