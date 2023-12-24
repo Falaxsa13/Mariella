@@ -1,9 +1,9 @@
 import { lazy } from "react";
 import IntroContent from "../../content/IntroContent.json";
-import MiddleBlockContent from "../../content/MiddleBlockContent.json";
-import AboutContent from "../../content/AboutContent.json";
-import MissionContent from "../../content/MissionContent.json";
-import ProductContent from "../../content/ProductContent.json";
+import AfterIntroBlockContent from "../../content/AfterIntroBlockContent.json";
+import GradeControlContent from "../../content/GradeControlContent.json";
+import MarketplaceContent from "../../content/MarketplaceContent.json";
+import GetGradeContent from "../../content/GetGradeContent.json";
 import ContactContent from "../../content/ContactContent.json";
 
 const Contact = lazy(() => import("../../components/ContactForm"));
@@ -25,31 +25,31 @@ const Home = () => {
         id="intro"
       />
       <MiddleBlock
-        title={MiddleBlockContent.title}
-        content={MiddleBlockContent.text}
-        button={MiddleBlockContent.button}
+        title={AfterIntroBlockContent.title}
+        content={AfterIntroBlockContent.text}
+        button={AfterIntroBlockContent.button}
       />
       <ContentBlock
         direction="left"
-        title={AboutContent.title}
-        content={AboutContent.text}
-        section={AboutContent.section}
+        title={GradeControlContent.title}
+        content={GradeControlContent.text}
+        section={GradeControlContent.section}
         icon="graphs.svg"
-        id="about"
+        id="control"
       />
       <ContentBlock
         direction="right"
-        title={MissionContent.title}
-        content={MissionContent.text}
+        title={MarketplaceContent.title}
+        content={MarketplaceContent.text}
         icon="product-launch.svg"
-        id="mission"
+        id="marketplace"
       />
       <ContentBlock
         direction="left"
-        title={ProductContent.title}
-        content={ProductContent.text}
+        title={GetGradeContent.title}
+        content={GetGradeContent.text}
         icon="waving.svg"
-        id="product"
+        id="grade"
       />
       <Contact
         title={ContactContent.title}
