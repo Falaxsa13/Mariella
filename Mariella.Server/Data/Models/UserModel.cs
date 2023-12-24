@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Identity;
 
-namespace Mariella.Server.Models;
+namespace Mariella.Server.Data.Models;
 
 /// <summary>
 /// Represents a user in the database.

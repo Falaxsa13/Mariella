@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Mariella.Server.Models;
+namespace Mariella.Server.Data.Models;
 
 /// <summary>
 /// Represents the relationship between a user and universities they are associated with.

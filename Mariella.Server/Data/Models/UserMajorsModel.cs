@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Mariella.Server.Models;
+namespace Mariella.Server.Data.Models;
 
 public class UserMajorsModel
 {

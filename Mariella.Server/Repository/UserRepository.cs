@@ -1,13 +1,13 @@
 using Mariella.Server.Data;
 using Mariella.Server.Repository.IRepository;
 using Microsoft.AspNetCore.Identity;
-using Mariella.Server.Models;
 using AutoMapper;
 using Mariella.Server.Models.Dtos;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
+using Mariella.Server.Data.Models;
 
 namespace Mariella.Server.Repository;
 
@@ -45,13 +45,13 @@ public class UserRepository : IUserRepository
 		return userModel == null;
 	}
 
-	public async Task<LoginResponseDto> Login(LoginRequestDto loginRequestDto)
+	public async Task<LoginResponseDto?> Login(LoginRequestDto loginRequestDto)
 	{
 		UserModel? userModel = await _userManager.FindByEmailAsync(loginRequestDto.Email);
-		if (userModel == null) return new();
+		if (userModel == null) return null;
 
 		var isValid = await _userManager.CheckPasswordAsync(userModel, loginRequestDto.Password);
-		if (!isValid) return new();
+		if (!isValid) return null;
 
 		var roles = await _userManager.GetRolesAsync(userModel);
 		var tokenHandler = new JwtSecurityTokenHandler();
@@ -79,7 +79,7 @@ public class UserRepository : IUserRepository
 		return loginResponseDto;
 	}
 
-	public async Task<UserDto> Signup(SignupRequestDto signupRequestDto)
+	public async Task<UserDto?> Signup(SignupRequestDto signupRequestDto)
 	{
 		UserModel userModel = new()
 		{
@@ -89,14 +89,21 @@ public class UserRepository : IUserRepository
 			LastName = signupRequestDto.LastName
 		};
 
-		// TODO: 
-
 		try
 		{
-			
+			IdentityResult identityResult = await _userManager.CreateAsync(userModel, signupRequestDto.Password);
+
+			if (identityResult.Succeeded)
+			{
+				await _userManager.AddToRoleAsync(userModel, "user");
+				var userToReturn = _userManager.FindByEmailAsync(signupRequestDto.Email);
+				return _mapper.Map<UserDto>(userToReturn);
+			}
 		}
-		catch (Exception e)
+		catch
 		{
 		}
+
+		return null;
 	}
 }

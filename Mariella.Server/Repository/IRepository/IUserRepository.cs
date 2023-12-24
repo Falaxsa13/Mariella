@@ -8,7 +8,7 @@ public interface IUserRepository
 
 	Task<bool> IsUniqueEmail(string email);
 
-	Task<LoginResponseDto> Login(LoginRequestDto loginRequestDto);
+	Task<LoginResponseDto?> Login(LoginRequestDto loginRequestDto);
 
-	Task<UserDto> Signup(SignupRequestDto signupRequestDto);
+	Task<UserDto?> Signup(SignupRequestDto signupRequestDto);
 }
