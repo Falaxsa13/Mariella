@@ -8,7 +8,7 @@ export interface ContainerProps {
 export interface FlexContainerProps {
   children: React.ReactNode;
   width?: string;
-  height?: string;
+  maxHeight?: string;
   maxWidth?: string;
 }
 
@@ -23,6 +23,7 @@ export interface SvgIconProps {
   src: string;
   width: string;
   height: string;
+  className?: string;
 }
 
 export interface InputProps {

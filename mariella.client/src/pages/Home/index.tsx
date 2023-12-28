@@ -1,11 +1,10 @@
 import Header from "../../components/Header";
 import FlexContainer from "../../common/FlexContainer";
 
-const Home = () => {
+const Home:React.FC = () => {
     return (
-        <FlexContainer width="100%" maxWidth="2000px">
+        <FlexContainer maxWidth="120rem" maxHeight="100%">
             <Header />
-            <h1>Pibes miren soy el Home</h1>
         </FlexContainer>
     )
 };
