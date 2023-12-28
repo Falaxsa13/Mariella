@@ -8,8 +8,7 @@ const FlexContainer = ({
     children,
 }: FlexContainerProps) => (
     <div className="MainContainer" style={{ width, maxWidth, maxHeight }}>
-        {" "}
-        {children}{" "}
+        {children}
     </div>
 );
 
