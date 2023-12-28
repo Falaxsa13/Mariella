@@ -1,13 +1,13 @@
 .MainContainer {
     position: relative;
     width: 100vw;
-    height: 100vh;  
+    height: 100vh;
     max-width: 200rem;
     margin-right: auto;
     margin-left: auto;
     background: linear-gradient(
-    180deg,
-    rgb(205.51, 179.45, 250.4) 10%,
-    rgb(255, 255, 255) 100%
+        180deg,
+        rgb(205.51, 179.45, 250.4) 10%,
+        rgb(255, 255, 255) 100%
     );
 }

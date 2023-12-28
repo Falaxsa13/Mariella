@@ -1,8 +1,8 @@
 header.HeaderSection {
-	padding: 2rem 0.5rem;
+    padding: 2rem 0.5rem;
 }
 
 header.HeaderSection .ant-row-space-between {
-	align-items: center;
-	text-align: center;
+    align-items: center;
+    text-align: center;
 }
