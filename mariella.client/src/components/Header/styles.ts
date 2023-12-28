@@ -23,7 +23,6 @@ export const LogoContainer = styled(Link)`
       width: 200px;
     }
   }
-
 `;
 
 export const NavLink = styled("div")`
@@ -36,7 +35,7 @@ export const CustomNavLink = styled("div")`
   font-size: 1.2rem;
   width: 203px;
   display: inline-block;
-  
+
   @media only screen and (max-width: 970px) {
     font-size: 1rem;
     width: 150px;
@@ -52,7 +51,7 @@ export const CustomNavLink = styled("div")`
 `;
 
 export const Burger = styled("div")`
-  @media only screen and (max-width: 900px) {
+  @media only screen and (max-width: 937px) {
     display: block;
   }
 
@@ -64,7 +63,7 @@ export const Burger = styled("div")`
 `;
 
 export const NotHidden = styled("div")`
-  @media only screen and (max-width: 900px) {
+  @media only screen and (max-width: 937px) {
     display: none;
   }
 `;
@@ -77,7 +76,7 @@ export const Menu = styled("h5")`
 
 // text boxes
 export const CustomNavLinkSmall = styled(NavLink)`
-  
+
   font-size: 1.2rem;
   color: #18216d;
   transition: color 0.2s ease-in;
@@ -85,6 +84,11 @@ export const CustomNavLinkSmall = styled(NavLink)`
 
   @media only screen and (max-width: 970px) {
     margin: 0.5rem 1.8rem;
+  }
+
+  @media only screen and (max-width: 1181px) {
+    margin-left: 1rem;
+    margin-right: 1rem;
   }
 
 `;
@@ -112,4 +116,3 @@ export const Span = styled("span")`
     color: rgb(255, 130, 92);
   }
 `;
-

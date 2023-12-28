@@ -5,7 +5,10 @@ import GradeControlContent from "../../content/GradeControlContent.json";
 import MarketplaceContent from "../../content/MarketplaceContent.json";
 import GetGradeContent from "../../content/GetGradeContent.json";
 import ContactContent from "../../content/ContactContent.json";
+import Footer from "../../components/Footer";
+import Header from "../../components/Header";
 
+const BackgroundCircle = lazy(() => import("../../components/BackgroundCircle"));
 const Contact = lazy(() => import("../../components/ContactForm"));
 const MiddleBlock = lazy(() => import("../../components/MiddleBlock"));
 const Container = lazy(() => import("../../common/Container"));
@@ -15,6 +18,8 @@ const ContentBlock = lazy(() => import("../../components/ContentBlock"));
 const Landing = () => {
   return (
     <Container>
+      <BackgroundCircle icon="circle.svg" />
+      <Header />
       <ScrollToTop />
       <ContentBlock
         direction="right"
@@ -56,6 +61,7 @@ const Landing = () => {
         content={ContactContent.text}
         id="contact"
       />
+      <Footer />
     </Container>
   );
 };
