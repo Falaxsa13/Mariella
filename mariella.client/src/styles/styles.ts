@@ -1,7 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
 export const Styles = createGlobalStyle`
-
     @font-face {
         font-family: "Motiva Sans Light";
         src: url("/fonts/Motiva-Sans-Light.ttf") format("truetype");
@@ -14,13 +13,11 @@ export const Styles = createGlobalStyle`
         font-style: normal;
     }
 
-
     body,
     html,
     a {
         font-family: 'Motiva Sans Light', sans-serif;
     }
-
 
     body {
         margin:0;
@@ -40,9 +37,9 @@ export const Styles = createGlobalStyle`
         border-radius: 4px;
         border: 0;
         background: rgb(241, 242, 243);
-        transition: all 0.3s ease-in-out;  
+        transition: all 0.3s ease-in-out;
         outline: none;
-        width: 100%;  
+        width: 100%;
         padding: 1rem 1.25rem;
 
         :focus-within {
@@ -65,7 +62,7 @@ export const Styles = createGlobalStyle`
         @media only screen and (max-width: 890px) {
           font-size: 47px;
         }
-      
+
         @media only screen and (max-width: 414px) {
           font-size: 32px;
         }
@@ -73,7 +70,7 @@ export const Styles = createGlobalStyle`
 
     p {
         color: #18216d;
-        font-size: 21px;        
+        font-size: 21px;
         line-height: 1.41;
     }
 
@@ -90,7 +87,7 @@ export const Styles = createGlobalStyle`
             color: #2e186a;
         }
     }
-    
+
     *:focus {
         outline: none;
     }

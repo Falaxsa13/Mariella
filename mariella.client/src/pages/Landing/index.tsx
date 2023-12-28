@@ -6,7 +6,7 @@ import MarketplaceContent from "../../content/MarketplaceContent.json";
 import GetGradeContent from "../../content/GetGradeContent.json";
 import ContactContent from "../../content/ContactContent.json";
 import Footer from "../../components/Footer";
-import Header from "../../components/Header";
+import Header from "./Header";
 
 const BackgroundCircle = lazy(() => import("../../components/BackgroundCircle"));
 const Contact = lazy(() => import("../../components/ContactForm"));

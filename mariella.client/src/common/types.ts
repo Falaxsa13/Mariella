@@ -2,6 +2,14 @@ import { TFunction } from "react-i18next";
 export interface ContainerProps {
   border?: boolean;
   children: React.ReactNode;
+  width?: string;
+}
+
+export interface FlexContainerProps {
+  children: React.ReactNode;
+  width?: string;
+  height?: string;
+  maxWidth?: string;
 }
 
 export interface ButtonProps {
