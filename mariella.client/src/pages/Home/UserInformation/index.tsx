@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import UniversitySection from './UniversitySection';
+import Banner from './Banner';
 
 const MainBox = styled.div`
     position: absolute;
@@ -10,21 +12,11 @@ const MainBox = styled.div`
     border-radius: 20px;
     `
 
-const Banner = styled.div`
-    position: absolute;
-    top: 0%;
-    left: 0%;
-    width: 100%;
-    height: 20%;
-    background-image: url('/img/png/UserInfoBackground.png');
-    background-size: cover;
-    border-radius: 20px 20px 0px 0px;
-    `
-
 const UserInformation:React.FC = () => {
     return (
         <MainBox>
             <Banner />
+            <UniversitySection />
         </MainBox>
 );
 
