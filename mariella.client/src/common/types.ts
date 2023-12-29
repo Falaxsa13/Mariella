@@ -1,4 +1,5 @@
 import { TFunction } from "react-i18next";
+
 export interface ContainerProps {
     border?: boolean;
     children: React.ReactNode;
@@ -38,6 +39,7 @@ export interface InputProps {
             | React.ChangeEvent<HTMLTextAreaElement>,
     ) => void;
 }
+
 export interface validateProps {
     name: string;
     message: string;

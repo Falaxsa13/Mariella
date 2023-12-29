@@ -1,18 +1,27 @@
-import Input from "../../common/Input";
+import React, { useState } from "react";
 import { SvgIcon } from "../../common/SvgIcon";
+import Input from "./Input";
 
-const SearchBox = () => {
+const SearchBox: React.FC = () => {
+    const [searchValue, setSearchValue] = useState("");
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setSearchValue(event.target.value);
+    };
+
+    const handleSearch = () => {
+        console.log("Searching for: ", searchValue);
+    };
+
+    const handleDropdownToggle = () => {
+        setIsDropdownOpen(!isDropdownOpen);
+    };
+
     return (
-        <div></div>
-        // <>
-        // 	<Input
-        // 		type="text"
-        // 		name="Search"
-        // 		placeholder="Buscar plantilla"
-        // 		value=
-        // 	/>
-        // 	<SvgIcon src="MagnifyingGlass.svg" width="18px" height="18px" />
-        // </>
+        <>
+            <Input placeholder="Buscar rúbrica" />
+        </>
     );
 };
 
