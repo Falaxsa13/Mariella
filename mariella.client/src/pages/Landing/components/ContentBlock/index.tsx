@@ -3,8 +3,8 @@ import { Fade } from "react-awesome-reveal";
 import { withTranslation } from "react-i18next";
 
 import { ContentBlockProps } from "./types";
-import { Button } from "../../common/Button";
-import { SvgIcon } from "../../common/SvgIcon";
+import { Button } from "../../../../common/Button";
+import { SvgIcon } from "../../../../common/SvgIcon";
 import {
     ContentSection,
     Content,
@@ -58,7 +58,7 @@ const ContentBlock = ({
                                                     color?: string;
                                                     title: string;
                                                 },
-                                                id: number,
+                                                id: number
                                             ) => {
                                                 return (
                                                     <Button
@@ -71,7 +71,7 @@ const ContentBlock = ({
                                                         {t(item.title)}
                                                     </Button>
                                                 );
-                                            },
+                                            }
                                         )}
                                 </ButtonWrapper>
                             ) : (
@@ -85,7 +85,7 @@ const ContentBlock = ({
                                                         content: string;
                                                         icon: string;
                                                     },
-                                                    id: number,
+                                                    id: number
                                                 ) => {
                                                     return (
                                                         <Col key={id} span={11}>
@@ -99,12 +99,12 @@ const ContentBlock = ({
                                                             </MinTitle>
                                                             <MinPara>
                                                                 {t(
-                                                                    item.content,
+                                                                    item.content
                                                                 )}
                                                             </MinPara>
                                                         </Col>
                                                     );
-                                                },
+                                                }
                                             )}
                                     </Row>
                                 </ServiceWrapper>

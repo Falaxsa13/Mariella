@@ -1,6 +1,6 @@
 import { MainBox } from "./styles";
-import Banner from "./Banner";
-import University from "./University";
+import Banner from "../Banner";
+import University from "../University";
 
 const UserInformation: React.FC = () => {
     return (

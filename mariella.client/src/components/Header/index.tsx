@@ -1,18 +1,13 @@
 import { SvgIcon } from "../../common/SvgIcon";
-import SearchBox from "../../components/SearchBox";
-import "./styles.css";
+import SearchBox from "../../common/SearchBox";
+import { HeaderContainer, IconContainer } from "./styles";
 
 const Header: React.FC = () => {
     return (
-        <header className="header">
-            <SvgIcon
-                className="icon-container"
-                src="logo.svg"
-                width=""
-                height=""
-            />
+        <HeaderContainer>
+            <IconContainer src="logo.svg" width="" height="" />
             <SearchBox />
-        </header>
+        </HeaderContainer>
     );
 };
 
