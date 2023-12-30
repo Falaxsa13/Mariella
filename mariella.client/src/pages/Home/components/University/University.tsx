@@ -1,20 +1,26 @@
-import styled from "styled-components";
-import { MainBox, Title, ButtonContainer, UniversityButton } from "./University.Styles";
+import { TFunction } from "i18next";
+import ButtonWithIcon from "../../../../common/ButtonWithIcon/ButtonWithIcon";
+import { MainBox, Title, ButtonContainer } from "./University.Styles";
+import { withTranslation } from "react-i18next";
 
-const UniversitySection: React.FC = () => {
+export interface UniversityProps {
+    t: TFunction;
+    content: string;
+}
+
+const University = ({ content, t }: UniversityProps) => {
     return (
         <MainBox>
             <Title>Universidad</Title>
             <ButtonContainer>
-                <UniversityButton color="#E4D6FC">
-                    <div>
-                        <img src="/img/svg/AddIcon.svg" alt="AddIcon" />
-                        <p className="Content"> Hola </p>
-                    </div>
-                </UniversityButton>
+                <ButtonWithIcon
+                    color="#E4D6FC"
+                    icon={{ src: "AddIcon.svg", width: "30px", height: "30px" }}
+                    text={t(content)}
+                />
             </ButtonContainer>
         </MainBox>
     );
 };
 
-export default UniversitySection;
+export default withTranslation()(University);

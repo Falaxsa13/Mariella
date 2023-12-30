@@ -1,5 +1,21 @@
 import { TFunction } from "react-i18next";
 
+export interface ButtonWithIconProps {
+    color?: string;
+    name?: string;
+    onClick?: () => void;
+    t: TFunction;
+    text: string;
+    icon: SvgIconProps;
+}
+
+export interface InputWithIconProps {
+    name: string;
+    placeholder: string;
+    t: TFunction;
+    icon: SvgIconProps;
+}
+
 export interface ContainerProps {
     border?: boolean;
     children: React.ReactNode;
@@ -22,8 +38,8 @@ export interface ButtonProps {
 
 export interface SvgIconProps {
     src: string;
-    width: string;
-    height: string;
+    width?: string;
+    height?: string;
     className?: string;
 }
 

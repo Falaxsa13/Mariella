@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Button } from "../../../../common/Button/Button";
+import { ButtonWithIcon } from "../../../../common/ButtonWithIcon/ButtonWithIcon";
 
 export const MainBox = styled.div`
     position: relative;
@@ -26,7 +26,4 @@ export const ButtonContainer = styled.div`
     display: flex;
     justify-content: center;
     width: 100%;
-`;
-export const UniversityButton = styled(Button)`
-    height: 3rem;
 `;

@@ -1,10 +1,10 @@
 import { lazy } from "react";
-import IntroContent from "../../content/IntroContent.json";
-import AfterIntroBlockContent from "../../content/AfterIntroBlockContent.json";
-import GradeControlContent from "../../content/GradeControlContent.json";
-import MarketplaceContent from "../../content/MarketplaceContent.json";
-import GetGradeContent from "../../content/GetGradeContent.json";
-import ContactContent from "../../content/ContactContent.json";
+import IntroContent from "./content/IntroContent.json";
+import AfterIntroBlockContent from "./content/AfterIntroBlockContent.json";
+import GradeControlContent from "./content/GradeControlContent.json";
+import MarketplaceContent from "./content/MarketplaceContent.json";
+import GetGradeContent from "./content/GetGradeContent.json";
+import ContactContent from "./content/ContactContent.json";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 
