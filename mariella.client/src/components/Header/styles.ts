@@ -14,8 +14,7 @@ export const HeaderContainer = styled.div`
     justify-content: start;
     align-items: center;
     background-color: white;
-    height: 6.48vh;
-    max-height: 100px;
+    height: 60px;
     width: 100%;
     padding-top: 0.65vh;
     padding-bottom: 0.65vh;
