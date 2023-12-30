@@ -1,5 +1,9 @@
 import React, { useState } from "react";
-import { SearchBoxContainer, StyledInput, StyledSvgIcon } from "./SearchBox.Styles";
+import {
+    SearchBoxContainer,
+    StyledInput,
+    StyledSvgIcon,
+} from "./SearchBox.Styles";
 import { Empty } from "antd";
 
 const SearchBox: React.FC = () => {

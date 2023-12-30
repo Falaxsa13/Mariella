@@ -55,7 +55,7 @@ const Footer = ({ t }: { t: TFunction }) => {
                             <Language>{t("Contacto")}</Language>
                             <Para>
                                 {t(
-                                    `¿Tienes alguna pregunta? No dude en contactarnos.`
+                                    `¿Tienes alguna pregunta? No dude en contactarnos.`,
                                 )}
                             </Para>
                             <a href="support@mariellaapp.com">

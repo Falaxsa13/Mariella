@@ -15,7 +15,7 @@ const Router = () => {
                             path={routeItem.path}
                             exact={routeItem.exact}
                             component={lazy(
-                                () => import(`../pages/${routeItem.component}`)
+                                () => import(`../pages/${routeItem.component}`),
                             )}
                         />
                     );

@@ -58,7 +58,7 @@ const ContentBlock = ({
                                                     color?: string;
                                                     title: string;
                                                 },
-                                                id: number
+                                                id: number,
                                             ) => {
                                                 return (
                                                     <Button
@@ -71,7 +71,7 @@ const ContentBlock = ({
                                                         {t(item.title)}
                                                     </Button>
                                                 );
-                                            }
+                                            },
                                         )}
                                 </ButtonWrapper>
                             ) : (
@@ -85,7 +85,7 @@ const ContentBlock = ({
                                                         content: string;
                                                         icon: string;
                                                     },
-                                                    id: number
+                                                    id: number,
                                                 ) => {
                                                     return (
                                                         <Col key={id} span={11}>
@@ -99,12 +99,12 @@ const ContentBlock = ({
                                                             </MinTitle>
                                                             <MinPara>
                                                                 {t(
-                                                                    item.content
+                                                                    item.content,
                                                                 )}
                                                             </MinPara>
                                                         </Col>
                                                     );
-                                                }
+                                                },
                                             )}
                                     </Row>
                                 </ServiceWrapper>

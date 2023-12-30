@@ -8,12 +8,16 @@ import ContactContent from "./content/ContactContent.json";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 
-const BackgroundCircle = lazy(() => import("./components/BackgroundCircle/BackgroundCircle"));
+const BackgroundCircle = lazy(
+    () => import("./components/BackgroundCircle/BackgroundCircle"),
+);
 const Contact = lazy(() => import("./components/ContactForm/ContactForm"));
 const MiddleBlock = lazy(() => import("./components/MiddleBlock/MiddleBlock"));
 const Container = lazy(() => import("../../common/Container/Container"));
 const ScrollToTop = lazy(() => import("../../common/ScrollToTop/ScrollToTop"));
-const ContentBlock = lazy(() => import("./components/ContentBlock/ContentBlock"));
+const ContentBlock = lazy(
+    () => import("./components/ContentBlock/ContentBlock"),
+);
 
 const Landing = () => {
     return (
