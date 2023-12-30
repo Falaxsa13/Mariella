@@ -1,14 +1,30 @@
 import { Row, Col } from "antd";
 import { withTranslation } from "react-i18next";
 import { Slide, Zoom } from "react-awesome-reveal";
-import { ContactProps, ValidationTypeProps } from "./types";
 import { useForm } from "../../../../common/utils/useForm";
 import validate from "../../../../common/utils/validationRules";
 import { Button } from "../../../../common/Button/Button";
-import Block from "../Block";
+import Block from "../Block/Block";
 import Input from "../../../../common/Input/Input";
 import TextArea from "../../../../common/TextArea/TextArea";
-import { ContactContainer, FormGroup, Span, ButtonContainer } from "./styles";
+import { TFunction } from "react-i18next";
+import {
+    ContactContainer,
+    FormGroup,
+    Span,
+    ButtonContainer,
+} from "./ContactForm.Styles";
+
+export interface ContactProps {
+    title: string;
+    content: string;
+    id: string;
+    t: TFunction;
+}
+
+export interface ValidationTypeProps {
+    type: string;
+}
 
 const Contact = ({ title, content, id, t }: ContactProps) => {
     const { values, errors, handleChange, handleSubmit } = useForm(validate);

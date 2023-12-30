@@ -14,7 +14,7 @@ import {
     Label,
     Outline,
     Span,
-} from "./styles";
+} from "./Header.Styles";
 
 const Header = ({ t }: { t: TFunction }) => {
     const [visible, setVisibility] = useState(false);

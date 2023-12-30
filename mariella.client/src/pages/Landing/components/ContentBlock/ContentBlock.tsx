@@ -14,7 +14,7 @@ import {
     MinPara,
     StyledRow,
     ButtonWrapper,
-} from "./styles";
+} from "./ContentBlock.Styles";
 
 const ContentBlock = ({
     icon,

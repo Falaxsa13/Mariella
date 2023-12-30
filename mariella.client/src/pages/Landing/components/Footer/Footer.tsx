@@ -20,7 +20,7 @@ import {
     LanguageSwitch,
     LanguageSwitchContainer,
     Github,
-} from "./styles";
+} from "./Footer.Styles";
 
 interface SocialLinkProps {
     href: string;

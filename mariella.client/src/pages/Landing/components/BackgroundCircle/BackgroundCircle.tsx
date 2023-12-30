@@ -1,5 +1,5 @@
 import React from "react";
-import { CircleContainer } from "./styles";
+import { CircleContainer } from "./BackgroundCircle.Styles";
 import { SvgIcon } from "../../../../common/SvgIcon/SvgIcon";
 
 interface BackgroundCircleProps {

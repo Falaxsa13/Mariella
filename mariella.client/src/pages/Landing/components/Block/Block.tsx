@@ -1,5 +1,5 @@
 import { withTranslation, TFunction } from "react-i18next";
-import { Container, TextWrapper, Content } from "./styles";
+import { Container, TextWrapper, Content } from "./Block.Styles";
 
 interface Props {
     title: string;
