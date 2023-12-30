@@ -6,13 +6,13 @@ export const IconContainer = styled(SvgIcon)`
     min-width: 200px;
     height: 100%;
     display: flex;
-    max-width: 200px;
 `;
 
 export const HeaderContainer = styled.div`
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: start;
+    align-items: center;
     background-color: white;
     height: 6.48vh;
     max-height: 100px;

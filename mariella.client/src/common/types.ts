@@ -28,7 +28,7 @@ export interface SvgIconProps {
 }
 
 export interface InputProps {
-    name: string;
+    name?: string;
     placeholder: string;
     t: TFunction;
     type?: string;
@@ -36,8 +36,9 @@ export interface InputProps {
     onChange: (
         event:
             | React.ChangeEvent<HTMLInputElement>
-            | React.ChangeEvent<HTMLTextAreaElement>,
+            | React.ChangeEvent<HTMLTextAreaElement>
     ) => void;
+    className?: string;
 }
 
 export interface validateProps {

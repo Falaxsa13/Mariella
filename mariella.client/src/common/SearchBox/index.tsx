@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { SvgIcon } from "../SvgIcon";
-import Input from "./Input";
-import { SearchBoxContainer } from "./styles";
+import { SearchBoxContainer, StyledInput } from "./styles";
+
 
 const SearchBox: React.FC = () => {
     const [searchValue, setSearchValue] = useState("");
@@ -22,7 +22,7 @@ const SearchBox: React.FC = () => {
     return (
         <SearchBoxContainer>
             <SvgIcon src="magnifyingGlass.svg" width="18px" height="18px" />
-            <Input placeholder="Buscar rúbrica" />
+            <StyledInput placeholder="Buscar rúbrica" onChange={handleSearch} />
         </SearchBoxContainer>
     );
 };
