@@ -1,4 +1,6 @@
-.MainContainer {
+import styled from "styled-components";
+
+export const MainContainer = styled.div`
     position: relative;
     width: 100vw;
     height: 100vh;
@@ -10,4 +12,4 @@
         rgb(205.51, 179.45, 250.4) 10%,
         rgb(222, 222, 222) 100%
     );
-}
+`;

@@ -2,12 +2,12 @@ const routes = [
     {
         path: ["/", "/landing"],
         exact: true,
-        component: "Landing",
+        component: "Landing/Landing",
     },
     {
         path: ["/", "/home"],
         exact: true,
-        component: "Home",
+        component: "Home/Home",
     },
 ];
 

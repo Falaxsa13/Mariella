@@ -1,7 +1,7 @@
 import { lazy, Suspense } from "react";
 import { Switch, Route } from "react-router-dom";
 import { Styles } from "../styles/styles";
-import routes from "./config";
+import routes from "./router.config";
 
 const Router = () => {
     return (
@@ -15,7 +15,7 @@ const Router = () => {
                             path={routeItem.path}
                             exact={routeItem.exact}
                             component={lazy(
-                                () => import(`../pages/${routeItem.component}`),
+                                () => import(`../pages/${routeItem.component}`)
                             )}
                         />
                     );

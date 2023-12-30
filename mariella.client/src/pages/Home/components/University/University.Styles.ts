@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Button } from "../../../../common/Button";
+import { Button } from "../../../../common/Button/Button";
 
 export const MainBox = styled.div`
     position: relative;

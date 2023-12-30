@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { MainBox, Title, ButtonContainer, UniversityButton } from "./styles";
+import { MainBox, Title, ButtonContainer, UniversityButton } from "./University.Styles";
 
 const UniversitySection: React.FC = () => {
     return (

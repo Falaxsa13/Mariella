@@ -11,8 +11,8 @@ import Header from "./components/Header";
 const BackgroundCircle = lazy(() => import("./components/BackgroundCircle"));
 const Contact = lazy(() => import("./components/ContactForm"));
 const MiddleBlock = lazy(() => import("./components/MiddleBlock"));
-const Container = lazy(() => import("../../common/Container"));
-const ScrollToTop = lazy(() => import("../../common/ScrollToTop"));
+const Container = lazy(() => import("../../common/Container/Container"));
+const ScrollToTop = lazy(() => import("../../common/ScrollToTop/ScrollToTop"));
 const ContentBlock = lazy(() => import("./components/ContentBlock"));
 
 const Landing = () => {

@@ -1,5 +1,5 @@
-import Header from "../../components/Header";
-import FlexContainer from "../../common/FlexContainer";
+import Header from "../../components/Header/Header";
+import FlexContainer from "../../common/FlexContainer/FlexContainer";
 import UserInformation from "./components/UserInformation";
 
 const Home: React.FC = () => {

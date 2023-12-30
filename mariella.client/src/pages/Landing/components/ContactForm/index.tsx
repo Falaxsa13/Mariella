@@ -4,10 +4,10 @@ import { Slide, Zoom } from "react-awesome-reveal";
 import { ContactProps, ValidationTypeProps } from "./types";
 import { useForm } from "../../../../common/utils/useForm";
 import validate from "../../../../common/utils/validationRules";
-import { Button } from "../../../../common/Button";
+import { Button } from "../../../../common/Button/Button";
 import Block from "../Block";
-import Input from "../../../../common/Input";
-import TextArea from "../../../../common/TextArea";
+import Input from "../../../../common/Input/Input";
+import TextArea from "../../../../common/TextArea/TextArea";
 import { ContactContainer, FormGroup, Span, ButtonContainer } from "./styles";
 
 const Contact = ({ title, content, id, t }: ContactProps) => {
@@ -38,7 +38,7 @@ const Contact = ({ title, content, id, t }: ContactProps) => {
                                     type="text"
                                     name="name"
                                     placeholder="Your Name"
-                                    value={values.name || ""}
+                                    value={values.name}
                                     onChange={handleChange}
                                 />
                                 <ValidationType type="name" />

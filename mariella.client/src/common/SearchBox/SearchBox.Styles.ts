@@ -1,6 +1,6 @@
 import styled, { StyledComponent } from "styled-components";
-import Input from "../../common/Input";
-import { SvgIcon } from "../SvgIcon";
+import Input from "../Input/Input";
+import { SvgIcon } from "../SvgIcon/SvgIcon";
 
 export const SearchBoxContainer = styled.div`
     position: relative;

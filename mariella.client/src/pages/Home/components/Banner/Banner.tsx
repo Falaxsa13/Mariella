@@ -1,4 +1,4 @@
-import { MainBox } from "./styles";
+import { MainBox } from "./Banner.Styles";
 
 const Banner: React.FC = () => {
     return <MainBox />;

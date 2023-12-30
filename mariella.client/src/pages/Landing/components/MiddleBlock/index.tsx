@@ -1,7 +1,7 @@
 import { Row, Col } from "antd";
 import { withTranslation, TFunction } from "react-i18next";
 import { Slide } from "react-awesome-reveal";
-import { Button } from "../../../../common/Button";
+import { Button } from "../../../../common/Button/Button";
 import { MiddleBlockSection, Content, ContentWrapper } from "./styles";
 
 interface MiddleBlockProps {

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { SvgIcon } from "../SvgIcon";
-import { ScrollUpContainer } from "./styles";
+import { SvgIcon } from "../SvgIcon/SvgIcon";
+import { ScrollUpContainer } from "./ScrollToTop.Styles";
 import { getScroll } from "../utils/getWindow";
 
 const ScrollToTop = () => {

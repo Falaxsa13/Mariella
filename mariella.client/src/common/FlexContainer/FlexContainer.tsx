@@ -1,5 +1,5 @@
 import { FlexContainerProps } from "../types";
-import "./styles.css";
+import { MainContainer } from "./FlexContainer.Styles";
 
 const FlexContainer = ({
     width,
@@ -7,9 +7,9 @@ const FlexContainer = ({
     maxHeight,
     children,
 }: FlexContainerProps) => (
-    <div className="MainContainer" style={{ width, maxWidth, maxHeight }}>
+    <MainContainer style={{ width, maxWidth, maxHeight }}>
         {children}
-    </div>
+    </MainContainer>
 );
 
 export default FlexContainer;

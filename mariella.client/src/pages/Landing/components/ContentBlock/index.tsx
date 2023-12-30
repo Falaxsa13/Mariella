@@ -3,8 +3,8 @@ import { Fade } from "react-awesome-reveal";
 import { withTranslation } from "react-i18next";
 
 import { ContentBlockProps } from "./types";
-import { Button } from "../../../../common/Button";
-import { SvgIcon } from "../../../../common/SvgIcon";
+import { Button } from "../../../../common/Button/Button";
+import { SvgIcon } from "../../../../common/SvgIcon/SvgIcon";
 import {
     ContentSection,
     Content,

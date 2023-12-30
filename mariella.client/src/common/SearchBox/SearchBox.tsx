@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { SearchBoxContainer, StyledInput, StyledSvgIcon } from "./styles";
+import { SearchBoxContainer, StyledInput, StyledSvgIcon } from "./SearchBox.Styles";
+import { Empty } from "antd";
 
 const SearchBox: React.FC = () => {
     const [searchValue, setSearchValue] = useState("");
@@ -17,16 +18,7 @@ const SearchBox: React.FC = () => {
         setIsDropdownOpen(!isDropdownOpen);
     };
 
-    return (
-        <SearchBoxContainer>
-            <StyledSvgIcon
-                src="magnifyingGlass.svg"
-                width="18px"
-                height="18px"
-            />
-            <StyledInput placeholder="Buscar rúbrica" onChange={handleSearch} />
-        </SearchBoxContainer>
-    );
+    return null;
 };
 
 export default SearchBox;

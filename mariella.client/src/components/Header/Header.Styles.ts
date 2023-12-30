@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { SvgIcon } from "../../common/SvgIcon";
+import { SvgIcon } from "../../common/SvgIcon/SvgIcon";
 
 export const IconContainer = styled(SvgIcon)`
     width: 15vw;
