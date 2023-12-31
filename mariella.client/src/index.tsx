@@ -1,5 +1,5 @@
+import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
-import ReactDOM from "react-dom";
 import { I18nextProvider } from "react-i18next";
 import "antd/dist/antd.css";
 
@@ -14,4 +14,6 @@ const App = () => (
     </BrowserRouter>
 );
 
-ReactDOM.render(<App />, document.getElementById("root"));
+const reactRoot = createRoot(document.getElementById("root") as HTMLElement);
+
+reactRoot.render(<App />);
