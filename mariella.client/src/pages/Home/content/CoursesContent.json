@@ -1,0 +1,12 @@
+{
+    "courses": [
+        {
+            "course1": "Discrete  Math",
+            "course2": "Data Structures",
+            "course3": "Computer Organization",
+            "course4": "Operating Systems",
+            "course5": "Software Engineering",
+            "course6": "Computer Networks"
+        }
+    ]
+}
