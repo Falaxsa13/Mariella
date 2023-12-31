@@ -1,4 +1,6 @@
 {
+    "title": "Cursos",
+    "text": "Añadir Curso",
     "courses": [
         {
             "course1": "Discrete  Math",

@@ -1,22 +1,36 @@
-import { withTranslation } from "react-i18next";
-import { MainBox } from "./UserInformation.styles";
-import University from "../University/University";
-import Banner from "../Banner/Banner";
 import UniversityContent from "../../content/UniversityContent.json";
 import MajorContent from "../../content/MajorContent.json";
 import CoursesContent from "../../content/CoursesContent.json";
-import Courses from "../Courses/Courses";
-import Major from "../Major/Major";
+import UserInformationBlock from "../UserInformationBlock/UserInformationBlock";
+import { withTranslation } from "react-i18next";
+import { MainBox, Banner } from "../UserInformation/UserInformation.Styles";
+import { TFunction } from "i18next";
 
-const UserInformation = () => {
+interface UserInformationProps {
+    t: TFunction;
+}
+
+const UserInformation = ({ t }: UserInformationProps) => {
     return (
         <MainBox>
             <Banner />
-            <University content={UniversityContent.text} />
-            <Major content={MajorContent.text} />
-            <Courses courses={CoursesContent.courses} />
+            <UserInformationBlock
+                title={t(UniversityContent.title)}
+                content={t(UniversityContent.text)}
+                t={t}
+            />
+            <UserInformationBlock
+                title={t(MajorContent.title)}
+                content={t(MajorContent.text)}
+                t={t}
+            />
+            <UserInformationBlock
+                title={t(CoursesContent.title)}
+                content={t(CoursesContent.text)}
+                t={t}
+            />
         </MainBox>
     );
 };
 
-export default UserInformation;
+export default withTranslation()(UserInformation);
