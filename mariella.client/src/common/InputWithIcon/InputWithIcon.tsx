@@ -3,8 +3,8 @@ import { InputWithIconProps } from "../types";
 import {
     Container,
     IconContainer,
-	InputContainer,
-	StyledInput
+    InputContainer,
+    StyledInput,
 } from "./InputWithIcon.Styles";
 import { SvgIcon } from "../SvgIcon/SvgIcon";
 

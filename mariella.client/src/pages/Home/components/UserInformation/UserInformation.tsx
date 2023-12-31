@@ -27,6 +27,7 @@ const UserInformation = ({ t }: UserInformationProps) => {
             <UserInformationBlock
                 title={t(CoursesContent.title)}
                 content={t(CoursesContent.text)}
+                buttons={CoursesContent.buttons}
                 t={t}
             />
         </MainBox>
