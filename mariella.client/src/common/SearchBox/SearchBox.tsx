@@ -1,10 +1,5 @@
 import React, { useState } from "react";
-import {
-    SearchBoxContainer,
-    StyledInput,
-    StyledSvgIcon,
-} from "./SearchBox.Styles";
-import { Empty } from "antd";
+import InputWithIcon from "../InputWithIcon/InputWithIcon";
 
 const SearchBox: React.FC = () => {
     const [searchValue, setSearchValue] = useState("");
@@ -22,7 +17,12 @@ const SearchBox: React.FC = () => {
         setIsDropdownOpen(!isDropdownOpen);
     };
 
-    return null;
+    return (
+        <InputWithIcon
+            placeholder="Buscar..."
+            icon={{ src: "magnifyingGlass.svg" }}
+        />
+    );
 };
 
 export default SearchBox;

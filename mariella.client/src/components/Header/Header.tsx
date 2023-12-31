@@ -5,7 +5,7 @@ import SearchBox from "../../common/SearchBox/SearchBox";
 const Header: React.FC = () => {
     return (
         <HeaderContainer>
-            <IconContainer src="logo.svg" width="18px" height="" />
+            <IconContainer src="logo.svg" />
             <SearchBox />
         </HeaderContainer>
     );

@@ -41,6 +41,7 @@ export const Styles = createGlobalStyle`
         outline: none;
         width: 100%;
         padding: 1rem 1.25rem;
+        height: 100%;
 
         :focus-within {
             background: none;

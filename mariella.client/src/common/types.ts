@@ -10,7 +10,6 @@ export interface ButtonWithIconProps {
 }
 
 export interface InputWithIconProps {
-    name: string;
     placeholder: string;
     t: TFunction;
     icon: SvgIconProps;
