@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
 export const MainBox = styled.div`
-    position: absolute;
-    top: 10%;
+    position: relative;
+    top: 5%;
     left: 65%;
     width: 30%;
-    height: 85%;
+    height: 85vh;
     background-color: white;
     border-radius: 20px;
 `;

@@ -7,11 +7,14 @@ export const ButtonWithIcon = ({
     color,
     onClick,
     text,
+    fontSize,
     icon,
     t,
+    height,
+    width,
 }: ButtonWithIconProps) => (
-    <StyledButton color={color} onClick={onClick}>
-        <ButtonContainer>
+    <StyledButton color={color} onClick={onClick} height={height} width={width}>
+        <ButtonContainer fontSize={fontSize}>
             <SvgIcon {...icon} />
             {t(text)}
         </ButtonContainer>

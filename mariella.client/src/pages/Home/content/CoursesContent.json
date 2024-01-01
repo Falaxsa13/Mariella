@@ -1,12 +1,12 @@
 {
     "title": "Cursos",
-    "text": "Añadir Curso",
+    "text": ["Añadir Curso"],
     "buttons": [
-        "Discrete  Math",
-        "Data Structures",
-        "Computer Organization",
-        "Operating Systems",
-        "Software Engineering",
-        "Computer Networks"
+        ["Discrete  Math", ""],
+        ["Data Structures", ""],
+        ["Computer Organization", ""],
+        ["Operating Systems", ""],
+        ["Software Engineering", ""],
+        ["Computer Networks", ""]
     ]
 }

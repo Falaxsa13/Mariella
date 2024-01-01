@@ -6,7 +6,10 @@ export interface ButtonWithIconProps {
     onClick?: () => void;
     t: TFunction;
     text: string;
+    fontSize?: string;
     icon: SvgIconProps;
+    height?: string;
+    width?: string;
 }
 
 export interface InputWithIconProps {
@@ -51,7 +54,7 @@ export interface InputProps {
     onChange: (
         event:
             | React.ChangeEvent<HTMLInputElement>
-            | React.ChangeEvent<HTMLTextAreaElement>,
+            | React.ChangeEvent<HTMLTextAreaElement>
     ) => void;
     className?: string;
 }

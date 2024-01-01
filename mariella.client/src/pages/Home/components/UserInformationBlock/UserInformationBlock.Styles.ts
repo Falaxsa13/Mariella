@@ -22,7 +22,9 @@ export const Title = styled.h1`
 
 export const ButtonContainer = styled.div`
     position: relative;
-    display: flex;
     justify-content: center;
     width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: 1rem;
 `;
