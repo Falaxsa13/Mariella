@@ -8,6 +8,7 @@ export const MainBox = styled.div`
     height: 85vh;
     background-color: white;
     border-radius: 20px;
+    max-height: 1000px;
 `;
 
 export const Banner = styled.div`

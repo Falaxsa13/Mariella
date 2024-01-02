@@ -1,5 +1,4 @@
 import ButtonWithIcon from "../../../../common/ButtonWithIcon/ButtonWithIcon";
-import CoursesButtonWithIcon from "../../../../common/ButtonWithIcon/ButtonWithIcon";
 import { TFunction } from "i18next";
 import {
     ButtonContainer,
@@ -28,6 +27,7 @@ const UserInformationBlock = ({
     const size = cardsLimit && cardsLimit > 2 ? "0.8rem" : "1rem";
     const width = cardsLimit && cardsLimit > 2 ? "30%" : "170px";
     const height = cardsLimit && cardsLimit > 2 ? "80px" : "90px";
+
     return (
         <MainBox>
             <Title>{title}</Title>

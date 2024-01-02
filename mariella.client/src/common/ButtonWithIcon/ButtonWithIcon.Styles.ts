@@ -9,18 +9,13 @@ export const ButtonContainer = styled.div<{ fontSize?: string }>`
     font-size: ${(p) => p.fontSize || "1rem"};
 `;
 
-export const StyledButton = styled.button<{
-    color?: string;
-    width?: string;
-    height?: string;
-}>`
+export const StyledButton = styled.button`
     display: flex;
     align-items: center;
-    background: ${(p) => p.color || "#2e186a"};
-    color: ${(p) => (p.color ? "#2E186A" : "#fff")};
+    background: var(--color, #2e186a);
     font-weight: 700;
-    width: ${(p) => p.width || "170px"};
-    height: ${(p) => p.height || "10px"};
+    width: var(--width, 170px);
+    height: var(--height, 10px);
     border: none;
     border-radius: 4px;
     cursor: pointer;
