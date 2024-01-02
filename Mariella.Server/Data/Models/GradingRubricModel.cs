@@ -28,5 +28,8 @@ public class GradingRubricModel
 	public bool IsTemplate { get; set; }
 
 	[Required]
+	public DateTime ModificatedAt { get; set; }
+
+	[Required]
 	public DateTime CreatedAt { get; set; }
 }

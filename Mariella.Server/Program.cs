@@ -1,4 +1,9 @@
+using Mariella.Server;
 using Mariella.Server.Data;
+using Mariella.Server.Data.Models;
+using Mariella.Server.Repository;
+using Mariella.Server.Repository.IRepository;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
@@ -8,6 +13,14 @@ builder.Services.AddDbContext<ApplicationDbContext>(option =>
 {
 	option.UseNpgsql(builder.Configuration.GetConnectionString(""));
 });
+
+builder.Services.AddIdentity<UserModel, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>();
+
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+
+builder.Services.AddAutoMapper(typeof(MappingConfig));
+
+builder.Services.AddResponseCaching();
 
 builder.Services.AddControllers();
 
