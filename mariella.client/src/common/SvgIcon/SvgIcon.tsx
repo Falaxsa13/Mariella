@@ -1,4 +1,9 @@
-import { SvgIconProps } from "../types";
+export interface SvgIconProps {
+    src: string;
+    width?: string;
+    height?: string;
+    className?: string;
+}
 
 export const SvgIcon = ({ src, width, height, className }: SvgIconProps) => (
     <img

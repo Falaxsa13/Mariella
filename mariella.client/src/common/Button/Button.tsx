@@ -1,8 +1,14 @@
 import { StyledButton } from "./Button.Styles";
-import { ButtonProps } from "../types";
 
-export const Button = ({ color, children, onClick }: ButtonProps) => (
-    <StyledButton color={color} onClick={onClick}>
-        {children}
+export interface ButtonProps {
+    color?: string;
+    name?: string;
+    children: React.ReactNode;
+    onClick?: () => void;
+}
+
+export const Button = (props: ButtonProps) => (
+    <StyledButton color={props.color} onClick={props.onClick}>
+        {props.children}
     </StyledButton>
 );

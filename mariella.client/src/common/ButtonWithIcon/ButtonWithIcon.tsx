@@ -1,9 +1,21 @@
 import { withTranslation } from "react-i18next";
 import { StyledButton, ButtonContainer } from "./ButtonWithIcon.Styles";
-import { ButtonWithIconProps } from "../types";
-import { SvgIcon } from "../SvgIcon/SvgIcon";
+import { TFunction } from "react-i18next";
+import { SvgIcon, SvgIconProps } from "../SvgIcon/SvgIcon";
 
-export const ButtonWithIcon = (props: ButtonWithIconProps) => (
+interface ButtonWithIconProps {
+    color?: string;
+    name?: string;
+    onClick?: () => void;
+    t: TFunction;
+    text: string;
+    fontSize?: string;
+    icon: SvgIconProps;
+    height?: string;
+    width?: string;
+}
+
+const ButtonWithIcon = (props: ButtonWithIconProps) => (
     <StyledButton
         style={
             {

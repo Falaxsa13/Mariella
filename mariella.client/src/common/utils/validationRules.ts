@@ -1,4 +1,8 @@
-import { validateProps } from "../../common/types";
+export interface validateProps {
+    name: string;
+    message: string;
+    email: string;
+}
 
 export default function validate(values: validateProps) {
     const errors = {} as validateProps;

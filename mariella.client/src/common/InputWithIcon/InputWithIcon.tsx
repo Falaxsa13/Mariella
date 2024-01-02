@@ -1,20 +1,26 @@
 import { withTranslation } from "react-i18next";
-import { InputWithIconProps } from "../types";
 import {
     Container,
     IconContainer,
     InputContainer,
     StyledInput,
 } from "./InputWithIcon.Styles";
-import { SvgIcon } from "../SvgIcon/SvgIcon";
+import { TFunction } from "i18next";
+import { SvgIcon, SvgIconProps } from "../SvgIcon/SvgIcon";
 
-const InputWithIcon = ({ placeholder, t, icon }: InputWithIconProps) => (
+interface InputWithIconProps {
+    placeholder: string;
+    t: TFunction;
+    icon: SvgIconProps;
+}
+
+const InputWithIcon = (props: InputWithIconProps) => (
     <Container>
         <IconContainer>
-            <SvgIcon {...icon} />
+            <SvgIcon {...props.icon} />
         </IconContainer>
         <InputContainer>
-            <StyledInput placeholder={placeholder} />
+            <StyledInput placeholder={props.placeholder} />
         </InputContainer>
     </Container>
 );

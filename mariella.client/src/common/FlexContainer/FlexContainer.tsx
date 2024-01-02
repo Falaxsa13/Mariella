@@ -1,5 +1,11 @@
-import { FlexContainerProps } from "../types";
 import { MainContainer } from "./FlexContainer.Styles";
+
+export interface FlexContainerProps {
+    children: React.ReactNode;
+    width?: string;
+    maxHeight?: string;
+    maxWidth?: string;
+}
 
 const FlexContainer = ({
     width,
