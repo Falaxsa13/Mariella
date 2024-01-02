@@ -24,5 +24,14 @@
     "Name": "Nombre",
     "Your Name": "Tu nombre",
     "Email": "Email",
-    "Your Email": "Tu correo electrónico"
+    "Your Email": "Tu correo electrónico",
+    "Home": "Inicio",
+    "Explorer": "Explorar",
+    "My Progress": "Mi Progreso",
+    "University": "Universidad",
+    "Add University": "Añadir Universidad",
+    "Major": "Carrera",
+    "Add Major": "Añadir Carrera",
+    "Courses": "Cursos",
+    "Add Course": "Añadir Carrera"
 }

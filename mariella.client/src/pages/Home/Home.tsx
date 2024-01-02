@@ -2,7 +2,7 @@ import Header from "../../components/Header/Header";
 import FlexContainer from "../../common/FlexContainer/FlexContainer";
 import UserInformation from "./components/UserInformation/UserInformation";
 
-const Home: React.FC = () => {
+const Home = () => {
     return (
         <FlexContainer maxWidth="120rem" maxHeight="100%">
             <Header />
