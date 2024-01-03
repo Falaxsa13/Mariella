@@ -1,5 +1,5 @@
 import { withTranslation } from "react-i18next";
-import { StyledButton, ButtonContainer } from "./ButtonWithIcon.Styles";
+import { StyledButton, Container } from "./ButtonWithIcon.Styles";
 import { TFunction } from "react-i18next";
 import { SvgIcon, SvgIconProps } from "../SvgIcon/SvgIcon";
 
@@ -25,10 +25,12 @@ const ButtonWithIcon = (props: ButtonWithIconProps) => (
             } as React.CSSProperties
         }
     >
-        <ButtonContainer fontSize={props.fontSize}>
+        <Container
+            style={{ "--fontSize": props.fontSize } as React.CSSProperties}
+        >
             <SvgIcon {...props.icon} />
             {props.t(props.text)}
-        </ButtonContainer>
+        </Container>
     </StyledButton>
 );
 

@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
-export const ButtonContainer = styled.div<{ fontSize?: string }>`
+export const Container = styled.div`
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
-    font-size: ${(p) => p.fontSize || "1rem"};
+    font-size: var(--fontSize, 1rem);
 `;
 
 export const StyledButton = styled.button`
@@ -19,7 +19,6 @@ export const StyledButton = styled.button`
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    margin-top: 0.625rem;
     transition: all 0.3s ease-in-out;
     border-radius: 10px;
 

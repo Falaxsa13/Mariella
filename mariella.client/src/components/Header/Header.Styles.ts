@@ -1,11 +1,22 @@
 import styled from "styled-components";
 import { SvgIcon } from "../../common/SvgIcon/SvgIcon";
 
-export const IconContainer = styled(SvgIcon)`
+export const LogoContainer = styled(SvgIcon)`
     width: 15vw;
     min-width: 200px;
     height: 100%;
     display: flex;
+`;
+
+export const IconContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #b28bf6;
+    border-radius: 50%;
+    height: 100%;
+    width: 50px;
+    cursor: pointer;
 `;
 
 export const HeaderContainer = styled.div`
