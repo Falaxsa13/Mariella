@@ -9,45 +9,43 @@ interface HeaderProps {
     t: TFunction;
 }
 
-const Header = ({ t }: HeaderProps) => {
-    return (
-        <HeaderContainer>
-            <IconContainer src="logo.svg" />
-            <SearchBox />
-            <ButtonWithIcon
-                icon={{
-                    src: "homeIcon.svg",
-                    width: "30px",
-                    height: "30px",
-                }}
-                text={t("Home")}
-            />
-            <ButtonWithIcon
-                icon={{
-                    src: "homeIcon.svg",
-                    width: "30px",
-                    height: "30px",
-                }}
-                text={t("Home")}
-            />
-            <ButtonWithIcon
-                icon={{
-                    src: "homeIcon.svg",
-                    width: "30px",
-                    height: "30px",
-                }}
-                text={t("Home")}
-            />
-            <ButtonWithIcon
-                icon={{
-                    src: "homeIcon.svg",
-                    width: "30px",
-                    height: "30px",
-                }}
-                text={t("Home")}
-            />
-        </HeaderContainer>
-    );
-};
+const Header = ({ t }: HeaderProps) => (
+    <HeaderContainer>
+        <IconContainer src="mariella.svg" />
+        <SearchBox />
+        <ButtonWithIcon
+            icon={{
+                src: "home.svg",
+                width: "30px",
+                height: "30px",
+            }}
+            text={t("Home")}
+        />
+        <ButtonWithIcon
+            icon={{
+                src: "explorer.svg",
+                width: "30px",
+                height: "30px",
+            }}
+            text={t("Explore")}
+        />
+        <ButtonWithIcon
+            icon={{
+                src: "progress.svg",
+                width: "30px",
+                height: "30px",
+            }}
+            text={t("My Progress")}
+        />
+        <ButtonWithIcon
+            icon={{
+                src: "inbox.svg",
+                width: "30px",
+                height: "30px",
+            }}
+            text="Inbox"
+        />
+    </HeaderContainer>
+);
 
 export default withTranslation()(Header);

@@ -20,7 +20,7 @@ const SearchBox: React.FC = () => {
     return (
         <InputWithIcon
             placeholder="Buscar..."
-            icon={{ src: "magnifyingGlass.svg" }}
+            icon={{ src: "magnifying-glass.svg" }}
         />
     );
 };

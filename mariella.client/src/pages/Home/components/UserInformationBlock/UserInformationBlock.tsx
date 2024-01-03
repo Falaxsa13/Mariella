@@ -51,7 +51,7 @@ const UserInformationBlock = ({
                 <ButtonWithIcon
                     color="#E4D6FC"
                     icon={{
-                        src: "AddIcon.svg",
+                        src: "add.svg",
                         width: "30px",
                         height: "30px",
                     }}

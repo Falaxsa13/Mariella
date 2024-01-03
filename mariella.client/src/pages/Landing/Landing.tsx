@@ -1,4 +1,3 @@
-import { lazy } from "react";
 import IntroContent from "./content/IntroContent.json";
 import AfterIntroBlockContent from "./content/AfterIntroBlockContent.json";
 import GradeControlContent from "./content/GradeControlContent.json";
@@ -7,16 +6,17 @@ import GetGradeContent from "./content/GetGradeContent.json";
 import ContactContent from "./content/ContactContent.json";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
+import { lazy } from "react";
 
 const BackgroundCircle = lazy(
-    () => import("./components/BackgroundCircle/BackgroundCircle"),
+    () => import("./components/BackgroundCircle/BackgroundCircle")
 );
 const Contact = lazy(() => import("./components/ContactForm/ContactForm"));
 const MiddleBlock = lazy(() => import("./components/MiddleBlock/MiddleBlock"));
 const Container = lazy(() => import("../../common/Container/Container"));
 const ScrollToTop = lazy(() => import("../../common/ScrollToTop/ScrollToTop"));
 const ContentBlock = lazy(
-    () => import("./components/ContentBlock/ContentBlock"),
+    () => import("./components/ContentBlock/ContentBlock")
 );
 
 const Landing = () => {

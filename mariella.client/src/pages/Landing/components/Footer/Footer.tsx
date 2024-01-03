@@ -1,9 +1,8 @@
+import i18n from "i18next";
 import { Row, Col } from "antd";
 import { withTranslation, TFunction } from "react-i18next";
 import { SvgIcon } from "../../../../common/SvgIcon/SvgIcon";
 import Container from "../../../../common/Container/Container";
-
-import i18n from "i18next";
 import {
     FooterSection,
     Title,
@@ -55,7 +54,7 @@ const Footer = ({ t }: { t: TFunction }) => {
                             <Language>{t("Contacto")}</Language>
                             <Para>
                                 {t(
-                                    `¿Tienes alguna pregunta? No dude en contactarnos.`,
+                                    `¿Tienes alguna pregunta? No dude en contactarnos.`
                                 )}
                             </Para>
                             <a href="support@mariellaapp.com">
@@ -125,7 +124,7 @@ const Footer = ({ t }: { t: TFunction }) => {
                         <NavLink to="/">
                             <LogoContainer>
                                 <SvgIcon
-                                    src="logo.svg"
+                                    src="mariella.svg"
                                     aria-label="homepage"
                                     width="101px"
                                     height="64px"
