@@ -4,15 +4,15 @@ import { TFunction } from "react-i18next";
 import { SvgIcon, SvgIconProps } from "../SvgIcon/SvgIcon";
 
 interface ButtonWithIconProps {
+    icon: SvgIconProps;
     color?: string;
     name?: string;
     onClick?: () => void;
-    t: TFunction;
     text: string;
     fontSize?: string;
-    icon: SvgIconProps;
     height?: string;
     width?: string;
+    t: TFunction;
 }
 
 const ButtonWithIcon = (props: ButtonWithIconProps) => (

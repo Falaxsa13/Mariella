@@ -12,10 +12,10 @@ export const ButtonContainer = styled.div<{ fontSize?: string }>`
 export const StyledButton = styled.button`
     display: flex;
     align-items: center;
-    background: var(--color, #2e186a);
+    background: var(--color);
     font-weight: 700;
     width: var(--width, 170px);
-    height: var(--height, 10px);
+    height: var(--height, 100%);
     border: none;
     border-radius: 4px;
     cursor: pointer;
