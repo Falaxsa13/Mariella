@@ -6,7 +6,6 @@ export const Container = styled.div`
     flex-direction: column;
     align-items: center;
     width: 100%;
-    font-size: var(--fontSize, 1rem);
 `;
 
 export const StyledButton = styled.button`
@@ -26,5 +25,9 @@ export const StyledButton = styled.button`
     &:active,
     &:focus {
         background-color: rgb(233, 225, 247);
+    }
+
+    span {
+        font-size: var(--fontSize, 1rem);
     }
 `;
