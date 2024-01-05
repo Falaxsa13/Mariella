@@ -3,7 +3,6 @@ import Input from "../Input/Input";
 import { SvgIcon } from "../SvgIcon/SvgIcon";
 
 export const SearchBoxContainer = styled.div`
-    position: relative;
     display: flex;
     flex-direction: row;
     justify-content: start;
