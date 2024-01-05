@@ -19,6 +19,7 @@ export const IconContainer = styled.div`
     height: 50px;
     width: 50px;
     cursor: pointer;
+    margin-left: 2vw;
 `;
 
 export const HeaderContainer = styled.div`
