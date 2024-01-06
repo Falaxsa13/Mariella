@@ -2,6 +2,6 @@ import styled from "styled-components";
 
 export const StyledContent = styled.div`
     display: flex;
-    justify-content: center;
-    gap: 15%;
+    justify-content: space-around;
+    padding-top: 3%;
 `;

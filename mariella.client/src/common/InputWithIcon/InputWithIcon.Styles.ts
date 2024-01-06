@@ -4,7 +4,7 @@ export const Container = styled.div`
     display: flex;
     align-items: center;
     height: 100%;
-    width: 450px;
+    width: 100%;
 `;
 
 export const InputContainer = styled.div`

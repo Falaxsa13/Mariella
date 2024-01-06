@@ -1,6 +1,11 @@
 import SearchBox from "../../common/SearchBox/SearchBox";
 import ButtonWithIcon from "../../common/ButtonWithIcon/ButtonWithIcon";
-import { HeaderContainer, IconContainer, LogoContainer } from "./Header.Styles";
+import {
+    HeaderContainer,
+    IconContainer,
+    LogoContainer,
+    StyledButtonContainer,
+} from "./Header.Styles";
 import { TFunction } from "i18next";
 import { withTranslation } from "react-i18next";
 import { SvgIcon } from "../../common/SvgIcon/SvgIcon";
@@ -30,13 +35,15 @@ const Header = ({ t }: HeaderProps) => {
         <HeaderContainer>
             <LogoContainer src="mariella.svg" />
             <SearchBox />
-            {button("Home", "home.svg")}
-            {button("Explore", "explore.svg")}
-            {button("My Progress", "progress.svg")}
-            {button("Inbox", "inbox.svg")}
-            <IconContainer>
-                <SvgIcon src="account.svg" height="25px" width="25px" />
-            </IconContainer>
+            <StyledButtonContainer>
+                {button("Home", "home.svg")}
+                {button("Explore", "explore.svg")}
+                {button("My Progress", "progress.svg")}
+                {button("Inbox", "inbox.svg")}
+                <IconContainer>
+                    <SvgIcon src="account.svg" height="25px" width="25px" />
+                </IconContainer>
+            </StyledButtonContainer>
         </HeaderContainer>
     );
 };

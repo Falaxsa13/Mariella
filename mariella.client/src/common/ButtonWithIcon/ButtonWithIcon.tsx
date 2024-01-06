@@ -1,3 +1,4 @@
+import React from "react";
 import { withTranslation } from "react-i18next";
 import { StyledButton, Container } from "./ButtonWithIcon.Styles";
 import { TFunction } from "react-i18next";
@@ -8,9 +9,9 @@ interface ButtonWithIconProps {
     icon: SvgIconProps;
     color?: string;
     name?: string;
-    onClick?: () => void;
+    onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
     text: string;
-    styledSpan?: StyledComponent<"span", any>;
+    styledSpan?: StyledComponent<"span", never>;
     fontSize?: string;
     height?: string;
     width?: string;
@@ -29,7 +30,6 @@ const ButtonWithIcon = (props: ButtonWithIconProps) => {
 
     return (
         <StyledButton
-            type="button"
             style={
                 {
                     "--color": props.color,
@@ -37,11 +37,12 @@ const ButtonWithIcon = (props: ButtonWithIconProps) => {
                     "--width": props.width,
                 } as React.CSSProperties
             }
+            onClick={props.onClick}
         >
             <Container
                 style={{ "--fontSize": props.fontSize } as React.CSSProperties}
             >
-                <SvgIcon {...props.icon} />
+                {props.icon && <SvgIcon {...props.icon} />}
                 {spanComponent}
             </Container>
         </StyledButton>

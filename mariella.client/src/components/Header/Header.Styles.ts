@@ -2,10 +2,12 @@ import styled from "styled-components";
 import { SvgIcon } from "../../common/SvgIcon/SvgIcon";
 
 export const LogoContainer = styled(SvgIcon)`
-    width: 15vw;
-    min-width: 200px;
+    width: 5vw;
+    min-width: 100px;
     height: 100%;
     display: flex;
+    margin-left: 2vw;
+    margin-right: 2vw;
 `;
 
 export const IconContainer = styled.div`
@@ -14,19 +16,29 @@ export const IconContainer = styled.div`
     align-items: center;
     background-color: #b28bf6;
     border-radius: 50%;
-    height: 100%;
+    height: 50px;
     width: 50px;
     cursor: pointer;
+    margin-left: 2vw;
 `;
 
 export const HeaderContainer = styled.div`
     display: flex;
     flex-direction: row;
-    justify-content: start;
+    justify-content: space-between;
     align-items: center;
     background-color: white;
     height: 60px;
     width: 100%;
-    padding-top: 0.65vh;
-    padding-bottom: 0.65vh;
+`;
+
+export const StyledButtonContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 2vw;
+    padding-left: 2vw;
+    gap: 1vw;
+    height: 95%;
 `;

@@ -1,53 +1,49 @@
+import React from "react";
 import ButtonWithIcon from "../../../../common/ButtonWithIcon/ButtonWithIcon";
 import { TFunction } from "i18next";
-import {
-    ButtonContainer,
-    MainBox,
-    Title,
-} from "../UserInformationBlock/UserInformationBlock.Styles";
+import { ButtonContainer, MainBox, Title } from "./UserInformationBlock.Styles";
+import { useState } from "react";
 
 interface UserInformationBlockProps {
     title: string;
     content: string;
-    cardsLimit?: number;
-    buttons?: string[][] | undefined;
-    defaultButton?: string[];
+    cardsLimit: number;
     t: TFunction;
 }
 
-const UserInformationBlock = ({
-    title,
-    content,
-    t,
-    buttons,
-    defaultButton,
-    cardsLimit,
-}: UserInformationBlockProps) => {
-    const buttonsToShow = cardsLimit ? buttons?.slice(0, cardsLimit) : buttons;
-    const size = cardsLimit && cardsLimit > 2 ? "0.8rem" : "1rem";
-    const width = cardsLimit && cardsLimit > 2 ? "30%" : "170px";
-    const height = cardsLimit && cardsLimit > 2 ? "80px" : "90px";
+const UserInformationBlock = (props: UserInformationBlockProps) => {
+    const size = props.cardsLimit && props.cardsLimit > 2 ? "0.8rem" : "1rem";
+    const width = props.cardsLimit && props.cardsLimit > 2 ? "30%" : "170px";
+    const height = props.cardsLimit && props.cardsLimit > 2 ? "80px" : "90px";
+    const [buttons, setButtons] = useState<JSX.Element[]>([]);
+
+    const addButton = () => {
+        const newButton = (
+            <ButtonWithIcon
+                key={buttons.length}
+                color="#E4D6FC"
+                icon={{
+                    src: "add.svg",
+                    width: "30px",
+                    height: "30px",
+                }}
+                fontSize={size}
+                width={width}
+                text={"Hola"}
+                height={height}
+            />
+        );
+
+        setButtons([...buttons, newButton]);
+    };
 
     return (
         <MainBox>
-            <Title>{title}</Title>
+            <Title>{props.title}</Title>
             <ButtonContainer>
-                {buttonsToShow &&
-                    buttonsToShow.map(([buttonText, buttonIcon], index) => (
-                        <ButtonWithIcon
-                            key={index}
-                            color="#E4D6FC"
-                            icon={{
-                                src: buttonIcon,
-                                width: "30px",
-                                height: "30px",
-                            }}
-                            fontSize={size}
-                            width={width}
-                            text={t(buttonText)}
-                            height={height}
-                        />
-                    ))}
+                {buttons.map((button, index) => (
+                    <React.Fragment key={index}>{button}</React.Fragment>
+                ))}
                 <ButtonWithIcon
                     color="#E4D6FC"
                     icon={{
@@ -57,8 +53,9 @@ const UserInformationBlock = ({
                     }}
                     fontSize={size}
                     width={width}
-                    text={t(defaultButton || content)}
+                    text={props.t(props.content)}
                     height={height}
+                    onClick={addButton}
                 />
             </ButtonContainer>
         </MainBox>
