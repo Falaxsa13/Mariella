@@ -64,6 +64,7 @@ const UserInformationBlock = (props: UserInformationBlockProps) => {
                     onClick={openDialog}
                 />
             </ButtonContainer>
+            <Dialog isOpen={isDialogOpen}>null</Dialog>
         </MainBox>
     );
 };

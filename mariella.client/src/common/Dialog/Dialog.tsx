@@ -1,19 +1,20 @@
+import ReactDOM from "react-dom";
 import { DialogContainer, Content } from "./Dialog.Styles";
 
 interface DialogProps {
     isOpen: boolean;
+    children: React.ReactNode;
     onClose?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 const Dialog = (props: DialogProps) => {
     if (!props.isOpen) return null;
 
-    return (
+    return ReactDOM.createPortal(
         <DialogContainer>
-            <Content>
-                <h1>Hello</h1>
-            </Content>
-        </DialogContainer>
+            <Content>{props.children}</Content>
+        </DialogContainer>,
+        document.body
     );
 };
 
