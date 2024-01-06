@@ -1,7 +1,9 @@
+import { Children } from "react";
 import { DialogContainer, Content } from "./Dialog.Styles";
 
 interface DialogProps {
     isOpen: boolean;
+    childer: React.ReactNode;
     onClose?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
@@ -10,9 +12,7 @@ const Dialog = (props: DialogProps) => {
 
     return (
         <DialogContainer>
-            <Content>
-                <h1>Hello</h1>
-            </Content>
+            <Content>{Children}</Content>
         </DialogContainer>
     );
 };
