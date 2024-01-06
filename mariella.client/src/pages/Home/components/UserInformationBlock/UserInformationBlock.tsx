@@ -4,12 +4,18 @@ import Dialog from "../../../../common/Dialog/Dialog";
 import { TFunction } from "i18next";
 import { ButtonContainer, MainBox, Title } from "./UserInformationBlock.Styles";
 import { useState } from "react";
+import BaseModel from "../../../../models/BaseModel";
 
 interface UserInformationBlockProps {
     title: string;
     content: string;
     cardsLimit: number;
+    model?: BaseModel;
     t: TFunction;
+}
+
+interface PropertyNamesMap {
+    [key: string]: string;
 }
 
 const UserInformationBlock = (props: UserInformationBlockProps) => {
@@ -18,6 +24,12 @@ const UserInformationBlock = (props: UserInformationBlockProps) => {
     const height = props.cardsLimit && props.cardsLimit > 2 ? "80px" : "90px";
     const [buttons, setButtons] = useState<JSX.Element[]>([]);
     const [isDialogOpen, setIsDialogOpen] = useState(false);
+    const [formState, setFormState] = useState({});
+
+    const propertyNamesMap: PropertyNamesMap = {
+        name: props.t("Name"),
+        abbreviation: props.t("Abbreviation"),
+    };
 
     const addButton = () => {
         const newButton = (
@@ -64,7 +76,15 @@ const UserInformationBlock = (props: UserInformationBlockProps) => {
                     onClick={openDialog}
                 />
             </ButtonContainer>
-            <Dialog isOpen={isDialogOpen}>null</Dialog>
+            <Dialog isOpen={isDialogOpen}>
+                {props.model &&
+                    Object.keys(props.model).map((key) => (
+                        <div key={key}>
+                            <span>{propertyNamesMap[key]}: </span>
+                            <input type="text" />
+                        </div>
+                    ))}
+            </Dialog>
         </MainBox>
     );
 };
