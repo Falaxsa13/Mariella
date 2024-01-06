@@ -24,5 +24,14 @@
     "Name": "Name",
     "Your Name": "Your Name",
     "Email": "Email",
-    "Your Email": "Your Email"
+    "Your Email": "Your Email",
+    "Home": "Home",
+    "Explorer": "Explorer",
+    "MyProgress": "My Progress",
+    "Institution": "Institution",
+    "AddInstitution": "Add Institution",
+    "Major": "Major",
+    "AddMajor": "Add Major",
+    "Courses": "Courses",
+    "AddCourse": "Add Course"
 }
