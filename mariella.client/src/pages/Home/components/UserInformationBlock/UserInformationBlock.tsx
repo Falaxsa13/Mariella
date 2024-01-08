@@ -46,7 +46,13 @@ const UserInformationBlock = (props: UserInformationBlockProps) => {
         setButtons([...buttons, new BaseModel(id)]);
     };
 
-    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const closeDialog = () => {
+        setIsDialogOpen(false);
+    };
+
+    const handleDialogInputChange = (
+        event: React.ChangeEvent<HTMLInputElement>
+    ) => {
         const { value } = event.target;
         const newButtons = [...buttons];
         newButtons[newButtons.length - 1].name = value;
@@ -82,7 +88,12 @@ const UserInformationBlock = (props: UserInformationBlockProps) => {
                     onClick={openDialog}
                 />
             </ButtonsContainer>
-            <Dialog isOpen={isDialogOpen}>
+            <Dialog
+                onClose={closeDialog}
+                isOpen={isDialogOpen}
+                shouldCloseOnEsc={true}
+                shouldCloseOnClickOutside={true}
+            >
                 {buttons[0] &&
                     Object.keys(buttons[0]).map((key) => (
                         <div key={key}>
@@ -90,7 +101,7 @@ const UserInformationBlock = (props: UserInformationBlockProps) => {
                             <input
                                 type="text"
                                 name="name"
-                                onChange={handleInputChange}
+                                onChange={handleDialogInputChange}
                             />
                         </div>
                     ))}

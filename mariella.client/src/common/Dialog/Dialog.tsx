@@ -1,21 +1,30 @@
 import ReactDOM from "react-dom";
 import { DialogContainer, Content } from "./Dialog.Styles";
-import { Button } from "../Button/Button";
 
 interface DialogProps {
     isOpen: boolean;
     children: React.ReactNode;
-    onClose?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+    onClose: () => void;
+    shouldCloseOnEsc: boolean;
+    shouldCloseOnClickOutside: boolean;
 }
 
 const Dialog = (props: DialogProps) => {
     if (!props.isOpen) return null;
 
+    const handleContentClick = (event: React.MouseEvent<HTMLDivElement>) => {
+        event.stopPropagation();
+    };
+
+    const handleContainerClick = () => {
+        if (props.shouldCloseOnClickOutside) {
+            props.onClose();
+        }
+    };
+
     const component = (
-        <DialogContainer>
-            <Content>
-                {props.children}
-            </Content>
+        <DialogContainer onClick={handleContainerClick}>
+            <Content onClick={handleContentClick}>{props.children}</Content>
         </DialogContainer>
     );
 
