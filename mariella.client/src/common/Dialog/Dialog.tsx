@@ -4,18 +4,31 @@ import { DialogContainer, Content } from "./Dialog.Styles";
 interface DialogProps {
     isOpen: boolean;
     children: React.ReactNode;
-    onClose?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+    onClose: () => void;
+    shouldCloseOnEsc: boolean;
+    shouldCloseOnClickOutside: boolean;
 }
 
 const Dialog = (props: DialogProps) => {
     if (!props.isOpen) return null;
 
-    return ReactDOM.createPortal(
-        <DialogContainer>
-            <Content>{props.children}</Content>
-        </DialogContainer>,
-        document.body
+    const handleContentClick = (event: React.MouseEvent<HTMLDivElement>) => {
+        event.stopPropagation();
+    };
+
+    const handleContainerClick = () => {
+        if (props.shouldCloseOnClickOutside) {
+            props.onClose();
+        }
+    };
+
+    const component = (
+        <DialogContainer onClick={handleContainerClick}>
+            <Content onClick={handleContentClick}>{props.children}</Content>
+        </DialogContainer>
     );
+
+    return ReactDOM.createPortal(component, document.body);
 };
 
 export default Dialog;

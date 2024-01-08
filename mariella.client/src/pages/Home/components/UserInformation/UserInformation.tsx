@@ -1,6 +1,7 @@
 import translation from "../../../../locales/en/translation.json";
 import UserInformationBlock from "../UserInformationBlock/UserInformationBlock";
 import Institution from "../../../../models/Institution";
+import safeJsonParse from "../../../../common/utils/safeJsonParse";
 import { withTranslation } from "react-i18next";
 import { MainBox, Banner } from "./UserInformation.Styles";
 import { TFunction } from "i18next";
@@ -10,6 +11,9 @@ interface UserInformationProps {
 }
 
 const UserInformation = ({ t }: UserInformationProps) => {
+    const jsonArray = localStorage.getItem("userInstitutions") as string;
+    const userInstitutions = safeJsonParse<Institution[]>(jsonArray);
+
     return (
         <MainBox>
             <Banner />
@@ -18,9 +22,10 @@ const UserInformation = ({ t }: UserInformationProps) => {
                 content={t(translation.AddInstitution)}
                 t={t}
                 cardsLimit={1}
-                model={new Institution()}
+                models={userInstitutions || []}
+                localStorageKey="userInstitutions"
             />
-            <UserInformationBlock
+            {/* <UserInformationBlock
                 title={t(translation.Major)}
                 content={t(translation.AddMajor)}
                 t={t}
@@ -31,7 +36,7 @@ const UserInformation = ({ t }: UserInformationProps) => {
                 content={t(translation.AddCourse)}
                 t={t}
                 cardsLimit={5}
-            />
+            /> */}
         </MainBox>
     );
 };

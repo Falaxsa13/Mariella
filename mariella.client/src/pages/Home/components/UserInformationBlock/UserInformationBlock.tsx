@@ -1,16 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ButtonWithIcon from "../../../../common/ButtonWithIcon/ButtonWithIcon";
 import Dialog from "../../../../common/Dialog/Dialog";
-import { TFunction } from "i18next";
-import { ButtonContainer, MainBox, Title } from "./UserInformationBlock.Styles";
-import { useState } from "react";
 import BaseModel from "../../../../models/BaseModel";
+import { TFunction } from "i18next";
+import {
+    ButtonsContainer,
+    MainBox,
+    Title,
+} from "./UserInformationBlock.Styles";
+import { useState } from "react";
 
 interface UserInformationBlockProps {
     title: string;
     content: string;
     cardsLimit: number;
-    model?: BaseModel;
+    models: BaseModel[];
+    localStorageKey: string;
     t: TFunction;
 }
 
@@ -22,47 +27,67 @@ const UserInformationBlock = (props: UserInformationBlockProps) => {
     const size = props.cardsLimit && props.cardsLimit > 2 ? "0.8rem" : "1rem";
     const width = props.cardsLimit && props.cardsLimit > 2 ? "30%" : "170px";
     const height = props.cardsLimit && props.cardsLimit > 2 ? "80px" : "90px";
-    const [buttons, setButtons] = useState<JSX.Element[]>([]);
-    const [isDialogOpen, setIsDialogOpen] = useState(false);
-    const [formState, setFormState] = useState({});
+    const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
+    const [buttonsModels, setButtonsModels] = useState<BaseModel[]>(
+        props.models
+    );
+    const [currentButtonModel, setCurrentButtonModel] = useState<BaseModel>();
+
+    useEffect(() => {
+        // localStorage.setItem(props.localStorageKey, JSON.stringify(buttons));
+    }, [buttonsModels]);
 
     const propertyNamesMap: PropertyNamesMap = {
         name: props.t("Name"),
         abbreviation: props.t("Abbreviation"),
     };
 
-    const addButton = () => {
-        const newButton = (
-            <ButtonWithIcon
-                key={buttons.length}
-                color="#E4D6FC"
-                icon={{
-                    src: "add.svg",
-                    width: "30px",
-                    height: "30px",
-                }}
-                fontSize={size}
-                width={width}
-                text={"Hola"}
-                height={height}
-            />
-        );
+    const openDialog = (button?: BaseModel) => {
+        if (button == undefined) {
+            const id =
+                buttonsModels.length > 0
+                    ? buttonsModels.sort((model) => model.id)[0].id++
+                    : 0;
+            button = new BaseModel(id);
+            setButtonsModels([...buttonsModels, button]);
+        }
 
-        setButtons([...buttons, newButton]);
+        setCurrentButtonModel(button);
+        setIsDialogOpen(true);
     };
 
-    const openDialog = () => {
-        setIsDialogOpen(true);
+    const closeDialog = () => {
+        setIsDialogOpen(false);
+    };
+
+    const handleDialogInputChange = (
+        key: string,
+        event: React.ChangeEvent<HTMLInputElement>
+    ) => {
+        const { value } = event.target;
+        const buttons = [...buttonsModels];
+        buttons[buttons.length - 1][key] = value;
+        setButtonsModels(buttons);
+        console.log(buttons);
     };
 
     return (
         <MainBox>
             <Title>{props.title}</Title>
-            <ButtonContainer>
-                {buttons.map((button, index) => (
-                    <React.Fragment key={index}>{button}</React.Fragment>
+            <ButtonsContainer>
+                {buttonsModels.map((buttonModel, index) => (
+                    <ButtonWithIcon
+                        key={index}
+                        color="#E4D6FC"
+                        fontSize={size}
+                        width={width}
+                        text={buttonModel?.name}
+                        height={height}
+                        onClick={() => openDialog(buttonModel)}
+                    />
                 ))}
                 <ButtonWithIcon
+                    name="add"
                     color="#E4D6FC"
                     icon={{
                         src: "add.svg",
@@ -73,18 +98,31 @@ const UserInformationBlock = (props: UserInformationBlockProps) => {
                     width={width}
                     text={props.t(props.content)}
                     height={height}
-                    onClick={openDialog}
+                    onClick={() => openDialog()}
                 />
-            </ButtonContainer>
-            <Dialog isOpen={isDialogOpen}>
-                {props.model &&
-                    Object.keys(props.model).map((key) => (
+            </ButtonsContainer>
+            {isDialogOpen && currentButtonModel && (
+                <Dialog
+                    onClose={closeDialog}
+                    isOpen={isDialogOpen}
+                    shouldCloseOnEsc={true}
+                    shouldCloseOnClickOutside={true}
+                >
+                    {Object.keys(currentButtonModel).map((key) => (
                         <div key={key}>
                             <span>{propertyNamesMap[key]}: </span>
-                            <input type="text" />
+                            <input
+                                type="text"
+                                name={key}
+                                onChange={(event) =>
+                                    handleDialogInputChange(key, event)
+                                }
+                                value={currentButtonModel[key] as string}
+                            />
                         </div>
                     ))}
-            </Dialog>
+                </Dialog>
+            )}
         </MainBox>
     );
 };
