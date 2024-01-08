@@ -20,7 +20,7 @@ export const Title = styled.h1`
     text-align: center;
 `;
 
-export const ButtonContainer = styled.div`
+export const ButtonsContainer = styled.div`
     position: relative;
     justify-content: center;
     width: 100%;

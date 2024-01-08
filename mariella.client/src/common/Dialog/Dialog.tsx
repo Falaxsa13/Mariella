@@ -1,5 +1,6 @@
 import ReactDOM from "react-dom";
 import { DialogContainer, Content } from "./Dialog.Styles";
+import { Button } from "../Button/Button";
 
 interface DialogProps {
     isOpen: boolean;
@@ -10,12 +11,15 @@ interface DialogProps {
 const Dialog = (props: DialogProps) => {
     if (!props.isOpen) return null;
 
-    return ReactDOM.createPortal(
+    const component = (
         <DialogContainer>
-            <Content>{props.children}</Content>
-        </DialogContainer>,
-        document.body
+            <Content>
+                {props.children}
+            </Content>
+        </DialogContainer>
     );
+
+    return ReactDOM.createPortal(component, document.body);
 };
 
 export default Dialog;

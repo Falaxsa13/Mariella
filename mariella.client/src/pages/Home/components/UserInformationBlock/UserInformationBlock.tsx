@@ -1,16 +1,20 @@
 import React from "react";
 import ButtonWithIcon from "../../../../common/ButtonWithIcon/ButtonWithIcon";
 import Dialog from "../../../../common/Dialog/Dialog";
-import { TFunction } from "i18next";
-import { ButtonContainer, MainBox, Title } from "./UserInformationBlock.Styles";
-import { useState } from "react";
 import BaseModel from "../../../../models/BaseModel";
+import { TFunction } from "i18next";
+import {
+    ButtonsContainer,
+    MainBox,
+    Title,
+} from "./UserInformationBlock.Styles";
+import { useState } from "react";
 
 interface UserInformationBlockProps {
     title: string;
     content: string;
     cardsLimit: number;
-    model?: BaseModel;
+    models?: BaseModel[];
     t: TFunction;
 }
 
@@ -22,9 +26,8 @@ const UserInformationBlock = (props: UserInformationBlockProps) => {
     const size = props.cardsLimit && props.cardsLimit > 2 ? "0.8rem" : "1rem";
     const width = props.cardsLimit && props.cardsLimit > 2 ? "30%" : "170px";
     const height = props.cardsLimit && props.cardsLimit > 2 ? "80px" : "90px";
-    const [buttons, setButtons] = useState<JSX.Element[]>([]);
-    const [isDialogOpen, setIsDialogOpen] = useState(false);
-    const [formState, setFormState] = useState({});
+    const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
+    const [buttons, setButtons] = useState<BaseModel[]>(props.models || []);
 
     const propertyNamesMap: PropertyNamesMap = {
         name: props.t("Name"),
@@ -32,35 +35,34 @@ const UserInformationBlock = (props: UserInformationBlockProps) => {
     };
 
     const addButton = () => {
-        const newButton = (
-            <ButtonWithIcon
-                key={buttons.length}
-                color="#E4D6FC"
-                icon={{
-                    src: "add.svg",
-                    width: "30px",
-                    height: "30px",
-                }}
-                fontSize={size}
-                width={width}
-                text={"Hola"}
-                height={height}
-            />
-        );
-
-        setButtons([...buttons, newButton]);
+        setButtons([...buttons, new BaseModel()]);
     };
 
     const openDialog = () => {
         setIsDialogOpen(true);
+        addButton();
+    };
+
+    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const { value } = event.target;
+        const newButtons = [...buttons];
+        newButtons[newButtons.length - 1].name = value;
+        setButtons(newButtons);
     };
 
     return (
         <MainBox>
             <Title>{props.title}</Title>
-            <ButtonContainer>
-                {buttons.map((button, index) => (
-                    <React.Fragment key={index}>{button}</React.Fragment>
+            <ButtonsContainer>
+                {buttons.map((buttonModel, index) => (
+                    <ButtonWithIcon
+                        key={index}
+                        color="#E4D6FC"
+                        fontSize={size}
+                        width={width}
+                        text={buttonModel?.name}
+                        height={height}
+                    />
                 ))}
                 <ButtonWithIcon
                     color="#E4D6FC"
@@ -75,13 +77,17 @@ const UserInformationBlock = (props: UserInformationBlockProps) => {
                     height={height}
                     onClick={openDialog}
                 />
-            </ButtonContainer>
+            </ButtonsContainer>
             <Dialog isOpen={isDialogOpen}>
-                {props.model &&
-                    Object.keys(props.model).map((key) => (
+                {buttons[0] &&
+                    Object.keys(buttons[0]).map((key) => (
                         <div key={key}>
                             <span>{propertyNamesMap[key]}: </span>
-                            <input type="text" />
+                            <input
+                                type="text"
+                                name="name"
+                                onChange={handleInputChange}
+                            />
                         </div>
                     ))}
             </Dialog>

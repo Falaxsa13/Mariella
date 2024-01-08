@@ -6,11 +6,11 @@ import { SvgIcon, SvgIconProps } from "../SvgIcon/SvgIcon";
 import { StyledComponent } from "styled-components";
 
 interface ButtonWithIconProps {
-    icon: SvgIconProps;
+    icon?: SvgIconProps;
     color?: string;
     name?: string;
     onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
-    text: string;
+    text?: string;
     styledSpan?: StyledComponent<"span", never>;
     fontSize?: string;
     height?: string;
@@ -19,7 +19,7 @@ interface ButtonWithIconProps {
 }
 
 const ButtonWithIcon = (props: ButtonWithIconProps) => {
-    const text = props.t(props.text);
+    const text = props.text == undefined ? undefined : props.t(props.text);
 
     const spanComponent =
         props.styledSpan == undefined ? (
