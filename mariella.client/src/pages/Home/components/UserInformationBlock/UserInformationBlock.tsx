@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ButtonWithIcon from "../../../../common/ButtonWithIcon/ButtonWithIcon";
 import Dialog from "../../../../common/Dialog/Dialog";
 import BaseModel from "../../../../models/BaseModel";
@@ -14,7 +14,8 @@ interface UserInformationBlockProps {
     title: string;
     content: string;
     cardsLimit: number;
-    models?: BaseModel[];
+    models: BaseModel[];
+    localStorageKey: string;
     t: TFunction;
 }
 
@@ -27,20 +28,22 @@ const UserInformationBlock = (props: UserInformationBlockProps) => {
     const width = props.cardsLimit && props.cardsLimit > 2 ? "30%" : "170px";
     const height = props.cardsLimit && props.cardsLimit > 2 ? "80px" : "90px";
     const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
-    const [buttons, setButtons] = useState<BaseModel[]>(props.models || []);
+    const [buttons, setButtons] = useState<BaseModel[]>(props.models);
+
+    useEffect(() => {
+        // localStorage.setItem(props.localStorageKey, JSON.stringify(buttons));
+    }, [buttons]);
 
     const propertyNamesMap: PropertyNamesMap = {
         name: props.t("Name"),
         abbreviation: props.t("Abbreviation"),
     };
 
-    const addButton = () => {
-        setButtons([...buttons, new BaseModel()]);
-    };
-
     const openDialog = () => {
+        const id =
+            buttons.length > 0 ? buttons.sort((model) => model.id)[0].id++ : 0;
         setIsDialogOpen(true);
-        addButton();
+        setButtons([...buttons, new BaseModel(id)]);
     };
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -62,6 +65,7 @@ const UserInformationBlock = (props: UserInformationBlockProps) => {
                         width={width}
                         text={buttonModel?.name}
                         height={height}
+                        onClick={openDialog}
                     />
                 ))}
                 <ButtonWithIcon
