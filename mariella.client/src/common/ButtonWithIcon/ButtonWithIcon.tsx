@@ -9,7 +9,7 @@ interface ButtonWithIconProps {
     icon?: SvgIconProps;
     color?: string;
     name?: string;
-    onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+    onClick?: () => void;
     text?: string;
     styledSpan?: StyledComponent<"span", never>;
     fontSize?: string;

@@ -28,22 +28,32 @@ const UserInformationBlock = (props: UserInformationBlockProps) => {
     const width = props.cardsLimit && props.cardsLimit > 2 ? "30%" : "170px";
     const height = props.cardsLimit && props.cardsLimit > 2 ? "80px" : "90px";
     const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
-    const [buttons, setButtons] = useState<BaseModel[]>(props.models);
+    const [buttonsModels, setButtonsModels] = useState<BaseModel[]>(
+        props.models
+    );
+    const [currentButtonModel, setCurrentButtonModel] = useState<BaseModel>();
 
     useEffect(() => {
         // localStorage.setItem(props.localStorageKey, JSON.stringify(buttons));
-    }, [buttons]);
+    }, [buttonsModels]);
 
     const propertyNamesMap: PropertyNamesMap = {
         name: props.t("Name"),
         abbreviation: props.t("Abbreviation"),
     };
 
-    const openDialog = () => {
-        const id =
-            buttons.length > 0 ? buttons.sort((model) => model.id)[0].id++ : 0;
+    const openDialog = (button?: BaseModel) => {
+        if (button == undefined) {
+            const id =
+                buttonsModels.length > 0
+                    ? buttonsModels.sort((model) => model.id)[0].id++
+                    : 0;
+            button = new BaseModel(id);
+            setButtonsModels([...buttonsModels, button]);
+        }
+
+        setCurrentButtonModel(button);
         setIsDialogOpen(true);
-        setButtons([...buttons, new BaseModel(id)]);
     };
 
     const closeDialog = () => {
@@ -51,19 +61,21 @@ const UserInformationBlock = (props: UserInformationBlockProps) => {
     };
 
     const handleDialogInputChange = (
+        key: string,
         event: React.ChangeEvent<HTMLInputElement>
     ) => {
         const { value } = event.target;
-        const newButtons = [...buttons];
-        newButtons[newButtons.length - 1].name = value;
-        setButtons(newButtons);
+        const buttons = [...buttonsModels];
+        buttons[buttons.length - 1][key] = value;
+        setButtonsModels(buttons);
+        console.log(buttons);
     };
 
     return (
         <MainBox>
             <Title>{props.title}</Title>
             <ButtonsContainer>
-                {buttons.map((buttonModel, index) => (
+                {buttonsModels.map((buttonModel, index) => (
                     <ButtonWithIcon
                         key={index}
                         color="#E4D6FC"
@@ -71,10 +83,11 @@ const UserInformationBlock = (props: UserInformationBlockProps) => {
                         width={width}
                         text={buttonModel?.name}
                         height={height}
-                        onClick={openDialog}
+                        onClick={() => openDialog(buttonModel)}
                     />
                 ))}
                 <ButtonWithIcon
+                    name="add"
                     color="#E4D6FC"
                     icon={{
                         src: "add.svg",
@@ -85,27 +98,31 @@ const UserInformationBlock = (props: UserInformationBlockProps) => {
                     width={width}
                     text={props.t(props.content)}
                     height={height}
-                    onClick={openDialog}
+                    onClick={() => openDialog()}
                 />
             </ButtonsContainer>
-            <Dialog
-                onClose={closeDialog}
-                isOpen={isDialogOpen}
-                shouldCloseOnEsc={true}
-                shouldCloseOnClickOutside={true}
-            >
-                {buttons[0] &&
-                    Object.keys(buttons[0]).map((key) => (
+            {isDialogOpen && currentButtonModel && (
+                <Dialog
+                    onClose={closeDialog}
+                    isOpen={isDialogOpen}
+                    shouldCloseOnEsc={true}
+                    shouldCloseOnClickOutside={true}
+                >
+                    {Object.keys(currentButtonModel).map((key) => (
                         <div key={key}>
                             <span>{propertyNamesMap[key]}: </span>
                             <input
                                 type="text"
-                                name="name"
-                                onChange={handleDialogInputChange}
+                                name={key}
+                                onChange={(event) =>
+                                    handleDialogInputChange(key, event)
+                                }
+                                value={currentButtonModel[key] as string}
                             />
                         </div>
                     ))}
-            </Dialog>
+                </Dialog>
+            )}
         </MainBox>
     );
 };

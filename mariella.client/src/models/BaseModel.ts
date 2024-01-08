@@ -1,4 +1,5 @@
 class BaseModel {
+    [key: string]: unknown;
     id: number;
     name?: string;
     abbreviation?: string;
