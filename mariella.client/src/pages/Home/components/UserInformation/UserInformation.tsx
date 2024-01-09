@@ -1,12 +1,12 @@
 import translation from "../../../../locales/en/translation.json";
 import UserInformationBlock from "../UserInformationBlock/UserInformationBlock";
 import InstitutionModel from "../../../../models/InstitutionModel";
+import MajorModel from "../../../../models/MajorModel";
+import CourseModel from "../../../../models/CourseModel";
 import safeJsonParse from "../../../../common/utils/safeJsonParse";
 import { withTranslation } from "react-i18next";
 import { MainBox, Banner } from "./UserInformation.Styles";
 import { TFunction } from "i18next";
-import MajorModel from "../../../../models/MajorModel";
-import CourseModel from "../../../../models/CourseModel";
 
 interface UserInformationProps {
     t: TFunction;
@@ -35,7 +35,7 @@ const UserInformation = ({ t }: UserInformationProps) => {
                 content={t(translation.AddInstitution)}
                 t={t}
                 cardsLimit={1}
-                models={userInstitutions || []}
+                models={userInstitutions}
                 localStorageKey={userInstitutionLocalStorageKey}
             />
             <UserInformationBlock
@@ -43,7 +43,7 @@ const UserInformation = ({ t }: UserInformationProps) => {
                 content={t(translation.AddMajor)}
                 t={t}
                 cardsLimit={1}
-                models={userMajors || []}
+                models={userMajors}
                 localStorageKey={userMajorsLocalStorageKey}
             />
             <UserInformationBlock
@@ -51,7 +51,7 @@ const UserInformation = ({ t }: UserInformationProps) => {
                 content={t(translation.AddCourse)}
                 t={t}
                 cardsLimit={5}
-                models={userCourses || []}
+                models={userCourses}
                 localStorageKey={userCoursesLocalStorageKey}
             />
         </MainBox>

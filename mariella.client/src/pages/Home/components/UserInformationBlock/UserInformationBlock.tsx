@@ -14,7 +14,7 @@ interface UserInformationBlockProps {
     title: string;
     content: string;
     cardsLimit: number;
-    models: BaseModel[];
+    models?: BaseModel[];
     localStorageKey: string;
     t: TFunction;
 }
@@ -29,7 +29,7 @@ const UserInformationBlock = (props: UserInformationBlockProps) => {
     const height = props.cardsLimit && props.cardsLimit > 2 ? "80px" : "90px";
     const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
     const [buttonsModels, setButtonsModels] = useState<BaseModel[]>(
-        props.models
+        props.models || []
     );
     const [currentButtonModel, setCurrentButtonModel] = useState<BaseModel>();
 
@@ -108,19 +108,21 @@ const UserInformationBlock = (props: UserInformationBlockProps) => {
                     shouldCloseOnEsc={true}
                     shouldCloseOnClickOutside={true}
                 >
-                    {Object.keys(currentButtonModel).map((key) => (
-                        <div key={key}>
-                            <span>{propertyNamesMap[key]}: </span>
-                            <input
-                                type="text"
-                                name={key}
-                                onChange={(event) =>
-                                    handleDialogInputChange(key, event)
-                                }
-                                value={currentButtonModel[key] as string}
-                            />
-                        </div>
-                    ))}
+                    {Object.keys(currentButtonModel)
+                        .slice(1)
+                        .map((key) => (
+                            <div key={key}>
+                                <span>{propertyNamesMap[key]}: </span>
+                                <input
+                                    type="text"
+                                    name={key}
+                                    onChange={(event) =>
+                                        handleDialogInputChange(key, event)
+                                    }
+                                    value={currentButtonModel[key] as string}
+                                />
+                            </div>
+                        ))}
                 </Dialog>
             )}
         </MainBox>
