@@ -37,8 +37,20 @@ const UserInformation = ({ t }: UserInformationProps) => {
                 cardsLimit={1}
                 models={userInstitutions}
                 localStorageKey={userInstitutionLocalStorageKey}
+                inputFields={[
+                    {
+                        modelPropertyName: "name",
+                        inputLabelString: t("Name"),
+                        type: "text",
+                    },
+                    {
+                        modelPropertyName: "abbrevitation",
+                        inputLabelString: t("Abbrevitation"),
+                        type: "text",
+                    },
+                ]}
             />
-            <UserInformationBlock
+            {/* <UserInformationBlock
                 title={t(translation.Major)}
                 content={t(translation.AddMajor)}
                 t={t}
@@ -53,7 +65,7 @@ const UserInformation = ({ t }: UserInformationProps) => {
                 cardsLimit={5}
                 models={userCourses}
                 localStorageKey={userCoursesLocalStorageKey}
-            />
+            /> */}
         </MainBox>
     );
 };

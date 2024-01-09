@@ -10,12 +10,21 @@ import {
 } from "./UserInformationBlock.Styles";
 import { useState } from "react";
 
+type InputField = {
+    modelPropertyName: string;
+    inputLabelString: string;
+    type: string;
+    references?: BaseModel[];
+    listBox?: string[];
+};
+
 interface UserInformationBlockProps {
     title: string;
     content: string;
     cardsLimit: number;
     models?: BaseModel[];
     localStorageKey: string;
+    inputFields: InputField[];
     t: TFunction;
 }
 
@@ -108,21 +117,57 @@ const UserInformationBlock = (props: UserInformationBlockProps) => {
                     shouldCloseOnEsc={true}
                     shouldCloseOnClickOutside={true}
                 >
-                    {Object.keys(currentButtonModel)
-                        .slice(1)
-                        .map((key) => (
-                            <div key={key}>
-                                <span>{propertyNamesMap[key]}: </span>
-                                <input
-                                    type="text"
-                                    name={key}
-                                    onChange={(event) =>
-                                        handleDialogInputChange(key, event)
-                                    }
-                                    value={currentButtonModel[key] as string}
-                                />
-                            </div>
-                        ))}
+                    {props.inputFields?.map((field, index) => (
+                        <div key={index}>
+                            <span>{field.inputLabelString}</span>
+                            {(() => {
+                                switch (field.type) {
+                                    case "text":
+                                        return (
+                                            <input
+                                                type="text"
+                                                onChange={(
+                                                    event: React.ChangeEvent<HTMLInputElement>
+                                                ) =>
+                                                    handleDialogInputChange(
+                                                        field.modelPropertyName,
+                                                        event
+                                                    )
+                                                }
+                                                value={
+                                                    currentButtonModel[
+                                                        field.modelPropertyName
+                                                    ] as string
+                                                }
+                                            />
+                                        );
+
+                                    case "list":
+                                        return (
+                                            <select>
+                                                {field.references?.map(
+                                                    (ref, refIndex) => (
+                                                        <option
+                                                            key={refIndex}
+                                                            value={
+                                                                ref[
+                                                                    field
+                                                                        .modelPropertyName
+                                                                ] as string
+                                                            }
+                                                        >
+                                                            {ref}
+                                                        </option>
+                                                    )
+                                                )}
+                                            </select>
+                                        );
+                                    default:
+                                        return null;
+                                }
+                            })()}
+                        </div>
+                    ))}
                 </Dialog>
             )}
         </MainBox>
