@@ -7,6 +7,7 @@ import safeJsonParse from "../../../../common/utils/safeJsonParse";
 import { withTranslation } from "react-i18next";
 import { MainBox, Banner } from "./UserInformation.Styles";
 import { TFunction } from "i18next";
+import { useEffect, useState } from "react";
 
 interface UserInformationProps {
     t: TFunction;
@@ -26,6 +27,15 @@ const UserInformation = ({ t }: UserInformationProps) => {
     const userCourses = safeJsonParse<CourseModel[]>(
         localStorage.getItem(userCoursesLocalStorageKey) as string
     );
+
+    const [countries, setCountries] = useState<JSON>();
+
+    useEffect(() => {
+        fetch("https://restcountries.com/v3.1/all?fields=name,flags")
+            .then((response: Response) => response.json())
+            .then((data: JSON) => setCountries(data))
+            .catch((error) => console.error("Error:", error));
+    }, []);
 
     return (
         <MainBox>
@@ -47,6 +57,11 @@ const UserInformation = ({ t }: UserInformationProps) => {
                         modelPropertyName: "abbrevitation",
                         inputLabelString: t("Abbrevitation"),
                         type: "text",
+                    },
+                    {
+                        modelPropertyName: "countryName",
+                        inputLabelString: t("Country"),
+                        type: "list",
                     },
                 ]}
             />
