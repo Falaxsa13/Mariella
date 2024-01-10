@@ -3,6 +3,7 @@ import UserInformationBlock from "../UserInformationBlock/UserInformationBlock";
 import InstitutionModel from "../../../../models/InstitutionModel";
 import MajorModel from "../../../../models/MajorModel";
 import CourseModel from "../../../../models/CourseModel";
+import CountryModel from "../../../../models/CountryModel";
 import safeJsonParse from "../../../../common/utils/safeJsonParse";
 import { withTranslation } from "react-i18next";
 import { MainBox, Banner } from "./UserInformation.Styles";
@@ -28,12 +29,12 @@ const UserInformation = ({ t }: UserInformationProps) => {
         localStorage.getItem(userCoursesLocalStorageKey) as string
     );
 
-    const [countries, setCountries] = useState<JSON>();
+    const [countriesList, setCountriesList] = useState<CountryModel[]>();
 
     useEffect(() => {
-        fetch("https://restcountries.com/v3.1/all?fields=name,flags")
+        fetch("https://restcountries.com/v3.1/all?fields=name,flag")
             .then((response: Response) => response.json())
-            .then((data: JSON) => setCountries(data))
+            .then((data: CountryModel[]) => setCountriesList(data))
             .catch((error) => console.error("Error:", error));
     }, []);
 
@@ -62,6 +63,7 @@ const UserInformation = ({ t }: UserInformationProps) => {
                         modelPropertyName: "countryName",
                         inputLabelString: t("Country"),
                         type: "list",
+                        objectsList: countriesList,
                     },
                 ]}
             />

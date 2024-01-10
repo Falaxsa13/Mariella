@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import ButtonWithIcon from "../../../../common/ButtonWithIcon/ButtonWithIcon";
 import Dialog from "../../../../common/Dialog/Dialog";
 import BaseModel from "../../../../models/BaseModel";
+import CountryModel from "../../../../models/CountryModel";
 import { TFunction } from "i18next";
 import {
     ButtonsContainer,
@@ -10,13 +11,13 @@ import {
 } from "./UserInformationBlock.Styles";
 import { useState } from "react";
 
-type InputField = {
+interface InputField {
     modelPropertyName: string;
     inputLabelString: string;
     type: string;
     references?: BaseModel[];
-    listBox?: string[];
-};
+    objectsList?: CountryModel[];
+}
 
 interface UserInformationBlockProps {
     title: string;
@@ -26,10 +27,6 @@ interface UserInformationBlockProps {
     localStorageKey: string;
     inputFields: InputField[];
     t: TFunction;
-}
-
-interface PropertyNamesMap {
-    [key: string]: string;
 }
 
 const UserInformationBlock = (props: UserInformationBlockProps) => {
@@ -45,11 +42,6 @@ const UserInformationBlock = (props: UserInformationBlockProps) => {
     useEffect(() => {
         // localStorage.setItem(props.localStorageKey, JSON.stringify(buttons));
     }, [buttonsModels]);
-
-    const propertyNamesMap: PropertyNamesMap = {
-        name: props.t("Name"),
-        abbreviation: props.t("Abbreviation"),
-    };
 
     const openDialog = (button?: BaseModel) => {
         if (button == undefined) {
@@ -71,7 +63,7 @@ const UserInformationBlock = (props: UserInformationBlockProps) => {
 
     const handleDialogInputChange = (
         key: string,
-        event: React.ChangeEvent<HTMLInputElement>
+        event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
     ) => {
         const { value } = event.target;
         const buttons = [...buttonsModels];
@@ -117,8 +109,8 @@ const UserInformationBlock = (props: UserInformationBlockProps) => {
                     shouldCloseOnEsc={true}
                     shouldCloseOnClickOutside={true}
                 >
-                    {props.inputFields?.map((field, index) => (
-                        <div key={index}>
+                    {props.inputFields?.map((field, fieldIndex) => (
+                        <div key={fieldIndex}>
                             <span>{field.inputLabelString}</span>
                             {(() => {
                                 switch (field.type) {
@@ -144,19 +136,31 @@ const UserInformationBlock = (props: UserInformationBlockProps) => {
 
                                     case "list":
                                         return (
-                                            <select>
-                                                {field.references?.map(
-                                                    (ref, refIndex) => (
+                                            <select
+                                                onChange={(
+                                                    event: React.ChangeEvent<HTMLSelectElement>
+                                                ) =>
+                                                    handleDialogInputChange(
+                                                        field.modelPropertyName,
+                                                        event
+                                                    )
+                                                }
+                                                value={
+                                                    currentButtonModel[
+                                                        field.modelPropertyName
+                                                    ] as string
+                                                }
+                                            >
+                                                {field.objectsList?.map(
+                                                    (object, objectIndex) => (
                                                         <option
-                                                            key={refIndex}
+                                                            key={objectIndex}
                                                             value={
-                                                                ref[
-                                                                    field
-                                                                        .modelPropertyName
-                                                                ] as string
+                                                                object.name
+                                                                    .official
                                                             }
                                                         >
-                                                            {ref}
+                                                            {object.name.common}
                                                         </option>
                                                     )
                                                 )}
