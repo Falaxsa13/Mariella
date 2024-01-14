@@ -55,7 +55,7 @@ const UserInformation = ({ t }: UserInformationProps) => {
                         type: "text",
                     },
                     {
-                        modelPropertyName: "abbrevitation",
+                        modelPropertyName: "abbreviation",
                         inputLabelString: t("Abbrevitation"),
                         type: "text",
                     },

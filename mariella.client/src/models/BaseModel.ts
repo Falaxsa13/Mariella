@@ -1,5 +1,4 @@
 class BaseModel {
-    [key: string]: unknown;
     id: number;
     name?: string;
     abbreviation?: string;
@@ -9,5 +8,7 @@ class BaseModel {
         Object.assign(this, data);
     }
 }
+
+export type BaseModelKeys = keyof typeof BaseModel.prototype;
 
 export default BaseModel;
