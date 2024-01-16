@@ -7,8 +7,10 @@ class BaseModel {
         this.id = id;
         Object.assign(this, data);
     }
-}
 
-export type BaseModelKeys = keyof typeof BaseModel.prototype;
+    setProperty<T extends keyof this>(key: T, value: this[T]) {
+        this[key] = value;
+    }
+}
 
 export default BaseModel;

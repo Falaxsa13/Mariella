@@ -41,12 +41,13 @@ const UserInformation = ({ t }: UserInformationProps) => {
     return (
         <MainBox>
             <Banner />
-            <UserInformationBlock
+            <UserInformationBlock<InstitutionModel>
                 title={t(translation.Institution)}
                 content={t(translation.AddInstitution)}
                 t={t}
                 cardsLimit={1}
                 models={userInstitutions}
+                createModel={(id) => new InstitutionModel(id)}
                 localStorageKey={userInstitutionLocalStorageKey}
                 inputFields={[
                     {
