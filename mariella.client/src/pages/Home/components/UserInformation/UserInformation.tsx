@@ -3,10 +3,12 @@ import UserInformationBlock from "../UserInformationBlock/UserInformationBlock";
 import InstitutionModel from "../../../../models/InstitutionModel";
 import MajorModel from "../../../../models/MajorModel";
 import CourseModel from "../../../../models/CourseModel";
+import CountryModel from "../../../../models/CountryModel";
 import safeJsonParse from "../../../../common/utils/safeJsonParse";
 import { withTranslation } from "react-i18next";
 import { MainBox, Banner } from "./UserInformation.Styles";
 import { TFunction } from "i18next";
+import { useEffect, useState } from "react";
 
 interface UserInformationProps {
     t: TFunction;
@@ -27,32 +29,86 @@ const UserInformation = ({ t }: UserInformationProps) => {
         localStorage.getItem(userCoursesLocalStorageKey) as string
     );
 
+    const [countriesList, setCountriesList] = useState<CountryModel[]>();
+
+    useEffect(() => {
+        fetch("https://restcountries.com/v3.1/all?fields=name,flag")
+            .then((response: Response) => response.json())
+            .then((data: CountryModel[]) => setCountriesList(data))
+            .catch((error) => console.error("Error:", error));
+    }, []);
+
     return (
         <MainBox>
             <Banner />
-            <UserInformationBlock
+            <UserInformationBlock<InstitutionModel>
                 title={t(translation.Institution)}
-                content={t(translation.AddInstitution)}
+                addText={t(translation.AddInstitution)}
                 t={t}
                 cardsLimit={1}
                 models={userInstitutions}
+                createModel={(id) => new InstitutionModel(id)}
                 localStorageKey={userInstitutionLocalStorageKey}
+                inputFields={[
+                    {
+                        modelPropertyName: "name",
+                        inputLabelString: t("Name"),
+                        type: "text",
+                    },
+                    {
+                        modelPropertyName: "abbreviation",
+                        inputLabelString: t("Abbreviation"),
+                        type: "text",
+                    },
+                    {
+                        modelPropertyName: "countryName",
+                        inputLabelString: t("Country"),
+                        type: "list",
+                        objectsList: countriesList,
+                    },
+                ]}
             />
-            <UserInformationBlock
+            <UserInformationBlock<MajorModel>
                 title={t(translation.Major)}
-                content={t(translation.AddMajor)}
+                addText={t(translation.AddMajor)}
                 t={t}
                 cardsLimit={1}
                 models={userMajors}
+                createModel={(id) => new MajorModel(id)}
                 localStorageKey={userMajorsLocalStorageKey}
+                inputFields={[
+                    {
+                        modelPropertyName: "name",
+                        inputLabelString: t("Name"),
+                        type: "text",
+                    },
+                    {
+                        modelPropertyName: "abbreviation",
+                        inputLabelString: t("Abbreviation"),
+                        type: "text",
+                    },
+                ]}
             />
-            <UserInformationBlock
+            <UserInformationBlock<CourseModel>
                 title={t(translation.Courses)}
-                content={t(translation.AddCourse)}
+                addText={t(translation.AddCourse)}
                 t={t}
                 cardsLimit={5}
                 models={userCourses}
+                createModel={(id) => new CourseModel(id)}
                 localStorageKey={userCoursesLocalStorageKey}
+                inputFields={[
+                    {
+                        modelPropertyName: "name",
+                        inputLabelString: t("Name"),
+                        type: "text",
+                    },
+                    {
+                        modelPropertyName: "abbreviation",
+                        inputLabelString: t("Abbreviation"),
+                        type: "text",
+                    },
+                ]}
             />
         </MainBox>
     );
