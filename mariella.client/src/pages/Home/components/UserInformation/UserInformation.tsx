@@ -43,7 +43,7 @@ const UserInformation = ({ t }: UserInformationProps) => {
             <Banner />
             <UserInformationBlock<InstitutionModel>
                 title={t(translation.Institution)}
-                content={t(translation.AddInstitution)}
+                addText={t(translation.AddInstitution)}
                 t={t}
                 cardsLimit={1}
                 models={userInstitutions}
@@ -57,7 +57,7 @@ const UserInformation = ({ t }: UserInformationProps) => {
                     },
                     {
                         modelPropertyName: "abbreviation",
-                        inputLabelString: t("Abbrevitation"),
+                        inputLabelString: t("Abbreviation"),
                         type: "text",
                     },
                     {
@@ -68,22 +68,48 @@ const UserInformation = ({ t }: UserInformationProps) => {
                     },
                 ]}
             />
-            {/* <UserInformationBlock
+            <UserInformationBlock<MajorModel>
                 title={t(translation.Major)}
-                content={t(translation.AddMajor)}
+                addText={t(translation.AddMajor)}
                 t={t}
                 cardsLimit={1}
                 models={userMajors}
+                createModel={(id) => new MajorModel(id)}
                 localStorageKey={userMajorsLocalStorageKey}
+                inputFields={[
+                    {
+                        modelPropertyName: "name",
+                        inputLabelString: t("Name"),
+                        type: "text",
+                    },
+                    {
+                        modelPropertyName: "abbreviation",
+                        inputLabelString: t("Abbreviation"),
+                        type: "text",
+                    },
+                ]}
             />
-            <UserInformationBlock
+            <UserInformationBlock<CourseModel>
                 title={t(translation.Courses)}
-                content={t(translation.AddCourse)}
+                addText={t(translation.AddCourse)}
                 t={t}
                 cardsLimit={5}
                 models={userCourses}
+                createModel={(id) => new CourseModel(id)}
                 localStorageKey={userCoursesLocalStorageKey}
-            /> */}
+                inputFields={[
+                    {
+                        modelPropertyName: "name",
+                        inputLabelString: t("Name"),
+                        type: "text",
+                    },
+                    {
+                        modelPropertyName: "abbreviation",
+                        inputLabelString: t("Abbreviation"),
+                        type: "text",
+                    },
+                ]}
+            />
         </MainBox>
     );
 };

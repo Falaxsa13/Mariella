@@ -19,7 +19,7 @@ interface InputField<T extends BaseModel> {
 
 interface UserInformationBlockProps<T extends BaseModel> {
     title: string;
-    content: string;
+    addText: string;
     cardsLimit: number;
     createModel: (id: number) => T; // factory property
     models?: T[];
@@ -84,7 +84,7 @@ const UserInformationBlock = <T extends BaseModel>(
                         color="#E4D6FC"
                         fontSize={size}
                         width={width}
-                        text={buttonModel?.name}
+                        text={buttonModel.abbreviation || buttonModel.name}
                         height={height}
                         onClick={() => openDialog(buttonModel)}
                     />
@@ -99,7 +99,7 @@ const UserInformationBlock = <T extends BaseModel>(
                     }}
                     fontSize={size}
                     width={width}
-                    text={props.t(props.content)}
+                    text={props.t(props.addText)}
                     height={height}
                     onClick={() => openDialog()}
                 />
