@@ -10,11 +10,17 @@ import {
     Title,
 } from "./UserInformationBlock.Styles";
 
-interface InputField<T extends BaseModel> {
+interface List<T> {
+    objects: T[];
+    optionValue: keyof T;
+    option: keyof T;
+}
+
+interface InputField<T extends BaseModel, U> {
     modelPropertyName: keyof T;
     inputLabelString: string;
-    type: string;
-    objectsList?: CountryModel[];
+    type: "text" | "list";
+    objectsList?: List<U>;
 }
 
 interface UserInformationBlockProps<T extends BaseModel> {
@@ -153,14 +159,11 @@ const UserInformationBlock = <T extends BaseModel>(
                                                     ] as string
                                                 }
                                             >
-                                                {field.objectsList?.map(
+                                                {field.objectsList?.objects?.map(
                                                     (object, objectIndex) => (
                                                         <option
                                                             key={objectIndex}
-                                                            value={
-                                                                object.name
-                                                                    .official
-                                                            }
+                                                            value={object.cca3}
                                                         >
                                                             {object.name.common}
                                                         </option>

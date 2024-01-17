@@ -4,8 +4,9 @@ type Name = {
 };
 
 interface CountryModel {
-    flag: string;
+    cca3: string;
     name: Name;
+    flag: string;
 }
 
 export default CountryModel;

@@ -29,10 +29,10 @@ const UserInformation = ({ t }: UserInformationProps) => {
         localStorage.getItem(userCoursesLocalStorageKey) as string
     );
 
-    const [countriesList, setCountriesList] = useState<CountryModel[]>();
+    const [countriesList, setCountriesList] = useState<CountryModel[]>([]);
 
     useEffect(() => {
-        fetch("https://restcountries.com/v3.1/all?fields=name,flag")
+        fetch("https://restcountries.com/v3.1/all?fields=cca3,name,flag")
             .then((response: Response) => response.json())
             .then((data: CountryModel[]) => setCountriesList(data))
             .catch((error) => console.error("Error:", error));
@@ -64,7 +64,11 @@ const UserInformation = ({ t }: UserInformationProps) => {
                         modelPropertyName: "countryName",
                         inputLabelString: t("Country"),
                         type: "list",
-                        objectsList: countriesList,
+                        objectsList: {
+                            objects: countriesList,
+                            optionValue: "ca",
+                            option: ""
+                        },
                     },
                 ]}
             />
