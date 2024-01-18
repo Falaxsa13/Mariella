@@ -1,16 +1,16 @@
 {
-    "title": "Control Total de tus Notas",
-    "text": "Mariella te permite registrar cada nota con precisión, desde exámenes hasta trabajos, con templates especificamente diseñados tu curso e institución.",
-    "section": [
-        {
-            "title": "A tu medida",
-            "content": "Modifica la estructura según los requerimientos de tu curso",
-            "icon": "notes.svg"
-        },
-        {
-            "title": "No encuentras tu curso?",
-            "content": "Crea un nuevo template y compartela con tu institución.",
-            "icon": "notes.svg"
-        }
-    ]
+  "title": "Control Total de tus Notas",
+  "text": "Mariella te permite registrar cada nota con precisión, desde exámenes hasta trabajos, con templates especificamente diseñados tu curso e institución.",
+  "section": [
+    {
+      "title": "A tu medida",
+      "content": "Modifica la estructura según los requerimientos de tu curso",
+      "icon": "notes.svg"
+    },
+    {
+      "title": "No encuentras tu curso?",
+      "content": "Crea un nuevo template y compartela con tu institución.",
+      "icon": "notes.svg"
+    }
+  ]
 }

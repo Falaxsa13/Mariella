@@ -1,13 +1,13 @@
 {
-    "title": "Tu Marketplace Gratuito de Templates Académicos",
-    "text": "Almacena y gestiona tu progreso académico durante el semestre. Descubre cómo Mariella hace que el seguimiento de tus notas sea más fácil que nunca.",
-    "button": [
-        {
-            "title": "Comenzar"
-        },
-        {
-            "title": "Más informacion",
-            "color": "#fff"
-        }
-    ]
+  "title": "Tu Marketplace Gratuito de Templates Académicos",
+  "text": "Almacena y gestiona tu progreso académico durante el semestre. Descubre cómo Mariella hace que el seguimiento de tus notas sea más fácil que nunca.",
+  "button": [
+    {
+      "title": "Comenzar"
+    },
+    {
+      "title": "Más informacion",
+      "color": "#fff"
+    }
+  ]
 }

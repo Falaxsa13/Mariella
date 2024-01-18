@@ -1,18 +1,18 @@
 import {
-    RubricSectionBlockContainer,
-    StyledSpan,
+  RubricSectionBlockContainer,
+  StyledSpan,
 } from "./RubricSectionBlock.Styles";
 
 interface RubricSectionBlockProps {
-    title: string;
-    children: React.ReactNode;
+  title: string;
+  children: React.ReactNode;
 }
 
 const RubricSectionBLock = (props: RubricSectionBlockProps) => (
-    <RubricSectionBlockContainer>
-        <StyledSpan>{props.title}</StyledSpan>
-        {props.children}
-    </RubricSectionBlockContainer>
+  <RubricSectionBlockContainer>
+    <StyledSpan>{props.title}</StyledSpan>
+    {props.children}
+  </RubricSectionBlockContainer>
 );
 
 export default RubricSectionBLock;

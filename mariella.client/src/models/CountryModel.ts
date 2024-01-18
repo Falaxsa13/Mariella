@@ -1,11 +1,8 @@
-type Name = {
-    common: string;
-    official: string;
-};
-
 interface CountryModel {
-    flag: string;
-    name: Name;
+  cca3: string;
+  commonName: string;
+  officialName: string;
+  flag: string;
 }
 
 export default CountryModel;
