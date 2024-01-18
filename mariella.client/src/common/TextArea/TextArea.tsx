@@ -3,15 +3,15 @@ import { StyledTextArea, StyledContainer, Label } from "./TextArea.Styles";
 import { InputProps } from "../Input/Input";
 
 const TextArea = ({ name, placeholder, onChange, t }: InputProps) => (
-    <StyledContainer>
-        <Label htmlFor={name}>{t(name)}</Label>
-        <StyledTextArea
-            placeholder={t(placeholder)}
-            id={name}
-            name={name}
-            onChange={onChange}
-        />
-    </StyledContainer>
+  <StyledContainer>
+    <Label htmlFor={name}>{t(name)}</Label>
+    <StyledTextArea
+      placeholder={t(placeholder)}
+      id={name}
+      name={name}
+      onChange={onChange}
+    />
+  </StyledContainer>
 );
 
 export default withTranslation()(TextArea);
