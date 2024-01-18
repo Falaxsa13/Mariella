@@ -31,6 +31,7 @@ interface UserInformationBlockProps<T extends BaseModel> {
   models?: T[];
   localStorageKey: string;
   inputFields: InputField<T>[];
+  onModelsChange: (modelsArray: T[]) => void;
   t: TFunction;
 }
 
@@ -45,9 +46,8 @@ const UserInformationBlock = <T extends BaseModel>(
   const [currentButtonModel, setCurrentButtonModel] = useState<T>();
 
   useEffect(() => {
-    // do not uncomment
-    // localStorage.setItem(props.localStorageKey, JSON.stringify(buttons));
-  }, [buttonsModels]);
+    props.onModelsChange(buttonsModels);
+  }, [buttonsModels, props]);
 
   const openDialog = (button?: T) => {
     if (button == undefined) {

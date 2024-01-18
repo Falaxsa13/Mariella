@@ -9,7 +9,8 @@ import safeJsonParse from "../../../../common/utils/safeJsonParse";
 import { withTranslation } from "react-i18next";
 import { MainBox, Banner } from "./UserInformation.Styles";
 import { TFunction } from "i18next";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import BaseModel from "../../../../models/BaseModel";
 
 interface UserInformationProps {
   t: TFunction;
@@ -22,17 +23,31 @@ const localStorageKeys = {
 };
 
 const UserInformation = ({ t }: UserInformationProps) => {
-  const userInstitutions = safeJsonParse<InstitutionModel[]>(
-    localStorage.getItem(localStorageKeys.institutions) as string
+  const [userInstitutions, setUserInstitutions] = useState(
+    safeJsonParse<InstitutionModel[]>(
+      localStorage.getItem(localStorageKeys.institutions) as string
+    )
   );
-  const userMajors = safeJsonParse<MajorModel[]>(
-    localStorage.getItem(localStorageKeys.courses) as string
+  const [userMajors, setUserMajors] = useState(
+    safeJsonParse<MajorModel[]>(
+      localStorage.getItem(localStorageKeys.majors) as string
+    )
   );
-  const userCourses = safeJsonParse<CourseModel[]>(
-    localStorage.getItem(localStorageKeys.majors) as string
+  const [userCourses, setUserCourses] = useState(
+    safeJsonParse<CourseModel[]>(
+      localStorage.getItem(localStorageKeys.courses) as string
+    )
   );
-
   const [countriesList, setCountriesList] = useState<CountryModel[]>([]);
+
+  const handleModelChange = <T extends BaseModel>(
+    modelsArray: T[],
+    setModels: React.Dispatch<React.SetStateAction<T[] | undefined>>
+  ) => {
+    // do not uncomment
+    // localStorage.setItem(props.localStorageKey, JSON.stringify(buttons));
+    setModels(modelsArray);
+  };
 
   useEffect(() => {
     fetch("https://restcountries.com/v3.1/all?fields=cca3,name,flag")
@@ -63,6 +78,9 @@ const UserInformation = ({ t }: UserInformationProps) => {
         models={userInstitutions}
         createModel={(id) => new InstitutionModel(id)}
         localStorageKey={localStorageKeys.institutions}
+        onModelsChange={(newInstitutions) =>
+          handleModelChange(newInstitutions, setUserInstitutions)
+        }
         inputFields={[
           {
             modelPropertyName: "name",
@@ -94,6 +112,9 @@ const UserInformation = ({ t }: UserInformationProps) => {
         models={userMajors}
         createModel={(id) => new MajorModel(id)}
         localStorageKey={localStorageKeys.majors}
+        onModelsChange={(newMajors) =>
+          handleModelChange(newMajors, setUserMajors)
+        }
         inputFields={[
           {
             modelPropertyName: "name",
@@ -125,6 +146,9 @@ const UserInformation = ({ t }: UserInformationProps) => {
         models={userCourses}
         createModel={(id) => new CourseModel(id)}
         localStorageKey={localStorageKeys.courses}
+        onModelsChange={(newCourses) =>
+          handleModelChange(newCourses, setUserCourses)
+        }
         inputFields={[
           {
             modelPropertyName: "name",
