@@ -1,11 +1,11 @@
 import BaseModel from "./BaseModel";
 
 class MajorModel extends BaseModel {
-  universityId?: number;
+  institutionId?: number;
 
-  constructor(id: number, data?: unknown, universityId?: number) {
+  constructor(id: number, data?: unknown, institutionId?: number) {
     super(id, data);
-    this.universityId = universityId;
+    this.institutionId = institutionId;
   }
 }
 

@@ -4,6 +4,7 @@ import InstitutionModel from "../../../../models/InstitutionModel";
 import MajorModel from "../../../../models/MajorModel";
 import CourseModel from "../../../../models/CourseModel";
 import CountryModel from "../../../../models/CountryModel";
+import ApiCountryModel from "../../../../models/api/ApiCountryModel";
 import safeJsonParse from "../../../../common/utils/safeJsonParse";
 import { withTranslation } from "react-i18next";
 import { MainBox, Banner } from "./UserInformation.Styles";
@@ -22,13 +23,13 @@ const localStorageKeys = {
 
 const UserInformation = ({ t }: UserInformationProps) => {
   const userInstitutions = safeJsonParse<InstitutionModel[]>(
-    localStorage.getItem(localStorageKeys.institutions) as string,
+    localStorage.getItem(localStorageKeys.institutions) as string
   );
   const userMajors = safeJsonParse<MajorModel[]>(
-    localStorage.getItem(localStorageKeys.courses) as string,
+    localStorage.getItem(localStorageKeys.courses) as string
   );
   const userCourses = safeJsonParse<CourseModel[]>(
-    localStorage.getItem(localStorageKeys.majors) as string,
+    localStorage.getItem(localStorageKeys.majors) as string
   );
 
   const [countriesList, setCountriesList] = useState<CountryModel[]>([]);
@@ -36,7 +37,18 @@ const UserInformation = ({ t }: UserInformationProps) => {
   useEffect(() => {
     fetch("https://restcountries.com/v3.1/all?fields=cca3,name,flag")
       .then((response: Response) => response.json())
-      .then((data: CountryModel[]) => setCountriesList(data))
+      .then((data: ApiCountryModel[]) => {
+        const formattedData: CountryModel[] = data.map(
+          (country): CountryModel => ({
+            cca3: country.cca3,
+            commonName: country.name.common,
+            officialName: country.name.official,
+            flag: country.flag,
+          })
+        );
+
+        setCountriesList(formattedData);
+      })
       .catch((error) => console.error("Error:", error));
   }, []);
 
@@ -92,6 +104,16 @@ const UserInformation = ({ t }: UserInformationProps) => {
             modelPropertyName: "abbreviation",
             inputLabelString: t("Abbreviation"),
             type: "text",
+          },
+          {
+            modelPropertyName: "institutionId",
+            inputLabelString: t("Institution"),
+            type: "list",
+            modelReference: {
+              objects: userInstitutions,
+              optionValue: "id",
+              option: "name",
+            },
           },
         ]}
       />
