@@ -1,5 +1,7 @@
 import translation from "../../../../locales/en/translation.json";
-import UserInformationBlock from "../UserInformationBlock/UserInformationBlock";
+import UserInformationBlock, {
+    InputField,
+} from "../UserInformationBlock/UserInformationBlock";
 import InstitutionModel from "../../../../models/InstitutionModel";
 import MajorModel from "../../../../models/MajorModel";
 import CourseModel from "../../../../models/CourseModel";
@@ -14,11 +16,13 @@ interface UserInformationProps {
     t: TFunction;
 }
 
-const UserInformation = ({ t }: UserInformationProps) => {
-    const userInstitutionLocalStorageKey = "userInstitutions";
-    const userMajorsLocalStorageKey = "userMajors";
-    const userCoursesLocalStorageKey = "userCourses";
+const localStorageKeys = {
+    institutions: "userInstitutions",
+    majors: "userMajors",
+    courses: "userCourses",
+};
 
+const UserInformation = ({ t }: UserInformationProps) => {
     const userInstitutions = safeJsonParse<InstitutionModel[]>(
         localStorage.getItem(userInstitutionLocalStorageKey) as string
     );
@@ -37,6 +41,12 @@ const UserInformation = ({ t }: UserInformationProps) => {
             .then((data: CountryModel[]) => setCountriesList(data))
             .catch((error) => console.error("Error:", error));
     }, []);
+
+    const list1: List<CountryModel> = {
+        objects: countriesList,
+        optionValue: "cca3",
+        option: "name",
+    };
 
     return (
         <MainBox>
@@ -61,14 +71,10 @@ const UserInformation = ({ t }: UserInformationProps) => {
                         type: "text",
                     },
                     {
-                        modelPropertyName: "countryName",
+                        modelPropertyName: "countryCca3",
                         inputLabelString: t("Country"),
                         type: "list",
-                        objectsList: {
-                            objects: countriesList,
-                            optionValue: "ca",
-                            option: ""
-                        },
+                        objectsList: list1,
                     },
                 ]}
             />

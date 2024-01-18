@@ -2,25 +2,29 @@ import React, { useEffect, useState } from "react";
 import ButtonWithIcon from "../../../../common/ButtonWithIcon/ButtonWithIcon";
 import Dialog from "../../../../common/Dialog/Dialog";
 import BaseModel from "../../../../models/BaseModel";
-import CountryModel from "../../../../models/CountryModel";
 import { TFunction } from "i18next";
 import {
     ButtonsContainer,
     MainBox,
     Title,
 } from "./UserInformationBlock.Styles";
+import CountryModel from "../../../../models/CountryModel";
 
-interface List<T> {
-    objects: T[];
-    optionValue: keyof T;
-    option: keyof T;
-}
+// interface List<T> {
+//     objects: T[];
+//     optionValue: keyof T;
+//     option: keyof T;
+// }
 
 interface InputField<T extends BaseModel, U> {
     modelPropertyName: keyof T;
     inputLabelString: string;
     type: "text" | "list";
-    objectsList?: List<U>;
+    modelReference?: {
+        objects: U[];
+        optionValue: keyof U;
+        option: keyof U;
+    };
 }
 
 interface UserInformationBlockProps<T extends BaseModel> {
@@ -30,7 +34,7 @@ interface UserInformationBlockProps<T extends BaseModel> {
     createModel: (id: number) => T; // factory property
     models?: T[];
     localStorageKey: string;
-    inputFields: InputField<T>[];
+    inputFields: InputField<T, unknown>[];
     t: TFunction;
 }
 
@@ -159,11 +163,11 @@ const UserInformationBlock = <T extends BaseModel>(
                                                     ] as string
                                                 }
                                             >
-                                                {field.objectsList?.objects?.map(
+                                                {field.modelReference?.objects.map(
                                                     (object, objectIndex) => (
                                                         <option
                                                             key={objectIndex}
-                                                            value={object.cca3}
+                                                            value={object.(field.modelReference?.option)}
                                                         >
                                                             {object.name.common}
                                                         </option>
@@ -184,3 +188,4 @@ const UserInformationBlock = <T extends BaseModel>(
 };
 
 export default UserInformationBlock;
+export type { InputField };
