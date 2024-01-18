@@ -1,18 +1,18 @@
 import BaseModel from "./BaseModel";
 
 class CourseModel extends BaseModel {
-  universityId?: number;
+  institutionId?: number;
   majorId?: number;
 
   constructor(
     id: number,
     data?: unknown,
     majorId?: number,
-    universityId?: number,
+    institutionId?: number,
   ) {
     super(id, data);
     this.majorId = majorId;
-    this.universityId = universityId;
+    this.institutionId = institutionId;
   }
 }
 
