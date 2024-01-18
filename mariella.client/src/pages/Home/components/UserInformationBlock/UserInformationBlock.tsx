@@ -35,7 +35,7 @@ interface UserInformationBlockProps<T extends BaseModel> {
 }
 
 const UserInformationBlock = <T extends BaseModel>(
-  props: UserInformationBlockProps<T>
+  props: UserInformationBlockProps<T>,
 ) => {
   const size = props.cardsLimit && props.cardsLimit > 2 ? "0.8rem" : "1rem";
   const width = props.cardsLimit && props.cardsLimit > 2 ? "30%" : "170px";
@@ -69,7 +69,7 @@ const UserInformationBlock = <T extends BaseModel>(
 
   const handleDialogInputChange = (
     key: keyof T,
-    event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
   ) => {
     const { value } = event.target;
     const buttons = [...buttonsModels];
@@ -126,11 +126,11 @@ const UserInformationBlock = <T extends BaseModel>(
                       <input
                         type="text"
                         onChange={(
-                          event: React.ChangeEvent<HTMLInputElement>
+                          event: React.ChangeEvent<HTMLInputElement>,
                         ) =>
                           handleDialogInputChange(
                             field.modelPropertyName,
-                            event
+                            event,
                           )
                         }
                         value={
@@ -143,11 +143,11 @@ const UserInformationBlock = <T extends BaseModel>(
                     return (
                       <select
                         onChange={(
-                          event: React.ChangeEvent<HTMLSelectElement>
+                          event: React.ChangeEvent<HTMLSelectElement>,
                         ) =>
                           handleDialogInputChange(
                             field.modelPropertyName,
-                            event
+                            event,
                           )
                         }
                         value={
@@ -172,7 +172,7 @@ const UserInformationBlock = <T extends BaseModel>(
                                   ]
                                 }
                               </option>
-                            )
+                            ),
                           )}
                       </select>
                     );

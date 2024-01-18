@@ -7,11 +7,11 @@ import Router from "./router/router";
 import i18n from "./translation";
 
 const App = () => (
-    <BrowserRouter>
-        <I18nextProvider i18n={i18n}>
-            <Router />
-        </I18nextProvider>
-    </BrowserRouter>
+  <BrowserRouter>
+    <I18nextProvider i18n={i18n}>
+      <Router />
+    </I18nextProvider>
+  </BrowserRouter>
 );
 
 const reactRoot = createRoot(document.getElementById("root") as HTMLElement);

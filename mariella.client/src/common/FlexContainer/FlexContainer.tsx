@@ -1,21 +1,21 @@
 import { MainContainer } from "./FlexContainer.Styles";
 
 export interface FlexContainerProps {
-    children: React.ReactNode;
-    width?: string;
-    maxHeight?: string;
-    maxWidth?: string;
+  children: React.ReactNode;
+  width?: string;
+  maxHeight?: string;
+  maxWidth?: string;
 }
 
 const FlexContainer = ({
-    width,
-    maxWidth,
-    maxHeight,
-    children,
+  width,
+  maxWidth,
+  maxHeight,
+  children,
 }: FlexContainerProps) => (
-    <MainContainer style={{ width, maxWidth, maxHeight }}>
-        {children}
-    </MainContainer>
+  <MainContainer style={{ width, maxWidth, maxHeight }}>
+    {children}
+  </MainContainer>
 );
 
 export default FlexContainer;

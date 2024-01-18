@@ -22,13 +22,13 @@ const localStorageKeys = {
 
 const UserInformation = ({ t }: UserInformationProps) => {
   const userInstitutions = safeJsonParse<InstitutionModel[]>(
-    localStorage.getItem(localStorageKeys.institutions) as string
+    localStorage.getItem(localStorageKeys.institutions) as string,
   );
   const userMajors = safeJsonParse<MajorModel[]>(
-    localStorage.getItem(localStorageKeys.courses) as string
+    localStorage.getItem(localStorageKeys.courses) as string,
   );
   const userCourses = safeJsonParse<CourseModel[]>(
-    localStorage.getItem(localStorageKeys.majors) as string
+    localStorage.getItem(localStorageKeys.majors) as string,
   );
 
   const [countriesList, setCountriesList] = useState<CountryModel[]>([]);

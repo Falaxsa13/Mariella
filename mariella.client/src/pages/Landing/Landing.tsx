@@ -9,65 +9,65 @@ import Header from "./components/Header/Header";
 import { lazy } from "react";
 
 const BackgroundCircle = lazy(
-    () => import("./components/BackgroundCircle/BackgroundCircle")
+  () => import("./components/BackgroundCircle/BackgroundCircle"),
 );
 const Contact = lazy(() => import("./components/ContactForm/ContactForm"));
 const MiddleBlock = lazy(() => import("./components/MiddleBlock/MiddleBlock"));
 const Container = lazy(() => import("../../common/Container/Container"));
 const ScrollToTop = lazy(() => import("../../common/ScrollToTop/ScrollToTop"));
 const ContentBlock = lazy(
-    () => import("./components/ContentBlock/ContentBlock")
+  () => import("./components/ContentBlock/ContentBlock"),
 );
 
 const Landing = () => {
-    return (
-        <Container>
-            <BackgroundCircle icon="circle.svg" />
-            <Header />
-            <ScrollToTop />
-            <ContentBlock
-                direction="right"
-                title={IntroContent.title}
-                content={IntroContent.text}
-                button={IntroContent.button}
-                icon="developer.svg"
-                id="intro"
-            />
-            <MiddleBlock
-                title={AfterIntroBlockContent.title}
-                content={AfterIntroBlockContent.text}
-                button={AfterIntroBlockContent.button}
-            />
-            <ContentBlock
-                direction="left"
-                title={GradeControlContent.title}
-                content={GradeControlContent.text}
-                section={GradeControlContent.section}
-                icon="graphs.svg"
-                id="control"
-            />
-            <ContentBlock
-                direction="right"
-                title={MarketplaceContent.title}
-                content={MarketplaceContent.text}
-                icon="product-launch.svg"
-                id="marketplace"
-            />
-            <ContentBlock
-                direction="left"
-                title={GetGradeContent.title}
-                content={GetGradeContent.text}
-                icon="waving.svg"
-                id="grade"
-            />
-            <Contact
-                title={ContactContent.title}
-                content={ContactContent.text}
-                id="contact"
-            />
-            <Footer />
-        </Container>
-    );
+  return (
+    <Container>
+      <BackgroundCircle icon="circle.svg" />
+      <Header />
+      <ScrollToTop />
+      <ContentBlock
+        direction="right"
+        title={IntroContent.title}
+        content={IntroContent.text}
+        button={IntroContent.button}
+        icon="developer.svg"
+        id="intro"
+      />
+      <MiddleBlock
+        title={AfterIntroBlockContent.title}
+        content={AfterIntroBlockContent.text}
+        button={AfterIntroBlockContent.button}
+      />
+      <ContentBlock
+        direction="left"
+        title={GradeControlContent.title}
+        content={GradeControlContent.text}
+        section={GradeControlContent.section}
+        icon="graphs.svg"
+        id="control"
+      />
+      <ContentBlock
+        direction="right"
+        title={MarketplaceContent.title}
+        content={MarketplaceContent.text}
+        icon="product-launch.svg"
+        id="marketplace"
+      />
+      <ContentBlock
+        direction="left"
+        title={GetGradeContent.title}
+        content={GetGradeContent.text}
+        icon="waving.svg"
+        id="grade"
+      />
+      <Contact
+        title={ContactContent.title}
+        content={ContactContent.text}
+        id="contact"
+      />
+      <Footer />
+    </Container>
+  );
 };
 
 export default Landing;
