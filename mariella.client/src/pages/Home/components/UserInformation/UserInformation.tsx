@@ -1,7 +1,5 @@
 import translation from "../../../../locales/en/translation.json";
-import UserInformationBlock, {
-    InputField,
-} from "../UserInformationBlock/UserInformationBlock";
+import UserInformationBlock from "../UserInformationBlock/UserInformationBlock";
 import InstitutionModel from "../../../../models/InstitutionModel";
 import MajorModel from "../../../../models/MajorModel";
 import CourseModel from "../../../../models/CourseModel";
@@ -13,115 +11,113 @@ import { TFunction } from "i18next";
 import { useEffect, useState } from "react";
 
 interface UserInformationProps {
-    t: TFunction;
+  t: TFunction;
 }
 
 const localStorageKeys = {
-    institutions: "userInstitutions",
-    majors: "userMajors",
-    courses: "userCourses",
+  institutions: "userInstitutions",
+  majors: "userMajors",
+  courses: "userCourses",
 };
 
 const UserInformation = ({ t }: UserInformationProps) => {
-    const userInstitutions = safeJsonParse<InstitutionModel[]>(
-        localStorage.getItem(userInstitutionLocalStorageKey) as string
-    );
-    const userMajors = safeJsonParse<MajorModel[]>(
-        localStorage.getItem(userMajorsLocalStorageKey) as string
-    );
-    const userCourses = safeJsonParse<CourseModel[]>(
-        localStorage.getItem(userCoursesLocalStorageKey) as string
-    );
+  const userInstitutions = safeJsonParse<InstitutionModel[]>(
+    localStorage.getItem(localStorageKeys.institutions) as string
+  );
+  const userMajors = safeJsonParse<MajorModel[]>(
+    localStorage.getItem(localStorageKeys.courses) as string
+  );
+  const userCourses = safeJsonParse<CourseModel[]>(
+    localStorage.getItem(localStorageKeys.majors) as string
+  );
 
-    const [countriesList, setCountriesList] = useState<CountryModel[]>([]);
+  const [countriesList, setCountriesList] = useState<CountryModel[]>([]);
 
-    useEffect(() => {
-        fetch("https://restcountries.com/v3.1/all?fields=cca3,name,flag")
-            .then((response: Response) => response.json())
-            .then((data: CountryModel[]) => setCountriesList(data))
-            .catch((error) => console.error("Error:", error));
-    }, []);
+  useEffect(() => {
+    fetch("https://restcountries.com/v3.1/all?fields=cca3,name,flag")
+      .then((response: Response) => response.json())
+      .then((data: CountryModel[]) => setCountriesList(data))
+      .catch((error) => console.error("Error:", error));
+  }, []);
 
-    const list1: List<CountryModel> = {
-        objects: countriesList,
-        optionValue: "cca3",
-        option: "name",
-    };
-
-    return (
-        <MainBox>
-            <Banner />
-            <UserInformationBlock<InstitutionModel>
-                title={t(translation.Institution)}
-                addText={t(translation.AddInstitution)}
-                t={t}
-                cardsLimit={1}
-                models={userInstitutions}
-                createModel={(id) => new InstitutionModel(id)}
-                localStorageKey={userInstitutionLocalStorageKey}
-                inputFields={[
-                    {
-                        modelPropertyName: "name",
-                        inputLabelString: t("Name"),
-                        type: "text",
-                    },
-                    {
-                        modelPropertyName: "abbreviation",
-                        inputLabelString: t("Abbreviation"),
-                        type: "text",
-                    },
-                    {
-                        modelPropertyName: "countryCca3",
-                        inputLabelString: t("Country"),
-                        type: "list",
-                        objectsList: list1,
-                    },
-                ]}
-            />
-            <UserInformationBlock<MajorModel>
-                title={t(translation.Major)}
-                addText={t(translation.AddMajor)}
-                t={t}
-                cardsLimit={1}
-                models={userMajors}
-                createModel={(id) => new MajorModel(id)}
-                localStorageKey={userMajorsLocalStorageKey}
-                inputFields={[
-                    {
-                        modelPropertyName: "name",
-                        inputLabelString: t("Name"),
-                        type: "text",
-                    },
-                    {
-                        modelPropertyName: "abbreviation",
-                        inputLabelString: t("Abbreviation"),
-                        type: "text",
-                    },
-                ]}
-            />
-            <UserInformationBlock<CourseModel>
-                title={t(translation.Courses)}
-                addText={t(translation.AddCourse)}
-                t={t}
-                cardsLimit={5}
-                models={userCourses}
-                createModel={(id) => new CourseModel(id)}
-                localStorageKey={userCoursesLocalStorageKey}
-                inputFields={[
-                    {
-                        modelPropertyName: "name",
-                        inputLabelString: t("Name"),
-                        type: "text",
-                    },
-                    {
-                        modelPropertyName: "abbreviation",
-                        inputLabelString: t("Abbreviation"),
-                        type: "text",
-                    },
-                ]}
-            />
-        </MainBox>
-    );
+  return (
+    <MainBox>
+      <Banner />
+      <UserInformationBlock<InstitutionModel>
+        title={t(translation.Institution)}
+        addText={t(translation.AddInstitution)}
+        t={t}
+        cardsLimit={1}
+        models={userInstitutions}
+        createModel={(id) => new InstitutionModel(id)}
+        localStorageKey={localStorageKeys.institutions}
+        inputFields={[
+          {
+            modelPropertyName: "name",
+            inputLabelString: t("Name"),
+            type: "text",
+          },
+          {
+            modelPropertyName: "abbreviation",
+            inputLabelString: t("Abbreviation"),
+            type: "text",
+          },
+          {
+            modelPropertyName: "countryCca3",
+            inputLabelString: t("Country"),
+            type: "list",
+            modelReference: {
+              objects: countriesList,
+              optionValue: "cca3",
+              option: "commonName",
+            },
+          },
+        ]}
+      />
+      <UserInformationBlock<MajorModel>
+        title={t(translation.Major)}
+        addText={t(translation.AddMajor)}
+        t={t}
+        cardsLimit={1}
+        models={userMajors}
+        createModel={(id) => new MajorModel(id)}
+        localStorageKey={localStorageKeys.majors}
+        inputFields={[
+          {
+            modelPropertyName: "name",
+            inputLabelString: t("Name"),
+            type: "text",
+          },
+          {
+            modelPropertyName: "abbreviation",
+            inputLabelString: t("Abbreviation"),
+            type: "text",
+          },
+        ]}
+      />
+      <UserInformationBlock<CourseModel>
+        title={t(translation.Courses)}
+        addText={t(translation.AddCourse)}
+        t={t}
+        cardsLimit={5}
+        models={userCourses}
+        createModel={(id) => new CourseModel(id)}
+        localStorageKey={localStorageKeys.courses}
+        inputFields={[
+          {
+            modelPropertyName: "name",
+            inputLabelString: t("Name"),
+            type: "text",
+          },
+          {
+            modelPropertyName: "abbreviation",
+            inputLabelString: t("Abbreviation"),
+            type: "text",
+          },
+        ]}
+      />
+    </MainBox>
+  );
 };
 
 export default withTranslation()(UserInformation);
