@@ -1,6 +1,7 @@
 import translation from "../../../../locales/en/translation.json";
 import UserInformationBlock from "../UserInformationBlock/UserInformationBlock";
 import InstitutionModel from "../../../../models/InstitutionModel";
+import BaseModel from "../../../../models/BaseModel";
 import MajorModel from "../../../../models/MajorModel";
 import CourseModel from "../../../../models/CourseModel";
 import CountryModel from "../../../../models/CountryModel";
@@ -10,7 +11,6 @@ import { withTranslation } from "react-i18next";
 import { MainBox, Banner } from "./UserInformation.Styles";
 import { TFunction } from "i18next";
 import React, { useEffect, useState } from "react";
-import BaseModel from "../../../../models/BaseModel";
 
 interface UserInformationProps {
   t: TFunction;
@@ -62,6 +62,10 @@ const UserInformation = ({ t }: UserInformationProps) => {
           })
         );
 
+        formattedData.sort((countryModel1, countryModel2) =>
+          countryModel1.commonName.localeCompare(countryModel2.commonName, "en")
+        );
+
         setCountriesList(formattedData);
       })
       .catch((error) => console.error("Error:", error));
@@ -77,7 +81,6 @@ const UserInformation = ({ t }: UserInformationProps) => {
         cardsLimit={1}
         models={userInstitutions}
         createModel={(id) => new InstitutionModel(id)}
-        localStorageKey={localStorageKeys.institutions}
         onModelsChange={(newInstitutions) =>
           handleModelChange(newInstitutions, setUserInstitutions)
         }
@@ -111,7 +114,6 @@ const UserInformation = ({ t }: UserInformationProps) => {
         cardsLimit={1}
         models={userMajors}
         createModel={(id) => new MajorModel(id)}
-        localStorageKey={localStorageKeys.majors}
         onModelsChange={(newMajors) =>
           handleModelChange(newMajors, setUserMajors)
         }
@@ -145,7 +147,6 @@ const UserInformation = ({ t }: UserInformationProps) => {
         cardsLimit={5}
         models={userCourses}
         createModel={(id) => new CourseModel(id)}
-        localStorageKey={localStorageKeys.courses}
         onModelsChange={(newCourses) =>
           handleModelChange(newCourses, setUserCourses)
         }

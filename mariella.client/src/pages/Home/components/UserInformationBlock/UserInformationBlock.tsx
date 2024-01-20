@@ -29,7 +29,6 @@ interface UserInformationBlockProps<T extends BaseModel> {
   cardsLimit: number;
   createModel: (id: number) => T; // factory property
   models?: T[];
-  localStorageKey: string;
   inputFields: InputField<T>[];
   onModelsChange: (modelsArray: T[]) => void;
   t: TFunction;
