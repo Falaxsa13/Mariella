@@ -25,24 +25,27 @@ const localStorageKeys = {
 const UserInformation = ({ t }: UserInformationProps) => {
   const [userInstitutions, setUserInstitutions] = useState(
     safeJsonParse<InstitutionModel[]>(
-      localStorage.getItem(localStorageKeys.institutions) as string
+      localStorage.getItem(localStorageKeys.institutions),
+      []
     )
   );
   const [userMajors, setUserMajors] = useState(
     safeJsonParse<MajorModel[]>(
-      localStorage.getItem(localStorageKeys.majors) as string
+      localStorage.getItem(localStorageKeys.majors),
+      []
     )
   );
   const [userCourses, setUserCourses] = useState(
     safeJsonParse<CourseModel[]>(
-      localStorage.getItem(localStorageKeys.courses) as string
+      localStorage.getItem(localStorageKeys.courses),
+      []
     )
   );
   const [countriesList, setCountriesList] = useState<CountryModel[]>([]);
 
   const handleModelChange = <T extends BaseModel>(
     modelsArray: T[],
-    setModels: React.Dispatch<React.SetStateAction<T[] | undefined>>
+    setModels: React.Dispatch<React.SetStateAction<T[]>>
   ) => {
     // do not uncomment
     // localStorage.setItem(props.localStorageKey, JSON.stringify(buttons));
@@ -160,6 +163,16 @@ const UserInformation = ({ t }: UserInformationProps) => {
             modelPropertyName: "abbreviation",
             inputLabelString: t("Abbreviation"),
             type: "text",
+          },
+          {
+            modelPropertyName: "majorId",
+            inputLabelString: t("Major"),
+            type: "list",
+            modelReference: {
+              objects: userMajors,
+              optionValue: "id",
+              option: "name",
+            },
           },
         ]}
       />

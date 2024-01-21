@@ -11,7 +11,7 @@ import {
 import CountryModel from "../../../../models/CountryModel";
 
 interface List<T> {
-  objects?: T[];
+  objects: T[];
   optionValue: keyof T;
   option: keyof T;
 }
@@ -28,7 +28,7 @@ interface UserInformationBlockProps<T extends BaseModel> {
   addText: string;
   cardsLimit: number;
   createModel: (id: number) => T; // factory property
-  models?: T[];
+  models: T[];
   inputFields: InputField<T>[];
   onModelsChange: (modelsArray: T[]) => void;
   t: TFunction;
@@ -41,7 +41,7 @@ const UserInformationBlock = <T extends BaseModel>(
   const width = props.cardsLimit && props.cardsLimit > 2 ? "30%" : "170px";
   const height = props.cardsLimit && props.cardsLimit > 2 ? "80Basepx" : "90px";
   const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
-  const [buttonsModels, setButtonsModels] = useState<T[]>(props.models || []);
+  const [buttonsModels, setButtonsModels] = useState<T[]>(props.models);
   const [currentButtonModel, setCurrentButtonModel] = useState<T>();
 
   useEffect(() => {
@@ -187,4 +187,3 @@ const UserInformationBlock = <T extends BaseModel>(
 };
 
 export default UserInformationBlock;
-export type { List };
