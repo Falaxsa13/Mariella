@@ -1,9 +1,9 @@
-const safeJsonParse = <T>(str: string) => {
+const safeJsonParse = <T>(str: string | null, defaultValue: T) => {
   try {
-    const jsonValue: T = JSON.parse(str);
+    const jsonValue: T = JSON.parse(str as string);
     return jsonValue;
   } catch {
-    return undefined;
+    return defaultValue;
   }
 };
 

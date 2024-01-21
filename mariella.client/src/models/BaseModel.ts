@@ -2,6 +2,7 @@ class BaseModel {
   id: number;
   name?: string;
   abbreviation?: string;
+  icon?: string;
 
   constructor(id: number, data?: unknown) {
     this.id = id;
