@@ -43,7 +43,6 @@ interface InputField<T> {
 }
 
 interface InputDialogProps<T> {
-  title?: string;
   model: T;
   inputFields: InputField<T>[];
   isOpen: boolean;
