@@ -95,7 +95,6 @@ const UserInformationBlock = <T extends BaseModel>(
     if (currentButtonModel)
       currentButtonModel.setProperty(key, value as T[keyof T]);
     setButtonsModels(buttons);
-    console.log(buttons);
   };
 
   return (
@@ -144,10 +143,13 @@ const UserInformationBlock = <T extends BaseModel>(
               inputElement = (
                 <input
                   type="text"
+                  autoComplete="disabled"
+                  value={
+                    (currentButtonModel[modelPropertyName] as string) ?? ""
+                  }
                   onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
                     handleDialogInputChange(modelPropertyName, event)
                   }
-                  value={currentButtonModel[modelPropertyName] as string}
                 />
               );
             } else if (
@@ -162,8 +164,12 @@ const UserInformationBlock = <T extends BaseModel>(
                   onChange={(event: React.ChangeEvent<HTMLSelectElement>) =>
                     handleDialogInputChange(modelPropertyName, event)
                   }
+                  defaultValue={""}
                   value={currentButtonModel[modelPropertyName] as string}
                 >
+                  <option disabled value={""}>
+                    Select...
+                  </option>
                   {field.inputType.list.models.map((object, objectIndex) => (
                     <option
                       key={objectIndex}
@@ -187,10 +193,14 @@ const UserInformationBlock = <T extends BaseModel>(
                   model.id ==
                   modelUsedToFilter?.[modelReference.propertyUsedToFilter]
               );
-              console.log(modelUsedToFilter);
-              console.log(modelToFilter);
+
               inputElement = (
-                <input type="text" value={modelToFilter?.name} readOnly />
+                <input
+                  autoComplete="disabled"
+                  type="text"
+                  value={modelToFilter?.name ?? ""}
+                  disabled
+                />
               );
             }
 
