@@ -4,9 +4,9 @@ import { DialogContainer, Content } from "./Dialog.Styles";
 interface DialogProps {
   isOpen: boolean;
   children: React.ReactNode;
-  onClose: () => void;
   shouldCloseOnEsc: boolean;
   shouldCloseOnClickOutside: boolean;
+  onClose: () => void;
 }
 
 const Dialog = (props: DialogProps) => {
