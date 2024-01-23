@@ -11,16 +11,36 @@ import {
 import CountryModel from "../../../../models/CountryModel";
 
 interface List<T> {
-  objects: T[];
+  models: T[];
   optionValue: keyof T;
   option: keyof T;
 }
 
+interface ModelReference<U, V> {
+  modelArrayToFilter: BaseModel[];
+  modelArrayUsedToFilter: U[];
+  propertyToFilter: keyof V;
+  propertyUsedToFilter: keyof U;
+}
+
 interface InputField<T extends BaseModel> {
-  modelPropertyName: keyof T;
-  inputLabelString: string;
-  type: "text" | "list";
-  modelReference?: List<BaseModel> | List<CountryModel>;
+  inputLabelText: string;
+  inputType:
+    | { type: "text"; modelPropertyName: keyof T }
+    | {
+        type: "countryModelList";
+        modelPropertyName: keyof T;
+        list: List<CountryModel>;
+      }
+    | {
+        type: "baseModelList";
+        modelPropertyName: keyof T;
+        list: List<BaseModel>;
+      }
+    | {
+        type: "modelReference";
+        modelReference: ModelReference<BaseModel, T>;
+      };
 }
 
 interface UserInformationBlockProps<T extends BaseModel> {
@@ -75,7 +95,6 @@ const UserInformationBlock = <T extends BaseModel>(
     if (currentButtonModel)
       currentButtonModel.setProperty(key, value as T[keyof T]);
     setButtonsModels(buttons);
-    console.log(buttons);
   };
 
   return (
@@ -115,71 +134,83 @@ const UserInformationBlock = <T extends BaseModel>(
           shouldCloseOnEsc={true}
           shouldCloseOnClickOutside={true}
         >
-          {props.inputFields?.map((field, fieldIndex) => (
-            <div key={fieldIndex}>
-              <span>{field.inputLabelString}</span>
-              {(() => {
-                switch (field.type) {
-                  case "text":
-                    return (
-                      <input
-                        type="text"
-                        onChange={(
-                          event: React.ChangeEvent<HTMLInputElement>
-                        ) =>
-                          handleDialogInputChange(
-                            field.modelPropertyName,
-                            event
-                          )
-                        }
-                        value={
-                          currentButtonModel[field.modelPropertyName] as string
-                        }
-                      />
-                    );
+          {props.inputFields.map((field, fieldIndex) => {
+            let inputElement = null;
 
-                  case "list":
-                    return (
-                      <select
-                        onChange={(
-                          event: React.ChangeEvent<HTMLSelectElement>
-                        ) =>
-                          handleDialogInputChange(
-                            field.modelPropertyName,
-                            event
-                          )
-                        }
-                        value={
-                          currentButtonModel[field.modelPropertyName] as string
-                        }
-                      >
-                        {field.modelReference?.objects?.map(
-                          (object, objectIndex) => (
-                            <option
-                              key={objectIndex}
-                              value={
-                                object[
-                                  field.modelReference
-                                    ?.optionValue as keyof object
-                                ]
-                              }
-                            >
-                              {
-                                object[
-                                  field.modelReference?.option as keyof object
-                                ]
-                              }
-                            </option>
-                          )
-                        )}
-                      </select>
-                    );
-                  default:
-                    return null;
-                }
-              })()}
-            </div>
-          ))}
+            if (field.inputType.type == "text") {
+              const modelPropertyName = field.inputType.modelPropertyName;
+
+              inputElement = (
+                <input
+                  type="text"
+                  autoComplete="disabled"
+                  value={
+                    (currentButtonModel[modelPropertyName] as string) ?? ""
+                  }
+                  onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                    handleDialogInputChange(modelPropertyName, event)
+                  }
+                />
+              );
+            } else if (
+              field.inputType.type == "baseModelList" ||
+              field.inputType.type == "countryModelList"
+            ) {
+              const modelPropertyName = field.inputType.modelPropertyName;
+              const list = field.inputType.list;
+
+              inputElement = (
+                <select
+                  onChange={(event: React.ChangeEvent<HTMLSelectElement>) =>
+                    handleDialogInputChange(modelPropertyName, event)
+                  }
+                  defaultValue={""}
+                  value={currentButtonModel[modelPropertyName] as string}
+                >
+                  <option disabled value={""}>
+                    Select...
+                  </option>
+                  {field.inputType.list.models.map((object, objectIndex) => (
+                    <option
+                      key={objectIndex}
+                      value={object[list.optionValue as keyof object]}
+                    >
+                      {object[list.option as keyof object]}
+                    </option>
+                  ))}
+                </select>
+              );
+            } else if (field.inputType.type == "modelReference") {
+              const modelReference = field.inputType.modelReference;
+              const modelUsedToFilter =
+                modelReference.modelArrayUsedToFilter.find(
+                  (model) =>
+                    model.id ==
+                    currentButtonModel[modelReference.propertyToFilter]
+                );
+              const modelToFilter = modelReference.modelArrayToFilter.find(
+                (model) =>
+                  model.id ==
+                  modelUsedToFilter?.[modelReference.propertyUsedToFilter]
+              );
+
+              inputElement = (
+                <input
+                  autoComplete="disabled"
+                  type="text"
+                  value={modelToFilter?.name ?? ""}
+                  disabled
+                />
+              );
+            }
+
+            return (
+              <div key={fieldIndex}>
+                <span>{field.inputLabelText}</span>
+                {inputElement}
+              </div>
+            );
+          })}
         </Dialog>
       )}
     </MainBox>
@@ -187,3 +218,4 @@ const UserInformationBlock = <T extends BaseModel>(
 };
 
 export default UserInformationBlock;
+export type { ModelReference };

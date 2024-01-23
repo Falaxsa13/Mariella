@@ -1,5 +1,7 @@
 import translation from "../../../../locales/en/translation.json";
-import UserInformationBlock from "../UserInformationBlock/UserInformationBlock";
+import UserInformationBlock, {
+  ModelReference,
+} from "../UserInformationBlock/UserInformationBlock";
 import InstitutionModel from "../../../../models/InstitutionModel";
 import BaseModel from "../../../../models/BaseModel";
 import MajorModel from "../../../../models/MajorModel";
@@ -89,23 +91,23 @@ const UserInformation = ({ t }: UserInformationProps) => {
         }
         inputFields={[
           {
-            modelPropertyName: "name",
-            inputLabelString: t("Name"),
-            type: "text",
+            inputLabelText: t("Name"),
+            inputType: { type: "text", modelPropertyName: "name" },
           },
           {
-            modelPropertyName: "abbreviation",
-            inputLabelString: t("Abbreviation"),
-            type: "text",
+            inputLabelText: t("Abbreviation"),
+            inputType: { type: "text", modelPropertyName: "abbreviation" },
           },
           {
-            modelPropertyName: "countryCca3",
-            inputLabelString: t("Country"),
-            type: "list",
-            modelReference: {
-              objects: countriesList,
-              optionValue: "cca3",
-              option: "commonName",
+            inputLabelText: t("Country"),
+            inputType: {
+              type: "countryModelList",
+              modelPropertyName: "countryCca3",
+              list: {
+                models: countriesList,
+                optionValue: "cca3",
+                option: "commonName",
+              },
             },
           },
         ]}
@@ -122,23 +124,23 @@ const UserInformation = ({ t }: UserInformationProps) => {
         }
         inputFields={[
           {
-            modelPropertyName: "name",
-            inputLabelString: t("Name"),
-            type: "text",
+            inputLabelText: t("Name"),
+            inputType: { type: "text", modelPropertyName: "name" },
           },
           {
-            modelPropertyName: "abbreviation",
-            inputLabelString: t("Abbreviation"),
-            type: "text",
+            inputLabelText: t("Abbreviation"),
+            inputType: { type: "text", modelPropertyName: "abbreviation" },
           },
           {
-            modelPropertyName: "institutionId",
-            inputLabelString: t("Institution"),
-            type: "list",
-            modelReference: {
-              objects: userInstitutions,
-              optionValue: "id",
-              option: "name",
+            inputLabelText: t("Institution"),
+            inputType: {
+              type: "baseModelList",
+              modelPropertyName: "institutionId",
+              list: {
+                models: userInstitutions,
+                optionValue: "id",
+                option: "name",
+              },
             },
           },
         ]}
@@ -155,23 +157,35 @@ const UserInformation = ({ t }: UserInformationProps) => {
         }
         inputFields={[
           {
-            modelPropertyName: "name",
-            inputLabelString: t("Name"),
-            type: "text",
+            inputLabelText: t("Name"),
+            inputType: { type: "text", modelPropertyName: "name" },
           },
           {
-            modelPropertyName: "abbreviation",
-            inputLabelString: t("Abbreviation"),
-            type: "text",
+            inputLabelText: t("Abbreviation"),
+            inputType: { type: "text", modelPropertyName: "abbreviation" },
           },
           {
-            modelPropertyName: "majorId",
-            inputLabelString: t("Major"),
-            type: "list",
-            modelReference: {
-              objects: userMajors,
-              optionValue: "id",
-              option: "name",
+            inputLabelText: t("Major"),
+            inputType: {
+              type: "baseModelList",
+              modelPropertyName: "majorId",
+              list: {
+                models: userMajors,
+                optionValue: "id",
+                option: "name",
+              },
+            },
+          },
+          {
+            inputLabelText: t("Institution"),
+            inputType: {
+              type: "modelReference",
+              modelReference: {
+                modelArrayToFilter: userInstitutions,
+                modelArrayUsedToFilter: userMajors,
+                propertyToFilter: "majorId",
+                propertyUsedToFilter: "institutionId",
+              } as ModelReference<MajorModel, CourseModel>,
             },
           },
         ]}
