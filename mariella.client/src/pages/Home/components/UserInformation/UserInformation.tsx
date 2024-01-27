@@ -83,7 +83,7 @@ const UserInformation = ({ t }: UserInformationProps) => {
         addText={t(translation.AddInstitution)}
         t={t}
         cardsLimit={1}
-        models={userInstitutions}
+        initialModels={userInstitutions}
         createModel={(id) => new InstitutionModel(id)}
         onModelsChange={(newInstitutions) =>
           handleModelChange(newInstitutions, setUserInstitutions)
@@ -116,7 +116,7 @@ const UserInformation = ({ t }: UserInformationProps) => {
         addText={t(translation.AddMajor)}
         t={t}
         cardsLimit={1}
-        models={userMajors}
+        initialModels={userMajors}
         createModel={(id) => new MajorModel(id)}
         onModelsChange={(newMajors) =>
           handleModelChange(newMajors, setUserMajors)
@@ -149,7 +149,7 @@ const UserInformation = ({ t }: UserInformationProps) => {
         addText={t(translation.AddCourse)}
         t={t}
         cardsLimit={5}
-        models={userCourses}
+        initialModels={userCourses}
         createModel={(id) => new CourseModel(id)}
         onModelsChange={(newCourses) =>
           handleModelChange(newCourses, setUserCourses)

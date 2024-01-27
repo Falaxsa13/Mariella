@@ -9,7 +9,7 @@ interface List<T> {
   option: keyof T;
 }
 
-interface ModelReference<
+export interface ModelReference<
   PropertyUsedToFilterType = BaseModel,
   PropertyToFilterType = BaseModel
 > {
@@ -19,7 +19,7 @@ interface ModelReference<
   propertyUsedToFilter: keyof PropertyUsedToFilterType;
 }
 
-interface InputField<T> {
+export interface InputField<T> {
   inputLabelText: string;
   inputType:
     | {
@@ -83,7 +83,7 @@ const InputDialog = <T extends BaseModel>(props: InputDialogProps<T>) => {
             <input
               type="text"
               autoComplete="disabled"
-              value={(currentModel[modelPropertyName] as string) ?? ""}
+              value={currentModel[modelPropertyName] as string}
               onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
                 handleDialogInputChange(modelPropertyName, event)
               }
@@ -150,4 +150,3 @@ const InputDialog = <T extends BaseModel>(props: InputDialogProps<T>) => {
 };
 
 export default InputDialog;
-export type { ModelReference, InputField };
