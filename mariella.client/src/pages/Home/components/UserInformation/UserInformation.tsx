@@ -1,7 +1,5 @@
 import translation from "../../../../locales/en/translation.json";
-import UserInformationBlock, {
-  ModelReference,
-} from "../UserInformationBlock/UserInformationBlock";
+import UserInformationBlock from "../UserInformationBlock/UserInformationBlock";
 import InstitutionModel from "../../../../models/InstitutionModel";
 import BaseModel from "../../../../models/BaseModel";
 import MajorModel from "../../../../models/MajorModel";
@@ -9,6 +7,7 @@ import CourseModel from "../../../../models/CourseModel";
 import CountryModel from "../../../../models/CountryModel";
 import ApiCountryModel from "../../../../models/api/ApiCountryModel";
 import safeJsonParse from "../../../../common/utils/safeJsonParse";
+import { ModelReference } from "../InputDialog/InputDialog";
 import { withTranslation } from "react-i18next";
 import { MainBox, Banner } from "./UserInformation.Styles";
 import { TFunction } from "i18next";
@@ -84,7 +83,7 @@ const UserInformation = ({ t }: UserInformationProps) => {
         addText={t(translation.AddInstitution)}
         t={t}
         cardsLimit={1}
-        models={userInstitutions}
+        initialModels={userInstitutions}
         createModel={(id) => new InstitutionModel(id)}
         onModelsChange={(newInstitutions) =>
           handleModelChange(newInstitutions, setUserInstitutions)
@@ -117,7 +116,7 @@ const UserInformation = ({ t }: UserInformationProps) => {
         addText={t(translation.AddMajor)}
         t={t}
         cardsLimit={1}
-        models={userMajors}
+        initialModels={userMajors}
         createModel={(id) => new MajorModel(id)}
         onModelsChange={(newMajors) =>
           handleModelChange(newMajors, setUserMajors)
@@ -150,7 +149,7 @@ const UserInformation = ({ t }: UserInformationProps) => {
         addText={t(translation.AddCourse)}
         t={t}
         cardsLimit={5}
-        models={userCourses}
+        initialModels={userCourses}
         createModel={(id) => new CourseModel(id)}
         onModelsChange={(newCourses) =>
           handleModelChange(newCourses, setUserCourses)

@@ -1,7 +1,6 @@
 import i18n from "i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 import XHR from "i18next-xhr-backend";
-
 import translationEn from "./locales/en/translation.json";
 import translationEs from "./locales/es/translation.json";
 
@@ -29,5 +28,11 @@ i18n
     ns: ["translations"],
     defaultNS: "translations",
   });
+
+export const t = (
+  key: keyof typeof translationEn & keyof typeof translationEs
+) => {
+  return i18n.t(key);
+};
 
 export default i18n;
