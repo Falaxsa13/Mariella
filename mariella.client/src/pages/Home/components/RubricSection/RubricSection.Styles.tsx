@@ -14,11 +14,43 @@ export const ActionsContainer = styled.div`
   border-radius: 12px;
 `;
 
-export const StyledSpan = styled.span`
+export const ButtonStyledSpan = styled.span`
   color: #722aee;
-  text-align: center;
-  font-size: 15px;
-  font-style: normal;
   font-weight: 400;
+  font-style: normal;
+`;
+
+export const StyledTable = styled.table`
+  position: absolute;
+  font-size: 16px;
+  border-spacing: 100px;
+  text-align: center;
+  font-weight: bold;
+
+  td,
+  th {
+    padding: 10px;
+  }
+
+  tr {
+    border-bottom: 2px solid #b28bf6;
+  }
+`;
+
+export const StyledSpan = styled.span`
+  color: #4000b0;
+  text-align: center;
+  font-family: Motiva Sans;
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 700;
   line-height: normal;
+`;
+
+export const RubricSectionBlockContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2rem;
+  height: 20rem;
 `;

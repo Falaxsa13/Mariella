@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import BaseModel from "../../../../models/BaseModel";
+import BaseModel from "../../models/BaseModel";
 
 export function useInputDialog<T extends BaseModel>(
   initialModels: T[],
@@ -12,6 +12,7 @@ export function useInputDialog<T extends BaseModel>(
 
   useEffect(() => {
     onModelsChange(models);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [models]);
 
   const openDialog = (model?: T) => {

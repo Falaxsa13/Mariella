@@ -1,32 +1,59 @@
-import RubricSectionBLock from "../RubricSectionBlock/RubricSectionBlock";
-import ButtonWithIcon from "../../../../common/ButtonWithIcon/ButtonWithIcon";
+import ButtonWithIcon from "../../../../common/components/ButtonWithIcon/ButtonWithIcon";
 import {
   RubricSectionContainer,
   ActionsContainer,
   StyledSpan,
 } from "./RubricSection.Styles";
+import {
+  StyledTable,
+  RubricSectionBlockContainer,
+  ButtonStyledSpan,
+} from "./RubricSection.Styles";
 
 const RubricSection = () => {
-  const Button = (src: string, text: string) => (
+  const Button = (src: string, text: string, onClick?: () => void) => (
     <ButtonWithIcon
       icon={{ src: src, width: "50px" }}
       color="white"
       text={text}
       width="160px"
       height="120px"
-      styledSpan={StyledSpan}
+      styledSpan={ButtonStyledSpan}
+      onClick={onClick}
     />
   );
 
   return (
     <RubricSectionContainer>
-      <RubricSectionBLock title="Crea una rúbrica">
+      <RubricSectionBlockContainer>
+        <StyledSpan>Add a rubric</StyledSpan>
         <ActionsContainer>
-          {Button("add.svg", "Crear nueva rúbrica")}
-          {Button("explore.svg", "Explorar plantillas")}
+          {Button("add.svg", "Create new rubric")}
+          {Button("explore.svg", "Explore templates")}
         </ActionsContainer>
-      </RubricSectionBLock>
-      <RubricSectionBLock title="Tus rúbricas">{null}</RubricSectionBLock>
+      </RubricSectionBlockContainer>
+      <RubricSectionBlockContainer>
+        <StyledTable>
+          <thead>
+            <tr>
+              <th>
+                <StyledSpan>Your rubrics</StyledSpan>
+              </th>
+              <th>Professor</th>
+              <th>Author</th>
+              <th>Semester</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Álgebra Lineal</td>
+              <td>Julio Yarasca</td>
+              <td>Yo</td>
+              <td>2023-I</td>
+            </tr>
+          </tbody>
+        </StyledTable>
+      </RubricSectionBlockContainer>
     </RubricSectionContainer>
   );
 };

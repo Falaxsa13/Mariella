@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Dialog from "../../../../common/Dialog/Dialog";
+import Dialog from "../../../../common/components/Dialog/Dialog";
 import BaseModel from "../../../../models/BaseModel";
 import CountryModel from "../../../../models/CountryModel";
 
