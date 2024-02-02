@@ -1,4 +1,6 @@
 import ButtonWithIcon from "../../../../common/components/ButtonWithIcon/ButtonWithIcon";
+import localStorageKeys from "../../../../common/constants/localStorageKeys";
+import { useLocalStorage } from "../../../../common/hooks/useLocalStorage";
 import {
   RubricSectionContainer,
   ActionsContainer,
@@ -11,6 +13,11 @@ import {
 } from "./RubricSection.Styles";
 
 const RubricSection = () => {
+  const [userRubrics, setUserRubrics] = useLocalStorage(
+    localStorageKeys.rubrics,
+    []
+  );
+
   const Button = (src: string, text: string, onClick?: () => void) => (
     <ButtonWithIcon
       icon={{ src: src, width: "50px" }}

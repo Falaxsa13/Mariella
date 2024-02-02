@@ -26,14 +26,20 @@ export const StyledTable = styled.table`
   border-spacing: 100px;
   text-align: center;
   font-weight: bold;
-
   td,
   th {
     padding: 10px;
   }
-
   tr {
     border-bottom: 2px solid #b28bf6;
+  }
+  tbody {
+    tr {
+      :hover {
+        transition: all 0.3s ease-in-out;
+        background-color: #cbb4f5;
+      }
+    }
   }
 `;
 
