@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { SvgIcon } from "../../common/SvgIcon/SvgIcon";
+import {SvgIcon} from "../SvgIcon/SvgIcon";
 
 export const LogoContainer = styled(SvgIcon)`
   width: 5vw;

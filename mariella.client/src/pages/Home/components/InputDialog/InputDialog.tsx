@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import Dialog from "../../../../common/Dialog/Dialog";
+import { useEffect, useState, ChangeEvent } from "react";
+import Dialog from "../../../../common/components/Dialog/Dialog";
 import BaseModel from "../../../../models/BaseModel";
 import CountryModel from "../../../../models/CountryModel";
 
@@ -55,7 +55,7 @@ const InputDialog = <T extends BaseModel>(props: InputDialogProps<T>) => {
 
   const handleDialogInputChange = (
     key: keyof T,
-    event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    event: ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
     const { value } = event.target;
     setCurrentModel((prevModel) => ({ ...prevModel, [key]: value }));
@@ -84,7 +84,7 @@ const InputDialog = <T extends BaseModel>(props: InputDialogProps<T>) => {
               type="text"
               autoComplete="disabled"
               value={currentModel[modelPropertyName] as string}
-              onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+              onChange={(event: ChangeEvent<HTMLInputElement>) =>
                 handleDialogInputChange(modelPropertyName, event)
               }
             />
@@ -98,7 +98,7 @@ const InputDialog = <T extends BaseModel>(props: InputDialogProps<T>) => {
 
           inputElement = (
             <select
-              onChange={(event: React.ChangeEvent<HTMLSelectElement>) =>
+              onChange={(event: ChangeEvent<HTMLSelectElement>) =>
                 handleDialogInputChange(modelPropertyName, event)
               }
               defaultValue={""}

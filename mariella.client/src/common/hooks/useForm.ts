@@ -42,7 +42,7 @@ export const useForm = (validate: any) => {
   }, [errors, shouldSubmit]);
 
   const handleChange = (
-    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     event.persist();
     setValues((values) => ({

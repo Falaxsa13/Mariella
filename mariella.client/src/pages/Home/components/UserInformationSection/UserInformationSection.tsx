@@ -1,46 +1,34 @@
 import translation from "../../../../locales/en/translation.json";
-import UserInformationBlock from "../UserInformationBlock/UserInformationBlock";
+import UserInformationBlock from "../UserInformationSectionBlock/UserInformationSectionBlock";
 import InstitutionModel from "../../../../models/InstitutionModel";
 import BaseModel from "../../../../models/BaseModel";
 import MajorModel from "../../../../models/MajorModel";
 import CourseModel from "../../../../models/CourseModel";
 import CountryModel from "../../../../models/CountryModel";
 import ApiCountryModel from "../../../../models/api/ApiCountryModel";
-import safeJsonParse from "../../../../common/utils/safeJsonParse";
 import { ModelReference } from "../InputDialog/InputDialog";
 import { withTranslation } from "react-i18next";
-import { MainBox, Banner } from "./UserInformation.Styles";
+import { MainBox, Banner } from "./UserInformationSection.Styles";
 import { TFunction } from "i18next";
 import React, { useEffect, useState } from "react";
+import { useLocalStorage } from "../../../../common/hooks/useLocalStorage";
+import localStorageKeys from "../../../../common/constants/localStorageKeys";
 
 interface UserInformationProps {
   t: TFunction;
 }
 
-const localStorageKeys = {
-  institutions: "userInstitutions",
-  majors: "userMajors",
-  courses: "userCourses",
-};
-
 const UserInformation = ({ t }: UserInformationProps) => {
-  const [userInstitutions, setUserInstitutions] = useState(
-    safeJsonParse<InstitutionModel[]>(
-      localStorage.getItem(localStorageKeys.institutions),
-      []
-    )
+  const [userInstitutions, setUserInstitutions] = useLocalStorage<
+    InstitutionModel[]
+  >(localStorageKeys.institutions, []);
+  const [userMajors, setUserMajors] = useLocalStorage<MajorModel[]>(
+    localStorageKeys.majors,
+    []
   );
-  const [userMajors, setUserMajors] = useState(
-    safeJsonParse<MajorModel[]>(
-      localStorage.getItem(localStorageKeys.majors),
-      []
-    )
-  );
-  const [userCourses, setUserCourses] = useState(
-    safeJsonParse<CourseModel[]>(
-      localStorage.getItem(localStorageKeys.courses),
-      []
-    )
+  const [userCourses, setUserCourses] = useLocalStorage<CourseModel[]>(
+    localStorageKeys.courses,
+    []
   );
   const [countriesList, setCountriesList] = useState<CountryModel[]>([]);
 
@@ -48,8 +36,6 @@ const UserInformation = ({ t }: UserInformationProps) => {
     modelsArray: T[],
     setModels: React.Dispatch<React.SetStateAction<T[]>>
   ) => {
-    // do not uncomment
-    // localStorage.setItem(props.localStorageKey, JSON.stringify(buttons));
     setModels(modelsArray);
   };
 

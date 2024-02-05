@@ -1,13 +1,13 @@
-import ButtonWithIcon from "../../../../common/ButtonWithIcon/ButtonWithIcon";
+import ButtonWithIcon from "../../../../common/components/ButtonWithIcon/ButtonWithIcon";
 import BaseModel from "../../../../models/BaseModel";
 import { TFunction } from "i18next";
 import {
   ButtonsContainer,
   MainBox,
   Title,
-} from "./UserInformationBlock.Styles";
+} from "./UserInformationSectionBlock.Styles";
 import InputDialog, { InputField } from "../InputDialog/InputDialog";
-import { useInputDialog } from "../InputDialog/useInputDialog";
+import { useInputDialog } from "../../../../common/hooks/useInputDialog";
 
 interface UserInformationBlockProps<T> {
   title: string;

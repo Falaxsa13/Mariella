@@ -1,7 +1,7 @@
-import Header from "../../components/Header/Header";
-import FlexContainer from "../../common/FlexContainer/FlexContainer";
-import UserInformation from "./components/UserInformation/UserInformation";
-import ContentSection from "./components/ContentSection/ContentSection";
+import Header from "../../common/components/Header/Header";
+import FlexContainer from "../../common/components/FlexContainer/FlexContainer";
+import UserInformation from "./components/UserInformationSection/UserInformationSection";
+import { ContentSection } from "./Home.Styles";
 import RubricSection from "./components/RubricSection/RubricSection";
 
 const Home = () => {

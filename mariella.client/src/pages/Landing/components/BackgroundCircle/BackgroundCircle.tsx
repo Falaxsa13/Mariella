@@ -1,17 +1,17 @@
 import React from "react";
-import { CircleContainer } from "./BackgroundCircle.Styles";
-import { SvgIcon } from "../../../../common/SvgIcon/SvgIcon";
+import {CircleContainer} from "./BackgroundCircle.Styles";
+import {SvgIcon} from "../../../../common/components/SvgIcon/SvgIcon";
 
 interface BackgroundCircleProps {
-  icon: string;
+    icon: string;
 }
 
-const BackgroundCircle: React.FC<BackgroundCircleProps> = ({ icon }) => {
-  return (
-    <CircleContainer>
-      <SvgIcon src={icon} width="1000px" height="1000px" />
-    </CircleContainer>
-  );
+const BackgroundCircle: React.FC<BackgroundCircleProps> = ({icon}) => {
+    return (
+        <CircleContainer>
+            <SvgIcon src={icon} width="1000px" height="1000px"/>
+        </CircleContainer>
+    );
 };
 
 export default BackgroundCircle;
