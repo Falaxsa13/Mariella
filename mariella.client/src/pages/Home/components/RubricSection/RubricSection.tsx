@@ -14,7 +14,7 @@ import {
 
 const RubricSection = () => {
   const [userRubrics, setUserRubrics] = useLocalStorage(
-    localStorageKeys.rubrics,
+    localStorageKeys.gradingRubrics,
     []
   );
 

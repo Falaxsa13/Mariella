@@ -2,7 +2,7 @@ const localStorageKeys = {
   institutions: "userInstitutions",
   majors: "userMajors",
   courses: "userCourses",
-  rubrics: "userRubrics",
+  gradingRubrics: "userGradingRubrics",
 };
 
 export default localStorageKeys;

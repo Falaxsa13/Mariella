@@ -1,0 +1,3 @@
+interface RubricSectionBlockProps {}
+
+const RubricSectionBlock = () => {};
