@@ -1,9 +1,11 @@
-using Mariella.Server.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Mariella.Server.Data.Models;
 
 namespace Mariella.Server.Data;
 
-public class ApplicationDbContext : DbContext
+public class ApplicationDbContext : IdentityDbContext
 {
 	public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
 	{
@@ -27,7 +29,15 @@ public class ApplicationDbContext : DbContext
 
 	public DbSet<UserMajorsModel> UserMajors { get; set; }
 
-	public DbSet<UserModel> Users { get; set; }
-
 	public DbSet<UserUniversitiesModel> UserUniversities { get; set; }
+
+	protected override void OnModelCreating(ModelBuilder modelBuilder)
+	{
+		base.OnModelCreating(modelBuilder);
+
+		modelBuilder.Entity<IdentityRole>().HasData(
+			new IdentityRole { Name = "admin", NormalizedName = "ADMIN" },
+			new IdentityRole { Name = "user", NormalizedName = "USER" }
+		);
+	}
 }

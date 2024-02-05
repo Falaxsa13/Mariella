@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Mariella.Server.Models;
+namespace Mariella.Server.Data.Models;
 
 public class GradingRubricModel
 {
@@ -26,6 +26,9 @@ public class GradingRubricModel
 
 	[Required]
 	public bool IsTemplate { get; set; }
+
+	[Required]
+	public DateTime ModificatedAt { get; set; }
 
 	[Required]
 	public DateTime CreatedAt { get; set; }

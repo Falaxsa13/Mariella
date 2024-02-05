@@ -1,6 +1,14 @@
+using Mariella.Server.Models.Dtos;
+
 namespace Mariella.Server.Repository.IRepository;
 
 public interface IUserRepository
 {
-	bool IsUniqueUser(string email);
+	Task<bool> IsUniqueUsername(string username);
+
+	Task<bool> IsUniqueEmail(string email);
+
+	Task<LoginResponseDto?> Login(LoginRequestDto loginRequestDto);
+
+	Task<UserDto?> Signup(SignupRequestDto signupRequestDto);
 }

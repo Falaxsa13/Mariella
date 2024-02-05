@@ -1,23 +1,31 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Mariella.Server.Models;
+namespace Mariella.Server.Data.Models;
 
-public class ProfessorModel
+public class UniversityModel
 {
 	[Key]
 	[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 	public int Id { get; set; }
 
 	[Required]
-	public required string FullName { get; set; }
+	public required string Name { get; set; }
+
+	[Required]
+	public required string Country { get; set; }
 
 	public string? Abbreviation { get; set; }
 
-	public Guid? PeruvianUniversitiesApiProfessorGuid { get; set; }
+	public Guid? PeruvianUniversitiesApiUniversityGuid { get; set; }
 
 	[Required]
 	public bool IsCustom { get; set; }
+
+	[ForeignKey(nameof(UserModel))]
+	public int AuthorId { get; set; }
+
+	public required UserModel User { get; set; }
 
 	[Required]
 	public DateTime CreatedAt { get; set; }
